@@ -1,20 +1,67 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <parent>
-        <groupId>de.unistuttgart.iste.sqa.mpw.modeling</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-    
+    <groupId>de.unistuttgart.iste.sqa.mpw.modeling</groupId>
     <artifactId>de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator</artifactId>
     <packaging>eclipse-plugin</packaging>
+    <version>1.0.0-SNAPSHOT</version>
     
     <name>Hamstersimulator Modeling</name>
+    
+    <properties>
+        <maven.compiler.release>14</maven.compiler.release>
+        <tycho-version>2.2.0</tycho-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <xtext.version>2.24.0</xtext.version>
+        <henshin.version>1.6.0</henshin.version>
+        <cdt.version>10.1</cdt.version>
+        <emf.mwe.launch.version>2.12.0</emf.mwe.launch.version>
+        <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
+    </properties>
+    
+    <repositories>
+        <repository>
+            <id>eclipse</id>
+            <layout>p2</layout>
+            <url>https://download.eclipse.org/releases/2020-12/</url>
+        </repository>
+        <repository>
+            <id>Xtext Update Site</id>
+            <layout>p2</layout>
+            <url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext.version}/</url>
+        </repository>
+        <repository>
+            <id>Xpand Xtend Additional Support Update Site</id>
+            <layout>p2</layout>
+            <url>https://download.eclipse.org/modeling/m2t/xpand/updates/</url>
+        </repository>
+		<repository>
+			<id>Henshin Update Site</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/modeling/emft/henshin/updates/${henshin.version}/</url>
+		</repository>
+		<repository>
+			<id>CDT Update Site</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/tools/cdt/releases/${cdt.version}/</url>
+		</repository>
+        <repository>
+            <id>local-mpw-framework-repo</id>
+            <layout>p2</layout>
+            <url>${local.mpw.framework.repository}</url>
+        </repository>
+    </repositories>
     
     
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <extensions>true</extensions>
+            </plugin>          
+            
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -33,12 +80,9 @@
                     <arguments>
                         <argument>/${project.basedir}/src/workflow/hamstersimulator_workflow.mwe2</argument>
                         <argument>-p</argument>
-                        <argument>rootPath=/${project.basedir}/..</argument>
+                        <argument>includeJarsWithName=de.unistuttgart.*</argument>
                         <argument>-p</argument>
-                        <argument>additionalArchivesPaths=
-                            ${de.unistuttgart.iste.sqa.mpw.modeling:de.unistuttgart.iste.sqa.mpw.modeling.workflow:jar};
-                            ${de.unistuttgart.iste.sqa.mpw.modeling:de.unistuttgart.iste.sqa.mpw.generator.java:jar};
-                            ${de.unistuttgart.iste.sqa.mpw.modeling:de.unistuttgart.iste.sqa.mpw.generator.cpp:jar}</argument>
+                        <argument>additionalArchivesPaths=${runtime.classpath}</argument>
                     </arguments>
                     <classpathScope>compile</classpathScope>
                     <includePluginDependencies>true</includePluginDependencies>
@@ -91,16 +135,23 @@
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-dependency-plugin</artifactId>
 			    <version>3.1.2</version>
-<!-- 			    <executions>
-			        <execution>
-			            <phase>initialize</phase>
-			            <goals>
-			                <goal>properties</goal>
-			            </goals>
-			        </execution>
-			    </executions> -->
+			    
+	            <executions>
+	                <!-- Write jar runtime-classpath into property 'runtime.classpath' -->
+	                <execution>
+	                    <id>classpath</id>
+	                    <goals>
+	                        <goal>build-classpath</goal>
+	                    </goals>
+	                    <configuration>
+	                        <fileSeparator>/</fileSeparator>
+	                        <pathSeparator>;</pathSeparator>
+	                        <outputProperty>runtime.classpath</outputProperty>
+	                    </configuration>
+	                </execution>
+	            </executions>
 			</plugin>
-      
+			
         </plugins>
         <pluginManagement>
             <plugins>
@@ -137,29 +188,5 @@
             </plugins>
         </pluginManagement>
     </build>
-    
-    <dependencies>
-	    <dependency>
-	        <groupId>${project.groupId}</groupId>
-	        <artifactId>de.unistuttgart.iste.sqa.mpw.modeling.mpw</artifactId>
-	        <version>${project.version}</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>${project.groupId}</groupId>
-	        <artifactId>de.unistuttgart.iste.sqa.mpw.modeling.workflow</artifactId>
-	        <version>${project.version}</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>${project.groupId}</groupId>
-	        <artifactId>de.unistuttgart.iste.sqa.mpw.generator.java</artifactId>
-	        <version>${project.version}</version>
-	    </dependency>
-	    <dependency>
-	        <groupId>${project.groupId}</groupId>
-	        <artifactId>de.unistuttgart.iste.sqa.mpw.generator.cpp</artifactId>
-	        <version>${project.version}</version>
-	    </dependency>
-
-    </dependencies>
     
 </project>
