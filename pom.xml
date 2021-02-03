@@ -78,9 +78,9 @@
                 <configuration>
                     <mainClass>components.mwe.Mwe2LauncherExtended</mainClass>
                     <arguments>
-                        <argument>/${project.basedir}/src/workflow/hamstersimulator_workflow.mwe2</argument>
+                        <argument>/${project.basedir}/src-workflow/workflow/hamstersimulator_workflow.mwe2</argument>
                         <argument>-p</argument>
-                        <argument>includeJarsWithName=de.unistuttgart.*</argument>
+                        <argument>includeJarsWithName=.*de.unistuttgart.*</argument>
                         <argument>-p</argument>
                         <argument>additionalArchivesPaths=${runtime.classpath}</argument>
                     </arguments>
