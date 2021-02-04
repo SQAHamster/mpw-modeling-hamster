@@ -1,20 +1,3 @@
-# Maven
-target
-workspace
-
-# Eclipse
-
-bin/
-.settings
-.classpath
-.project
-.metadata
-
-# IntelliJ
-
-*.iml
-.idea
-
-# Generation
-
-src-gen
+/bin
+/target
+/workspace

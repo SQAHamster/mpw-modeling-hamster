@@ -4,7 +4,8 @@ var moduleBaseName = "de.unistuttgart.iste.sqa.mpw"
 
 Workflow {
     component = @modeling.Workflow auto-inject {
-        sourceProjectName = "de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator"
+        // sourceProjectName = "${moduleBaseName}.modeling.hamstersimulator"
+        sourceProjectName = "hamstersimulator-modeling"
         generatedProjectBasePackage = "'de.unistuttgart.hamster'"
         targetSimulatorProjectBaseName = "${moduleBaseName}.hamstersimulator"
     }
