@@ -26,7 +26,7 @@
 			<unit id="org.eclipse.emf.henshin.sdk.feature.group" version="1.6.0.202002251401"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<repository location="file:/D:/Workspace/eclipse-mpw-framework/poly-hamster-simulator/de.unistuttgart.iste.sqa.mpw.update/target/repository"/>
+			<repository location="https://raw.githubusercontent.com/Fumapps/mpw-modeling-framework/mpw-update-site/repository"/>
 			<unit id="de.unistuttgart.iste.sqa.mpw.feature.feature.group" version="1.0.0.202102031954"/>
 		</location>
 	</locations>

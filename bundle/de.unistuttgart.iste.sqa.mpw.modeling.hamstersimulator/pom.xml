@@ -49,6 +49,8 @@
 		                    <arguments>
 		                        <argument>/${project.basedir}/src-workflow/workflow/hamstersimulator_workflow.mwe2</argument>
 		                        <argument>-p</argument>
+		                        <argument>projectRoot=/${project.basedir}/../..</argument>
+		                        <argument>-p</argument>
 		                        <argument>includeJarsWithName=.*de.unistuttgart.*</argument>
 		                        <argument>-p</argument>
 		                        <argument>additionalArchivesPaths=${runtime.classpath}</argument>

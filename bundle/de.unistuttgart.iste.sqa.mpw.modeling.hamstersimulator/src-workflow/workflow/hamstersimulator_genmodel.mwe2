@@ -2,21 +2,20 @@ module modeling.HamstersimulatorGenModelGenerator
 
 import org.eclipse.emf.mwe.utils.StandaloneSetup
 
-var projectRoot  = ".."
+var projectRoot  = "../.."
 var platformUriPrefix = "platform:/resource"
-var moduleBaseName = "de.unistuttgart.iste.sqa.mpw"
-var modelingModuleBaseName = "${moduleBaseName}.modeling"
 
-var moduleName = "${modelingModuleBaseName}.hamstersimulator"
+var moduleName = "hamstersimulator-modeling"
 
 Workflow {
-	bean = StandaloneSetup { 
+	bean = org.eclipse.emf.mwe.utils.StandaloneSetup { 
 		platformUri="${projectRoot}"
+		scanClassPath = true
 	}
 	
 	component = org.eclipse.emf.mwe2.ecore.EcoreGenerator {
 		genModel = "${platformUriPrefix}/${moduleName}/model/Hamster.genmodel"
-		srcPath = "${platformUriPrefix}/${moduleName}/src-gen}"
+		srcPath = "${platformUriPrefix}/${moduleName}/src-gen"
 	}
 	
 }

@@ -47,13 +47,8 @@
         <repository>
             <id>local-mpw-framework-repo</id>
             <layout>p2</layout>
-            <url>file:///D:\Workspace\eclipse-mpw-framework\poly-hamster-simulator\de.unistuttgart.iste.sqa.mpw.update\target\repository</url>
+            <url>https://raw.githubusercontent.com/Fumapps/mpw-modeling-framework/mpw-update-site/repository</url>
         </repository>
-         <repository>
-            <id>local-xpand</id>
-            <layout>p2</layout>
-            <url>file:///D:\Workspace\test-eclipse-workspace-202102\m2t-xpand-Update-2.2.0</url>
-        </repository> 
     </repositories>-->
     
     
