@@ -27,7 +27,7 @@
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<repository location="https://raw.githubusercontent.com/Fumapps/mpw-modeling-framework/mpw-update-site/repository"/>
-			<unit id="de.unistuttgart.iste.sqa.mpw.feature.feature.group" version="1.0.0.202102031954"/>
+			<unit id="de.unistuttgart.iste.sqa.mpw.feature.feature.group" version="1.0.0.202102052039"/>
 		</location>
 	</locations>
 </target>
