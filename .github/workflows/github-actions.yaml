@@ -1,0 +1,39 @@
+name: Java CI with Maven / CMake
+
+on:
+  push:
+    branches: [ 'master' ]
+  pull_request:
+    branches: [ 'master' ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 15
+        uses: actions/setup-java@v1
+        with:
+          java-version: 15
+
+      # Run MDE Workflow
+      - name: Process MDE workflow with Maven
+        run: mvn clean install --file pom.xml
+
+      # Build and test Java Hamstersimulator
+      - name: Build Java Hamstersimulator
+        run: mvn -Dmaven.javadoc.skip=true -B install --file simulators/de.unistuttgart.iste.sqa.mpw.hamster.java/pom.xml
+
+      # Build and test C++ Hamstersimulator
+      - name: Setup CMake
+        uses: jwlawson/actions-setup-cmake@v1.5
+        with:
+          cmake-version: '3.17.x'
+      - name: Build C++ Hamstersimulator
+        run: cmake -S $PROJECT_CPP_DIR -B $BUILD_DIR && cmake --build $BUILD_DIR && cd $BUILD_DIR && ctest --extra-verbose
+        env:
+          PROJECT_CPP_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamster.cpp
+          BUILD_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamster.cpp/build
+
