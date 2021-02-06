@@ -1,0 +1,13 @@
+module modeling.HamstersimulatorWorkflow
+
+var rootPath = "../.."
+var moduleBaseName = "de.unistuttgart.iste.sqa.mpw"
+
+Workflow {
+    component = @modeling.Workflow auto-inject {
+        rootPath = rootPath
+        sourceProjectName = "de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator"
+        generatedProjectBasePackage = "'de.unistuttgart.hamster'"
+        targetSimulatorProjectBaseName = "simulators/${moduleBaseName}.hamstersimulator"
+    }
+}

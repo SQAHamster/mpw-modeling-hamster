@@ -14,7 +14,7 @@
     <name>Hamstersimulator Modeling Root Project</name>
     
     <modules>
-        <module>bundle/de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator</module>
+        <module>bundles/de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator</module>
         <module>releng/de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator.parent</module>
         <module>releng/de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator.targetplatform</module>
     </modules>

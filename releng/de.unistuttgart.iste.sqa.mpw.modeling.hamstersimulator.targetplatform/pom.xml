@@ -8,7 +8,9 @@
         <relativePath>../../releng/de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator.parent</relativePath>
     </parent>
     
-    <artifactId>hamstersimulator-targetplatform</artifactId>
+    <artifactId>de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator.targetplatform</artifactId>
     <packaging>eclipse-target-definition</packaging>
 
+    <name>Hamstersimulator Target Platform</name>
+    
 </project>

@@ -6,51 +6,16 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-
+    <name>Hamstersimulator Parent</name>
+    
     <properties>
-        <maven.compiler.release>14</maven.compiler.release>
+        <maven.compiler.release>15</maven.compiler.release>
         <tycho-version>2.2.0</tycho-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <xtext.version>2.24.0</xtext.version>
-        <henshin.version>1.6.0</henshin.version>
-        <cdt.version>10.1</cdt.version>
         <emf.mwe.launch.version>2.12.0</emf.mwe.launch.version>
         <tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
     </properties>
-    
-<!--    <repositories>
-        <repository>
-            <id>eclipse</id>
-            <layout>p2</layout>
-            <url>https://download.eclipse.org/releases/2020-12/</url>
-        </repository>
-        <repository>
-            <id>Xtext Update Site</id>
-            <layout>p2</layout>
-            <url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext.version}/</url>
-        </repository>
-        <repository>
-            <id>Xpand Xtend Additional Support Update Site</id>
-            <layout>p2</layout>
-            <url>https://download.eclipse.org/modeling/m2t/xpand/updates/releases/</url>
-        </repository>
-		<repository>
-			<id>Henshin Update Site</id>
-			<layout>p2</layout>
-			<url>https://download.eclipse.org/modeling/emft/henshin/updates/${henshin.version}/</url>
-		</repository>
-		<repository>
-			<id>CDT Update Site</id>
-			<layout>p2</layout>
-			<url>https://download.eclipse.org/tools/cdt/releases/${cdt.version}/</url>
-		</repository>
-        <repository>
-            <id>local-mpw-framework-repo</id>
-            <layout>p2</layout>
-            <url>https://raw.githubusercontent.com/Fumapps/mpw-modeling-framework/mpw-update-site/repository</url>
-        </repository>
-    </repositories>-->
-    
     
     <build>
         <plugins>
@@ -63,6 +28,7 @@
             <plugin>
                 <groupId>org.eclipse.xtend</groupId>
                 <artifactId>xtend-maven-plugin</artifactId>
+                <version>${xtext.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.eclipse.tycho</groupId>
@@ -72,7 +38,7 @@
 					<target>
                         <artifact>
                             <groupId>${project.groupId}</groupId>
-                            <artifactId>hamstersimulator-targetplatform</artifactId>
+                            <artifactId>de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator.targetplatform</artifactId>
                             <version>${project.version}</version>
                         </artifact>
                     </target>
