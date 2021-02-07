@@ -1,7 +1,7 @@
 package de.unistuttgart.hamster.util;
 
 import de.unistuttgart.hamster.hamster.*;
-import de.unistuttgart.hamster.mpw.Tile;
+import de.unistuttgart.iste.sqa.mpw.framework.mpw.Tile;
 
 import java.util.function.Consumer;
 

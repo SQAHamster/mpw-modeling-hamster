@@ -24,7 +24,7 @@ jobs:
 
       # Build and test Java Hamstersimulator
       - name: Build Java Hamstersimulator
-        run: mvn -Dmaven.javadoc.skip=true -B install --file simulators/de.unistuttgart.iste.sqa.mpw.hamster.java/pom.xml
+        run: mvn -Dmaven.javadoc.skip=true -B install --file simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.java/pom.xml
 
       # Build and test C++ Hamstersimulator
       - name: Setup CMake
@@ -34,6 +34,6 @@ jobs:
       - name: Build C++ Hamstersimulator
         run: cmake -S $PROJECT_CPP_DIR -B $BUILD_DIR && cmake --build $BUILD_DIR && cd $BUILD_DIR && ctest --extra-verbose
         env:
-          PROJECT_CPP_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamster.cpp
-          BUILD_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamster.cpp/build
+          PROJECT_CPP_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp
+          BUILD_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/build
 

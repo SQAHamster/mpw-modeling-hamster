@@ -2,7 +2,7 @@ package de.unistuttgart.hamster;
 
 import de.unistuttgart.hamster.hamster.HamsterGame;
 import de.unistuttgart.hamster.hamster.TerritoryBuilder;
-import de.unistuttgart.hamster.mpw.Location;
+import de.unistuttgart.iste.sqa.mpw.framework.mpw.Location;
 import de.unistuttgart.hamster.util.GameStringifier;
 import org.junit.jupiter.api.Test;
 

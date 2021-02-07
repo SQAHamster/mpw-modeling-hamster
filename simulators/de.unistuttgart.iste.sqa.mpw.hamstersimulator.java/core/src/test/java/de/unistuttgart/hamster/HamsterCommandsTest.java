@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import de.unistuttgart.hamster.framework.CommandConstraintException;
+import de.unistuttgart.iste.sqa.mpw.framework.exceptions.CommandConstraintException;
 import de.unistuttgart.hamster.hamster.*;
-import de.unistuttgart.hamster.mpw.Direction;
-import de.unistuttgart.hamster.mpw.Location;
-import de.unistuttgart.hamster.mpw.LogEntry;
-import de.unistuttgart.hamster.mpw.Tile;
+import de.unistuttgart.iste.sqa.mpw.framework.mpw.Direction;
+import de.unistuttgart.iste.sqa.mpw.framework.mpw.Location;
+import de.unistuttgart.iste.sqa.mpw.framework.mpw.LogEntry;
+import de.unistuttgart.iste.sqa.mpw.framework.mpw.Tile;
 import de.unistuttgart.hamster.util.GameStringifier;
 import org.junit.jupiter.api.Test;
 
