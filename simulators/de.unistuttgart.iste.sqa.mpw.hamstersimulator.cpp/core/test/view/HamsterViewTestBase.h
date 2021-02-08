@@ -21,7 +21,7 @@ protected:
 
     void SetUp() override;
 
-    void withTerritorium(const std::string& path);
+    void withTerritory(const std::string& path);
 
     void assertTerritory(const std::string& expected);
     void assertLog(const std::string& expected);

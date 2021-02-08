@@ -1,12 +1,10 @@
 include_directories(.)
 
 add_executable(hamstersimulator_tests
-        FirstSimpleTests.cpp
         HamsterCommandTest.cpp
         InitHamsterCommandTest.cpp
         TerritoryBuilderTest.cpp
         UndoCommandTest.cpp
-        LocationTest.cpp
         view/HamsterViewModelTest.cpp
         util/GameStringifier.cpp util/GameStringifier.h
         util/TestUtils.cpp util/TestUtils.h

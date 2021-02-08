@@ -1,6 +1,6 @@
 #include "HamsterViewTestBase.h"
 
-#include "GameViewPresenterImpl.h"
+#include "HamsterGameViewPresenter.h"
 #include "UserInputInterfaceFake.h"
 #include "ViewModelStringifier.h"
 
@@ -13,7 +13,7 @@ void HamsterViewTestBase::SetUp() {
     initCharMapping();
 }
 
-void HamsterViewTestBase::withTerritorium(const std::string& path) {
+void HamsterViewTestBase::withTerritory(const std::string& path) {
     game = HamsterGame::create();
     TerritoryLoader::initializeFor(*game)->loadFromResourceFile("resources" + path);
 
@@ -23,7 +23,7 @@ void HamsterViewTestBase::withTerritorium(const std::string& path) {
     auto territory = game->getTerritory();
     paule = territory->getDefaultHamster();
 
-    presenter = std::make_shared<GameViewPresenterImpl>(game);
+    presenter = std::make_shared<HamsterGameViewPresenter>(game);
     presenter->bind();
     viewModel = presenter->getViewModel();
 

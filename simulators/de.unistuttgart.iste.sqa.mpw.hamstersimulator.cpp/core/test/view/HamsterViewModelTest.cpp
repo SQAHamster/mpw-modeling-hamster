@@ -22,7 +22,7 @@ public:
 };
 
 TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */
-    withTerritorium("/territories/example01.ter");
+    withTerritory("/territories/example01.ter");
     assertTerritory(
             "|####|####|####|####|####|\n"
             "|####|>   |    | 2* |####|\n"
@@ -37,7 +37,7 @@ TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */
 
 
 TEST_F(HamsterViewModelTest, testMove) {
-        withTerritorium("/territories/example01.ter");
+        withTerritory("/territories/example01.ter");
         paule->move();
         assertTerritory(
         "|####|####|####|####|####|\n"
@@ -52,7 +52,7 @@ TEST_F(HamsterViewModelTest, testMove) {
 }
 
 TEST_F(HamsterViewModelTest, testPickGrain) {
-        withTerritorium("/territories/example01.ter");
+        withTerritory("/territories/example01.ter");
         paule->move();
         paule->move();
         paule->pickGrain();
@@ -69,7 +69,7 @@ TEST_F(HamsterViewModelTest, testPickGrain) {
 }
 
 TEST_F(HamsterViewModelTest, testPickGrainAndPutGrain) {
-        withTerritorium("/territories/example01.ter");
+        withTerritory("/territories/example01.ter");
         paule->move();
         paule->move();
         paule->pickGrain();
@@ -87,7 +87,7 @@ TEST_F(HamsterViewModelTest, testPickGrainAndPutGrain) {
 }
 
 TEST_F(HamsterViewModelTest, testMoveAndRotateAndMove) {
-        withTerritorium("/territories/example01.ter");
+        withTerritory("/territories/example01.ter");
         paule->move();
         paule->turnLeft();
         paule->turnLeft();
@@ -105,7 +105,7 @@ TEST_F(HamsterViewModelTest, testMoveAndRotateAndMove) {
 }
 
 TEST_F(HamsterViewModelTest, testMoveAgainstWall) {
-        withTerritorium("/territories/example01.ter");
+        withTerritory("/territories/example01.ter");
         paule->move();
         paule->turnLeft();
 
@@ -115,7 +115,7 @@ TEST_F(HamsterViewModelTest, testMoveAgainstWall) {
 }
 
 TEST_F(HamsterViewModelTest, testLog) {
-        withTerritorium("/territories/example01.ter");
+        withTerritory("/territories/example01.ter");
         paule->move();
         paule->move();
         paule->pickGrain();
