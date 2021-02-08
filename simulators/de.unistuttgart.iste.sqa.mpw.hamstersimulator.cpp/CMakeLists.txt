@@ -3,6 +3,8 @@ project(de_unistuttgart_iste_sqa_mpw_hamstersimulator_cpp)
 
 set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON) # -fPIC on gcc
+
 ## Setup MPW Simulator Framework
 
 include(FetchContent)
