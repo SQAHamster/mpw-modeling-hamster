@@ -34,6 +34,8 @@ target_link_libraries(hamster_core mpw_framework_core_lib)
 add_library(hamster_core_lib STATIC ${SRCS})
 target_link_libraries(hamster_core_lib mpw_framework_core_lib)
 
+add_subdirectory(ui)
+
 ## Setup GTEST
 
 enable_testing()
