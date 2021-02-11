@@ -32,11 +32,11 @@
         </location>
         <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
             <repository location="https://raw.githubusercontent.com/Fumapps/mpw-modeling-querydsl/querydsl-updatesite/repository"/>
-            <unit id="de.unistuttgart.iste.sqa.mpw.modeling.querydsl.feature.feature.group" version="1.0.0.202102061627"/>
+            <unit id="de.unistuttgart.iste.sqa.mpw.modeling.querydsl.feature.feature.group" version="0.0.0"/>
         </location>
     	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
         	<repository location="https://raw.githubusercontent.com/Fumapps/mpw-modeling-framework/mpw-update-site/repository"/>
-        	<unit id="de.unistuttgart.iste.sqa.mpw.feature.feature.group" version="1.0.0.202102081037"/>
+        	<unit id="de.unistuttgart.iste.sqa.mpw.feature.feature.group" version="0.0.0"/>
     	</location>
 	</locations>
 </target>
