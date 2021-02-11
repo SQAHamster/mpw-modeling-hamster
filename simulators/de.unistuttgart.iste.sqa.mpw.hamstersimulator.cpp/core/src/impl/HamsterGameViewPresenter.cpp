@@ -3,15 +3,12 @@
 #include "Territory.h"
 #include "GameTerritory.h"
 #include "GameLog.h"
-#include "Semaphore.h"
 #include "CommandStack.h"
 #include "GamePerformance.h"
 
 #include "ViewModelCellLayer.h"
-#include "ViewModelLogEntry.h"
 
 #include "CollectionHelpers.hpp"
-#include <stdexcept>
 #include <utility>
 
 using namespace mpw;
