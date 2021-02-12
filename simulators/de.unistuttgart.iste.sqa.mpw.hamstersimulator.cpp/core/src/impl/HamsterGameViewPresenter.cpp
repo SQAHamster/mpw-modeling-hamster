@@ -5,8 +5,11 @@
 #include "GameLog.h"
 #include "CommandStack.h"
 #include "GamePerformance.h"
+#include "ReadOnlyHamster.h"
+#include "Actor.h"
 
 #include "ViewModelCellLayer.h"
+#include "HamsterColors.h"
 
 #include "CollectionHelpers.hpp"
 #include <utility>
@@ -86,10 +89,13 @@ void HamsterGameViewPresenter::refreshWallLayer(ViewModelCellLayer& layer, const
 
 void HamsterGameViewPresenter::configureHamsterImageView(ViewModelCell& cell, const ReadOnlyHamster& hamster)
 {
+    updateColorMap();
+
     auto& nonConstHamster = const_cast<ReadOnlyHamster&>(hamster);
     // TODO const-correctness: adapt after migrate generator
     auto hamsterLayer = std::make_shared<ViewModelCellLayer>();
-    hamsterLayer->setImageName("Hamster32");
+    std::string colorName = HamsterColors::toColorName(hamsterToColorMap[&hamster]);
+    hamsterLayer->setImageName("Hamster32" + colorName);
 
     changedHamsterDirectionListenerIds[&hamster] = nonConstHamster.directionProperty().addListener(
         [this, &nonConstHamster, hamsterLayer](Direction oldValue, Direction newValue)
@@ -125,6 +131,29 @@ std::list<std::shared_ptr<hamster::Wall>> HamsterGameViewPresenter::getWallsOfTi
 std::list<std::shared_ptr<hamster::Grain>> HamsterGameViewPresenter::getGrainOfTile(const Tile& tile)
 {
     return type_select<hamster::Grain>(const_cast<Tile&>(tile).getContents());
+}
+
+void HamsterGameViewPresenter::updateColorMap() {
+    auto territory = game->getTerritory();
+    auto& tileContents = territory->getInternalTerritory()->getTileContents();
+    auto hamsters = collectionhelpers::type_select<ReadOnlyHamster>(tileContents);
+
+    for (auto& hamster : hamsters) {
+        if (hamsterToColorMap.find(hamster.get()) == hamsterToColorMap.end()) {
+            Color color = HamsterColors::getColorForNthHamster(hamsterToColorMap.size());
+            hamsterToColorMap[hamster.get()] = color;
+        }
+    }
+}
+
+Color HamsterGameViewPresenter::getColorForLogEntry(const LogEntry& entry) const {
+    // TODO const-correctness: adapt after migrate generator
+    Actor* actor = const_cast<LogEntry&>(entry).getActor().get();
+    auto iter = hamsterToColorMap.find(actor);
+    if (iter != hamsterToColorMap.end()) {
+        return (*iter).second;
+    }
+    return inherited::getColorForLogEntry(entry);
 }
 
 }

@@ -22,9 +22,11 @@ protected:
     void SetUp() override;
 
     void withTerritory(const std::string& path);
+    void createFurtherHamsterAt(mpw::Location location);
 
     void assertTerritory(const std::string& expected);
     void assertLog(const std::string& expected);
+    void assertLayersAt(mpw::Location location, const std::vector<std::string>& expectedLayerImageNames);
 
     std::shared_ptr<hamster::Hamster> paule;
     std::shared_ptr<viewmodel::GameViewModel> viewModel;

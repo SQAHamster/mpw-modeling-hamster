@@ -4,9 +4,11 @@
 #include <SDL.h>
 #undef main // fixes compile error on Windows
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 #include <string>
 #include <vector>
+#include <unordered_map>
 #include "SdlApplicationListener.h"
 
 namespace hamstersimulator {
@@ -22,12 +24,14 @@ public:
     void runApplication();
 
     SDL_Texture& loadTexture(const std::string& path);
-
-    void setTimerInterval(long milliseconds);
+    SDL_Texture& createTextureForText(const std::string& text, int size, const SDL_Color& color);
 
     void dispose();
 
 private:
+
+    std::string fontColorWithSizeToKey(int size, const SDL_Color& color);
+    TTF_Font* loadFont(int size);
 
     const std::string title;
     SdlApplicationListener& listener;
@@ -36,9 +40,11 @@ private:
     SDL_Renderer* renderer = nullptr;
 
     std::vector<SDL_Texture*> loadedTextures;
+    std::unordered_map<int, TTF_Font*> loadedFontsPerSize;
 
     bool running = false;
     bool disposed = false;
+
 };
 
 }

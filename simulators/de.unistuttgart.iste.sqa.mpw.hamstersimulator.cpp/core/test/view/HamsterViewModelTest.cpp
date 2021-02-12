@@ -130,3 +130,21 @@ TEST_F(HamsterViewModelTest, testLog) {
             "Turn Left\n"
             "Hello\n");
 }
+
+TEST_F(HamsterViewModelTest, testColors) {
+    withTerritory("/territories/example01.ter");
+
+    const Location& location = Location::from(1, 1);
+    for (int i = 0; i < 6; i++) {
+        createFurtherHamsterAt(location);
+    }
+    assertLayersAt(location, {
+       "Hamster32Blue",
+       "Hamster32Green",
+       "Hamster32Yellow",
+       "Hamster32Pink",
+       "Hamster32Magenta",
+       "Hamster32Red",
+       "Hamster32Blue"
+    });
+}

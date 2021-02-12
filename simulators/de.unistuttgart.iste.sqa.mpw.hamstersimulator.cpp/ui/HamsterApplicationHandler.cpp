@@ -1,5 +1,7 @@
 #include "HamsterApplicationHandler.h"
 
+#include "HamsterColors.h"
+
 #include <utility>
 #include <thread>
 
@@ -28,7 +30,15 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
     createButton("Redo24", [this]() { presenter->redoClicked(); });
 
     loadTexture("Tile64");
-    loadTexture("Hamster32");
+
+    std::vector<Color> colorValues { Color::BLACK, Color::BLUE, Color::GREEN, Color::YELLOW, Color::PINK, Color::MAGENTA, Color::RED };
+    for (auto color : colorValues) {
+        const std::basic_string<char, std::char_traits<char>, std::allocator<char>>& textureName =
+                "Hamster32" + HamsterColors::toColorName(color);
+        loadTextureWithCustomKey("Hamster32", textureName);
+        SDL_Color sdlColor = toSdlColor(color);
+        SDL_SetTextureColorMod(texturesByImageName[textureName], sdlColor.r, sdlColor.g, sdlColor.b);
+    }
     loadTexture("Wall32");
     for (int i = 1; i <= 12; i++) {
         loadTexture(std::to_string(i) + "Corn32");
@@ -57,6 +67,10 @@ void HamsterApplicationHandler::createButton(const std::string& imageName, std::
 
 void HamsterApplicationHandler::loadTexture(const std::string& imageName) {
     texturesByImageName[imageName] = &application->loadTexture(imagePath + imageName + ".png");
+}
+
+void HamsterApplicationHandler::loadTextureWithCustomKey(const std::string& imageName, const std::string& key) {
+    texturesByImageName[key] = &application->loadTexture(imagePath + imageName + ".png");
 }
 
 void HamsterApplicationHandler::onEvent(SDL_Event& event) {
@@ -91,6 +105,7 @@ std::optional<size_t> HamsterApplicationHandler::getButtonForPosition(int x, int
 void HamsterApplicationHandler::onRender(SDL_Renderer& renderer) {
     renderToolbar(renderer);
     renderTerritory(renderer);
+    renderGameLog(renderer);
 
     SDL_Delay(16);
 }
@@ -143,8 +158,56 @@ void HamsterApplicationHandler::render(SDL_Renderer& renderer, SDL_Rect& rect,
     SDL_RenderCopyEx(&renderer, texture, nullptr, &rect, rotation, nullptr, SDL_FLIP_NONE);
 }
 
+void HamsterApplicationHandler::renderGameLog(SDL_Renderer& renderer) {
+    static std::unordered_map<ViewModelLogEntry*, SDL_Texture*> textTextures;
+
+    auto lock = presenter->getSemaphore().lock();
+    auto viewModel = presenter->getViewModel();
+
+    const int offsetX = viewModel->getSize().getColumnCount() * TILE_SIZE + 20;
+    const int offsetY = 20;
+
+    SDL_Rect rect{offsetX, offsetY, 200, viewModel->getSize().getRowCount() * TILE_SIZE + TERRITORY_OFFSET - 20};
+    SDL_SetRenderDrawColor(&renderer, 0, 0, 0, 255);
+    SDL_RenderDrawRect(&renderer, &rect);
+
+    rect.x += 4;
+    rect.y += 4;
+
+    auto& logEntries = viewModel->getLogEntries();
+    for (auto iter = logEntries.rbegin(); iter != logEntries.rend(); ++iter) {
+        auto& logEntry = *iter;
+        SDL_Texture* texture;
+        if (textTextures.find(&logEntry) != textTextures.end()) {
+            texture = textTextures[&logEntry];
+        } else {
+            SDL_Color color = toSdlColor(logEntry.getColor());
+            texture = &application->createTextureForText(logEntry.getMessage(), 12, color);
+            textTextures[&logEntry] = texture;
+        }
+
+        SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
+        SDL_RenderCopyEx(&renderer, texture, nullptr, &rect, 0, nullptr, SDL_FLIP_NONE);
+        rect.y += rect.h;
+    }
+}
+
 void HamsterApplicationHandler::onClose() {
 
 }
+
+SDL_Color HamsterApplicationHandler::toSdlColor(viewmodel::Color color) {
+    switch (color) {
+        case Color::BLACK: return { 0, 0, 0, 255 };
+        case Color::BLUE: return { 0, 0, 255, 255 };
+        case Color::GREEN: return { 0, 255, 0, 255 };
+        case Color::YELLOW: return { 255, 255, 0, 255 };
+        case Color::PINK: return { 255, 175, 175, 255 };
+        case Color::MAGENTA: return { 255, 0, 255, 255 };
+        case Color::RED: return { 255, 0, 0, 255 };
+    }
+    return { 0, 0, 0, 255 };
+}
+
 
 }

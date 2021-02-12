@@ -34,11 +34,14 @@ private:
 
     void renderToolbar(SDL_Renderer& renderer);
     void renderTerritory(SDL_Renderer& renderer);
+    void renderGameLog(SDL_Renderer& renderer);
 
     void loadTexture(const std::string& imageName);
+    void loadTextureWithCustomKey(const std::string& imageName, const std::string& key);
     void renderCell(SDL_Rect& rect, viewmodel::ViewModelCell& cell, SDL_Renderer& renderer);
     void render(SDL_Renderer& renderer, SDL_Rect& rect, const std::string& imageName, int rotation = 0);
 
+    static SDL_Color toSdlColor(viewmodel::Color color);
     std::optional<size_t> getButtonForPosition(int x, int y);
 
     const std::shared_ptr<hamster::HamsterGame> game;

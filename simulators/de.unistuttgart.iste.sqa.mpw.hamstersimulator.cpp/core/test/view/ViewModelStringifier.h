@@ -21,6 +21,7 @@ public:
 
 private:
 
+    static std::string trimHamsterColor(const std::string& key);
     const std::string& getImageCharMapping(const std::string& key) const;
 
     std::string rowToString(const GameViewModel& viewModel, int y) const;

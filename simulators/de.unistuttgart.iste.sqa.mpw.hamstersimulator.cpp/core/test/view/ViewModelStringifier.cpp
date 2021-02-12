@@ -44,6 +44,7 @@ std::string ViewModelStringifier::cellToString(const ViewModelCell& cell) const 
         auto& nonConstLayer = const_cast<ViewModelCellLayer&>(layer);
         if (nonConstLayer.getVisible()) {
             std::string key = nonConstLayer.getImageName();
+            key = trimHamsterColor(key);
             int rotation = nonConstLayer.getRotation();
             if (rotation != 0) {
                 key.append("[");
@@ -75,6 +76,13 @@ std::string ViewModelStringifier::logToString(const GameViewModel& viewModel) {
 const std::string& ViewModelStringifier::getImageCharMapping(const std::string& key) const {
     auto iter = imageCharsMapping.find(key);
     return (*iter).second;
+}
+
+std::string ViewModelStringifier::trimHamsterColor(const std::string& key) {
+    if (key.find("Hamster32") == 0) {
+        return "Hamster32";
+    }
+    return key;
 }
 
 }

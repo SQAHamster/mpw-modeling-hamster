@@ -4,6 +4,8 @@
 #include "UserInputInterfaceFake.h"
 #include "ViewModelStringifier.h"
 
+#include <memory>
+
 using namespace hamster;
 using namespace viewmodel;
 
@@ -82,4 +84,23 @@ void HamsterViewTestBase::initCharMapping() {
     characterMap["Hamster32[180]"] = "<";
     characterMap["Hamster32[270]"] = "^";
     characterMap["Wall32"] = "####";
+}
+
+void HamsterViewTestBase::createFurtherHamsterAt(mpw::Location location) {
+    std::make_shared<Hamster>(game->getTerritory(), location, mpw::Direction::EAST, 0);
+}
+
+void HamsterViewTestBase::assertLayersAt(mpw::Location location, const std::vector<std::string>& expectedLayerImageNames) {
+    std::string expected = "";
+    for (auto& expectedName : expectedLayerImageNames) {
+        expected += expectedName + "\n";
+    }
+    std::string actual = "";
+    auto cell = viewModel->getCellAt(location.getRow(), location.getColumn());
+    for (auto& layer : cell->getLayers()) {
+        if (layer.getVisible()) {
+            actual += layer.getImageName() + "\n";
+        }
+    }
+    EXPECT_EQ(expected, actual);
 }

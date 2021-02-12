@@ -2,19 +2,19 @@
 
 #include <iostream>
 #include <utility>
+#include <sstream>
 
 namespace hamstersimulator {
 
-static std::string getSdlErrorAsString() {
-    return std::string("SDL Error: ") + SDL_GetError();
-}
 static void throwExceptionWithSdlError(const std::string& message) {
-    throw std::runtime_error(message + " " + getSdlErrorAsString());
+    throw std::runtime_error(message + " SDL Error: " + SDL_GetError());
+}
+static void throwExceptionWithSdlTtfError(const std::string& message) {
+    throw std::runtime_error(message + " TTF Error: " + TTF_GetError());
 }
 
 SdlApplication::SdlApplication(std::string title, SdlApplicationListener& listener)
-        : title(std::move(title))
-        , listener(listener) {
+        : title(std::move(title)), listener(listener) {
 }
 
 void SdlApplication::initialize(int width, int height) {
@@ -29,6 +29,8 @@ void SdlApplication::initialize(int width, int height) {
             int imageFlags = IMG_INIT_PNG;
             if (!(IMG_Init(imageFlags) & imageFlags)) {
                 throwExceptionWithSdlError("SDL_image could not initialize!");
+            } else if (TTF_Init() == -1) {
+                throwExceptionWithSdlTtfError("SDL_ttf could not initialize!");
             } else {
                 renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
                 if (renderer == nullptr) {
@@ -56,6 +58,7 @@ void SdlApplication::runApplication() {
             listener.onEvent(event);
         }
 
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
 
         listener.onRender(*renderer);
@@ -87,10 +90,6 @@ SDL_Texture& SdlApplication::loadTexture(const std::string& path) {
     return *newTexture;
 }
 
-void SdlApplication::setTimerInterval(long milliseconds) {
-
-}
-
 void SdlApplication::dispose() {
     if (disposed) {
         return;
@@ -101,15 +100,52 @@ void SdlApplication::dispose() {
     }
     loadedTextures.clear();
 
+    for (auto& fontEntry : loadedFontsPerSize) {
+        TTF_CloseFont(fontEntry.second);
+    }
+    loadedFontsPerSize.clear();
+
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     window = nullptr;
     renderer = nullptr;
 
+    TTF_Quit();
     IMG_Quit();
     SDL_Quit();
 
     disposed = true;
+}
+
+SDL_Texture& SdlApplication::createTextureForText(const std::string& text, int size, const SDL_Color& color) {
+    TTF_Font* font = loadFont(size);
+    SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), color);
+    SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+    loadedTextures.push_back(textTexture);
+    SDL_FreeSurface(textSurface);
+    return *textTexture;
+}
+
+TTF_Font* SdlApplication::loadFont(int size) {
+    TTF_Font* font;
+    auto fontIter = loadedFontsPerSize.find(size);
+    if (fontIter != loadedFontsPerSize.end()) {
+        font = (*fontIter).second;
+    } else {
+        font = TTF_OpenFont("resources/fonts/Roboto-Medium.ttf", size);
+        loadedFontsPerSize[size] = font;
+    }
+    return font;
+}
+
+std::string SdlApplication::fontColorWithSizeToKey(int size, const SDL_Color& color) {
+    std::stringstream stream;
+    stream << size << "#";
+    stream << std::hex << color.a;
+    stream << std::hex << color.r;
+    stream << std::hex << color.g;
+    stream << std::hex << color.b;
+    return std::string(stream.str());
 }
 
 }
