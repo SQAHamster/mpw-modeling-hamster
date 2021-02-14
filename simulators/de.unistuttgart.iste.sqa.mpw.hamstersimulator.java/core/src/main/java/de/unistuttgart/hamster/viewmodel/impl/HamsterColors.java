@@ -14,7 +14,7 @@ public class HamsterColors {
             Color.RED
     };
 
-    public static Color getColorForNthHamster(int number) {
+    public static Color getColorForNthHamster(final int number) {
         final int index = number % HamsterColors.hamsterColors.length;
         return HamsterColors.hamsterColors[index];
     }

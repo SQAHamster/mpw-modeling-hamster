@@ -37,7 +37,7 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 	}
 
 	@Override
-	protected Color getColorForLogEntry(LogEntry entry) {
+	protected Color getColorForLogEntry(final LogEntry entry) {
 		if (hamsterToColorMap.containsKey(entry.getActor())) {
 			return hamsterToColorMap.get(entry.getActor());
 		}
@@ -45,38 +45,38 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 	}
 
 	@Override
-	protected void onSetTileNodeAtForCell(ViewModelCell cell, Tile tile) {
+	protected void onSetTileNodeAtForCell(final ViewModelCell cell, final Tile tile) {
 		configureWallImageView(cell, tile);
 		configureGrainImageView(cell, tile);
 
-		Optional<ReadOnlyHamster> hamsterOptional = findHamsterOnTile(tile);
+		final Optional<ReadOnlyHamster> hamsterOptional = findHamsterOnTile(tile);
 		hamsterOptional.ifPresent(readOnlyHamster -> configureHamsterImageView(cell, readOnlyHamster));
 	}
 
-	private Optional<ReadOnlyHamster> findHamsterOnTile(Tile tile) {
+	private Optional<ReadOnlyHamster> findHamsterOnTile(final Tile tile) {
 		return tile.getContents().stream()
 				.filter(ReadOnlyHamster.class::isInstance)
 				.map(ReadOnlyHamster.class::cast).findFirst();
 	}
 
-	private void configureWallImageView(ViewModelCell cell, Tile tile) {
-		var layer = new ViewModelCellLayer();
+	private void configureWallImageView(final ViewModelCell cell, final Tile tile) {
+		final var layer = new ViewModelCellLayer();
 		layer.setImageName("Wall");
 		refreshWallLayer(layer, tile);
 		cell.getLayers().add(layer);
 	}
 
-	private void refreshWallLayer(ViewModelCellLayer layer, Tile tile) {
+	private void refreshWallLayer(final ViewModelCellLayer layer, final Tile tile) {
 		layer.setVisible(tile.getContents().stream().anyMatch(Wall.class::isInstance));
 	}
 
-	private void configureGrainImageView(ViewModelCell cell, Tile tile) {
-		var layer = new ViewModelCellLayer();
+	private void configureGrainImageView(final ViewModelCell cell, final Tile tile) {
+		final var layer = new ViewModelCellLayer();
 		refreshGrainLayer(layer, tile);
 		cell.getLayers().add(layer);
 	}
 
-	private void refreshGrainLayer(ViewModelCellLayer layer, Tile tile) {
+	private void refreshGrainLayer(final ViewModelCellLayer layer, final Tile tile) {
 		final int grainCount = getGrainOfTile(tile).size();
 		layer.setVisible(grainCount > 0);
 
@@ -94,10 +94,10 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 				.collect(Collectors.toList());
 	}
 
-	private void configureHamsterImageView(ViewModelCell cell, ReadOnlyHamster hamster) {
+	private void configureHamsterImageView(final ViewModelCell cell, final ReadOnlyHamster hamster) {
 		updateColorMap();
 
-		var layer = new ViewModelCellLayer();
+		final var layer = new ViewModelCellLayer();
 		layer.setImageName("Hamster" + hamsterToColorMap.get(hamster).name());
 
 		hamster.directionProperty().addListener((v, c, l) -> {
@@ -110,7 +110,7 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 		cell.getLayers().add(layer);
 	}
 
-	private void refreshHamsterLayer(ViewModelCellLayer layer, ReadOnlyHamster hamster) {
+	private void refreshHamsterLayer(final ViewModelCellLayer layer, final ReadOnlyHamster hamster) {
 		layer.setVisible(hamster.getCurrentTile() != null);
 		layer.setRotation(getRotationForDirection(hamster.getDirection()));
 	}
@@ -121,7 +121,7 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 				.map(ReadOnlyHamster.class::cast)
 				.filter(hamster -> !hamsterToColorMap.containsKey(hamster))
 				.forEach(hamster -> {
-					var color = HamsterColors.getColorForNthHamster(hamsterToColorMap.size());
+					final var color = HamsterColors.getColorForNthHamster(hamsterToColorMap.size());
 					hamsterToColorMap.put(hamster, color);
 				});
 	}

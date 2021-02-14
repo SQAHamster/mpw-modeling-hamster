@@ -22,7 +22,7 @@ public class TerritoryLoader {
     }
 
     public static TerritoryLoader initializeFor(final HamsterGame game) {
-        var builder = new TerritoryBuilder(game);
+        final var builder = new TerritoryBuilder(game);
         return new TerritoryLoader(builder);
     }
 
@@ -120,7 +120,7 @@ public class TerritoryLoader {
         final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         final List<String> list = new ArrayList<String>();
 
-        try (Scanner input = new Scanner(reader))
+        try (final Scanner input = new Scanner(reader))
         {
             while (input.hasNextLine()) {
                 list.add(input.nextLine());
@@ -130,7 +130,7 @@ public class TerritoryLoader {
         return list;
     }
 
-    private void checkNotNull(Object object) {
+    private void checkNotNull(final Object object) {
         if (object == null) {
             throw new NullPointerException();
         }
