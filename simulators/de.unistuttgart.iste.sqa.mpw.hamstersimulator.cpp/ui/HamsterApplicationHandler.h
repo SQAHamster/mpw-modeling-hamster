@@ -14,6 +14,8 @@
 #include <vector>
 #include <string>
 
+#include "SdlGameInputInterface.h"
+
 namespace hamstersimulator {
 
 class HamsterApplicationHandler : public SdlApplicationListener {
@@ -49,6 +51,7 @@ private:
     const std::function<void()> hamsterProgram;
 
     SdlApplication* application {nullptr};
+    const std::shared_ptr<SdlGameInputInterface> sdlGameInputInterface;
 
     std::unordered_map<std::string, SDL_Texture*> texturesByImageName;
 

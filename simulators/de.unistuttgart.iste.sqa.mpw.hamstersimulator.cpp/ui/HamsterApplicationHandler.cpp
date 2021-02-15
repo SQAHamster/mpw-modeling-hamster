@@ -18,7 +18,9 @@ namespace hamstersimulator {
 HamsterApplicationHandler::HamsterApplicationHandler(std::shared_ptr<hamster::HamsterGame> game,
                                                      std::function<void()> hamsterProgram)
         : game(std::move(game)), hamsterProgram(std::move(hamsterProgram))
-        , presenter(std::make_shared<HamsterGameViewPresenter>(this->game)) {
+        , presenter(std::make_shared<HamsterGameViewPresenter>(this->game))
+        , sdlGameInputInterface(std::make_shared<SdlGameInputInterface>()) {
+    this->game->setUserInputInterface(sdlGameInputInterface);
 }
 
 void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
@@ -74,6 +76,12 @@ void HamsterApplicationHandler::loadTextureWithCustomKey(const std::string& imag
 }
 
 void HamsterApplicationHandler::onEvent(SDL_Event& event) {
+    if (sdlGameInputInterface->isActive())
+    {
+        sdlGameInputInterface->onEvent(event);
+        return;
+    }
+
     if (event.type == SDL_MOUSEBUTTONDOWN) {
         SDL_MouseButtonEvent& buttonEvent = event.button;
         auto buttonIndex = getButtonForPosition(buttonEvent.x, buttonEvent.y);
@@ -106,6 +114,11 @@ void HamsterApplicationHandler::onRender(SDL_Renderer& renderer) {
     renderToolbar(renderer);
     renderTerritory(renderer);
     renderGameLog(renderer);
+
+    if (sdlGameInputInterface->isActive())
+    {
+        sdlGameInputInterface->onRender(renderer);
+    }
 
     SDL_Delay(16);
 }

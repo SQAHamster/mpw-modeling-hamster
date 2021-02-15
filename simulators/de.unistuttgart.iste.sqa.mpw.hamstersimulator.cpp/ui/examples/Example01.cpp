@@ -3,6 +3,7 @@
 
 #include "SdlApplication.h"
 #include "HamsterApplicationHandler.h"
+#include <string>
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
@@ -21,6 +22,11 @@ int main() {
     HamsterApplicationHandler applicationHandler(game, [&]()
     {
         auto paule = game->getTerritory()->getDefaultHamster();
+
+        int a = paule->readNumber("Hallo nummer");
+        auto text = paule->readString("Hallo string");
+        paule->write("Hallo! " + std::to_string(a) + ", " + text);
+
         paule->move();
         paule->move();
         paule->pickGrain();

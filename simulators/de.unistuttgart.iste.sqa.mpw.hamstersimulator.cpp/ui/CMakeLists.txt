@@ -2,6 +2,10 @@ project(hamstersimulator_sdl2)
 
 set(CMAKE_CXX_STANDARD 17)
 
+if (MSVC)
+  include(CMakeListsLocalProperties.cmake) # define SDL properties on Windows
+endif()
+
 # SDL
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/") ## use helper SDL2 cmake file (see https://github.com/trenki2/SDL2Test/tree/master/cmake)
 find_package(SDL2 REQUIRED)
@@ -11,7 +15,10 @@ include_directories(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIR} ${SDL2TTF_INCL
 
 # Own Sources
 include_directories(.)
-set(SRCS SdlApplication.cpp SdlApplication.h SdlApplicationListener.h HamsterApplicationHandler.cpp HamsterApplicationHandler.h)
+set(SRCS SdlApplicationListener.h
+    SdlApplication.cpp SdlApplication.h
+    HamsterApplicationHandler.cpp HamsterApplicationHandler.h
+    SdlGameInputInterface.cpp SdlGameInputInterface.h)
 
 # Executable
 add_executable(hamstersimulator_cpp main.cpp ${SRCS})
