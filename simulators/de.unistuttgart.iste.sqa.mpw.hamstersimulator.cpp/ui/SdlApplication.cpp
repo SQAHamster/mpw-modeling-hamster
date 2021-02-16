@@ -22,7 +22,7 @@ void SdlApplication::initialize(int width, int height) {
         throwExceptionWithSdlError("SDL could not initialize!");
     } else {
         window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                                  width, height, SDL_WINDOW_SHOWN);
+                                  width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN );
         if (window == nullptr) {
             throwExceptionWithSdlError("Window could not be created!");
         } else {
@@ -146,6 +146,10 @@ std::string SdlApplication::fontColorWithSizeToKey(int size, const SDL_Color& co
     stream << std::hex << color.g;
     stream << std::hex << color.b;
     return std::string(stream.str());
+}
+
+SDL_Window& SdlApplication::getWindow() const {
+    return *window;
 }
 
 }

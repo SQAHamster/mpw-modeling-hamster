@@ -28,6 +28,8 @@ public:
 
     void dispose();
 
+    SDL_Window& getWindow() const;
+
 private:
 
     std::string fontColorWithSizeToKey(int size, const SDL_Color& color);

@@ -18,13 +18,14 @@ namespace hamstersimulator {
 HamsterApplicationHandler::HamsterApplicationHandler(std::shared_ptr<hamster::HamsterGame> game,
                                                      std::function<void()> hamsterProgram)
         : game(std::move(game)), hamsterProgram(std::move(hamsterProgram))
-        , presenter(std::make_shared<HamsterGameViewPresenter>(this->game))
-        , sdlGameInputInterface(std::make_shared<SdlGameInputInterface>()) {
-    this->game->setUserInputInterface(sdlGameInputInterface);
+        , presenter(std::make_shared<HamsterGameViewPresenter>(this->game))  {
 }
 
 void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
     this->application = &application;
+
+    this->sdlGameInputInterface = std::make_shared<SdlGameInputInterface>(application);
+    this->game->setUserInputInterface(sdlGameInputInterface);
 
     createButton("Play24", [this]() { presenter->playClicked(); });
     createButton("Pause24", [this]() { presenter->pauseClicked(); });

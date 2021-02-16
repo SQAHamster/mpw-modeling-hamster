@@ -12,24 +12,28 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIR} ${SDL2TTF_INCLUDE_DIR})
+include_directories(${SDL2_INCLUDE_DIRS}/.. ${SDL2IMAGE_INCLUDE_DIR}/.. ${SDL2TTF_INCLUDE_DIR}/..) # for nanogui internal includes
+
+include(IncludeNanogui.cmake)
 
 # Own Sources
 include_directories(.)
 set(SRCS SdlApplicationListener.h
     SdlApplication.cpp SdlApplication.h
     HamsterApplicationHandler.cpp HamsterApplicationHandler.h
-    SdlGameInputInterface.cpp SdlGameInputInterface.h)
+    SdlGameInputInterface.cpp SdlGameInputInterface.h
+    util/InputDialogWindow.cpp util/InputDialogWindow.h)
 
 # Executable
 add_executable(hamstersimulator_cpp main.cpp ${SRCS})
-target_link_libraries(hamstersimulator_cpp hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
+target_link_libraries(hamstersimulator_cpp hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
 
 # Examples
 add_executable(hamstersimulator_example01 examples/Example01.cpp ${SRCS})
-target_link_libraries(hamstersimulator_example01 hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
+target_link_libraries(hamstersimulator_example01 hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
 
 add_executable(hamstersimulator_example02 examples/Example02.cpp ${SRCS})
-target_link_libraries(hamstersimulator_example02 hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
+target_link_libraries(hamstersimulator_example02 hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
 
 # Copy resources
 add_custom_command(TARGET hamstersimulator_cpp PRE_BUILD
