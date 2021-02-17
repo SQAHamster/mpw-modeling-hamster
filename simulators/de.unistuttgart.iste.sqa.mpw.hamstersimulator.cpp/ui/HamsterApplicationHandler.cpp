@@ -21,6 +21,12 @@ HamsterApplicationHandler::HamsterApplicationHandler(std::shared_ptr<hamster::Ha
         , presenter(std::make_shared<HamsterGameViewPresenter>(this->game))  {
 }
 
+HamsterApplicationHandler::~HamsterApplicationHandler()
+{
+    this->game->getPerformance()->abortOrStopGame();
+    hamsterThread.join();
+}
+
 void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
     this->application = &application;
 

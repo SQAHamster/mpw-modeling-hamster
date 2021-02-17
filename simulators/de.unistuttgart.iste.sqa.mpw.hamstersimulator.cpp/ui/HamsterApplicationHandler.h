@@ -21,6 +21,7 @@ namespace hamstersimulator {
 class HamsterApplicationHandler : public SdlApplicationListener {
 public:
     HamsterApplicationHandler(std::shared_ptr<hamster::HamsterGame> game, std::function<void()> hamsterProgram);
+    ~HamsterApplicationHandler() override;
 
     void onInitialized(SdlApplication& application) override;
 
