@@ -20,7 +20,7 @@ std::string UserInputInterfaceFake::readString(std::string message) {
     return result;
 }
 
-void UserInputInterfaceFake::confirmAlert(std::runtime_error t) {
+void UserInputInterfaceFake::confirmAlert(const std::exception& t) {
     receivedAlerts.push_back(t);
 }
 

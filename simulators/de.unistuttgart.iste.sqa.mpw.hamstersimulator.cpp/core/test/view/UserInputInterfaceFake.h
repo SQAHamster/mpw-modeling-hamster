@@ -13,7 +13,7 @@ public:
 
     int readInteger(std::string message) override;
     std::string readString(std::string message) override;
-    void confirmAlert(std::runtime_error t) override;
+    void confirmAlert(const std::exception& t) override;
     void abort() override;
 
     void stubUserInput(const std::string& input);

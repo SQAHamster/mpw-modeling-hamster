@@ -15,26 +15,31 @@ include_directories(${nanogui_SOURCE_DIR})
 get_directory_property(NANOGUI_SRCS DIRECTORY ${nanogui_SOURCE_DIR} DEFINITION NNGUI_BASIC_SOURCE)
 string(REGEX REPLACE "(sdlgui/[a-z_]+\\.(h|cpp|c))" "${nanogui_SOURCE_DIR}/\\1" NANOGUI_SRCS "${NANOGUI_SRCS}")
 
+# Fix removed usage of std::unary_function in nanogui src (function is removed by C++ 17)
+file(READ "${nanogui_SOURCE_DIR}/sdlgui/nanort.h" nanort_header_file_content)
+string(REGEX REPLACE "std::unary_function\\<unsigned int, bool\\>" "std::function<bool(unsigned int)>" nanort_header_file_content "${nanort_header_file_content}")
+file(WRITE "${nanogui_SOURCE_DIR}/sdlgui/nanort.h" "${nanort_header_file_content}")
+
 add_library(nanogui_lib STATIC ${NANOGUI_SRCS})
 
+# Disable Nanogui warnings
+if ( CMAKE_COMPILER_IS_GNUCC )
+    set_source_files_properties(${NANOGUI_SRCS}
+            PROPERTIES
+            COMPILE_FLAGS  "-Wno-all -Wno-extra")
+endif()
 if(CMAKE_CXX_COMPILER_ID STREQUAL Clang OR
         CMAKE_CXX_COMPILER_ID STREQUAL AppleClang)
     set_source_files_properties(${NANOGUI_SRCS}
             PROPERTIES
             COMPILE_FLAGS  "-Wno-c++11-narrowing")
 endif()
+if(MSVC)
+    set_source_files_properties(${NANOGUI_SRCS}
+            PROPERTIES
+            COMPILE_FLAGS  "/w")
+endif()
 
 target_include_directories(nanogui_lib PRIVATE ${NANOGUI_SRCS}/sdlgui)
 set_target_properties(nanogui_lib PROPERTIES LINKER_LANGUAGE CXX)
 set_target_properties(nanogui_lib PROPERTIES CMAKE_CXX_STANDARD 11)
-
-# Disable Nanogui warnings
-if ( CMAKE_COMPILER_IS_GNUCC )
-    target_compile_options(nanogui_lib PRIVATE "-Wall -Wextra")
-endif()
-if ( MSVC )
-    target_compile_options(nanogui_lib PRIVATE "/W4")
-endif()
-if ( CMAKE_CXX_COMPILER_ID MATCHES "Clang" )
-    target_compile_options(nanogui_lib PRIVATE "-Wno-inconsistent-missing-override")
-endif()
