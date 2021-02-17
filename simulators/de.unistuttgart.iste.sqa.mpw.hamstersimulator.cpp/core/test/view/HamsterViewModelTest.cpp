@@ -15,13 +15,13 @@ using namespace hamster;
 using namespace framework;
 using namespace util;
 
-/// \note use 'NO-LINT' comment at tests to suppress a warning caused by TEST_F
+/// \note use 'NO-LINT' comment at tests to suppress a warning caused by TEST_F /* NOLINT */
 class HamsterViewModelTest : public HamsterViewTestBase {
 private:
 public:
 };
 
-TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */
+TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */ /* NOLINT */
     withTerritory("/territories/example01.ter");
     assertTerritory(
             "|####|####|####|####|####|\n"
@@ -36,7 +36,7 @@ TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */
 }
 
 
-TEST_F(HamsterViewModelTest, testMove) {
+TEST_F(HamsterViewModelTest, testMove) { /* NOLINT */
         withTerritory("/territories/example01.ter");
         paule->move();
         assertTerritory(
@@ -51,7 +51,7 @@ TEST_F(HamsterViewModelTest, testMove) {
         EXPECT_EQ(2, paule->getLocation().getColumn());
 }
 
-TEST_F(HamsterViewModelTest, testPickGrain) {
+TEST_F(HamsterViewModelTest, testPickGrain) { /* NOLINT */
         withTerritory("/territories/example01.ter");
         paule->move();
         paule->move();
@@ -68,7 +68,7 @@ TEST_F(HamsterViewModelTest, testPickGrain) {
         EXPECT_EQ(3, paule->getLocation().getColumn());
 }
 
-TEST_F(HamsterViewModelTest, testPickGrainAndPutGrain) {
+TEST_F(HamsterViewModelTest, testPickGrainAndPutGrain) { /* NOLINT */
         withTerritory("/territories/example01.ter");
         paule->move();
         paule->move();
@@ -86,7 +86,7 @@ TEST_F(HamsterViewModelTest, testPickGrainAndPutGrain) {
         EXPECT_EQ(3, paule->getLocation().getColumn());
 }
 
-TEST_F(HamsterViewModelTest, testMoveAndRotateAndMove) {
+TEST_F(HamsterViewModelTest, testMoveAndRotateAndMove) { /* NOLINT */
         withTerritory("/territories/example01.ter");
         paule->move();
         paule->turnLeft();
@@ -104,7 +104,7 @@ TEST_F(HamsterViewModelTest, testMoveAndRotateAndMove) {
         EXPECT_EQ(1, paule->getLocation().getColumn());
 }
 
-TEST_F(HamsterViewModelTest, testMoveAgainstWall) {
+TEST_F(HamsterViewModelTest, testMoveAgainstWall) { /* NOLINT */
         withTerritory("/territories/example01.ter");
         paule->move();
         paule->turnLeft();
@@ -114,7 +114,7 @@ TEST_F(HamsterViewModelTest, testMoveAgainstWall) {
         });
 }
 
-TEST_F(HamsterViewModelTest, testLog) {
+TEST_F(HamsterViewModelTest, testLog) { /* NOLINT */
         withTerritory("/territories/example01.ter");
         paule->move();
         paule->move();
@@ -131,7 +131,7 @@ TEST_F(HamsterViewModelTest, testLog) {
             "Hello\n");
 }
 
-TEST_F(HamsterViewModelTest, testColors) {
+TEST_F(HamsterViewModelTest, testColors) { /* NOLINT */
     withTerritory("/territories/example01.ter");
 
     const Location& location = Location::from(1, 1);
@@ -147,4 +147,32 @@ TEST_F(HamsterViewModelTest, testColors) {
        "Hamster32Red",
        "Hamster32Blue"
     });
+}
+
+/*
+ * [button] means: button is enabled
+ * /button/ means: button is disabled
+ */
+TEST_F(HamsterViewModelTest, testButtonsForModes) { /* NOLINT */
+    withTerritory("/territories/example01.ter");
+    assertButtons("/play/ [pause] /undo/ /redo/");
+    paule->move();
+    paule->turnLeft();
+    assertButtons("/play/ [pause] /undo/ /redo/");
+    clickPause();
+    assertButtons("[play] /pause/ [undo] /redo/");
+    clickUndo();
+    assertButtons("[play] /pause/ [undo] [redo]");
+    clickUndo();
+    assertButtons("[play] /pause/ /undo/ [redo]");
+    clickRedo();
+    assertButtons("[play] /pause/ [undo] [redo]");
+    clickPlay();
+    assertButtons("/play/ [pause] /undo/ /redo/");
+    clickPause();
+    assertButtons("[play] /pause/ [undo] /redo/");
+    assertTerritory(
+        "|####|####|####|####|####|\n"
+        "|####|    |^   | 2* |####|\n"
+        "|####|####|####|####|####|\n");
 }

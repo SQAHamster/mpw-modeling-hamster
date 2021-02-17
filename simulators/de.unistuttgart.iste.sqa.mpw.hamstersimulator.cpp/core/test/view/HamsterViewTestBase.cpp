@@ -2,7 +2,7 @@
 
 #include "HamsterGameViewPresenter.h"
 #include "UserInputInterfaceFake.h"
-#include "ViewModelStringifier.h"
+#include "HamsterViewModelStringifier.h"
 
 #include <memory>
 
@@ -27,13 +27,30 @@ void HamsterViewTestBase::withTerritory(const std::string& path) {
 
     presenter = std::make_shared<HamsterGameViewPresenter>(game);
     presenter->bind();
+    viewInput = presenter;
     viewModel = presenter->getViewModel();
 
     game->setUserInputInterface(std::make_shared<UserInputInterfaceFake>());
 }
 
+void HamsterViewTestBase::clickPlay() {
+    viewInput->playClicked();
+}
+
+void HamsterViewTestBase::clickPause() {
+    viewInput->pauseClicked();
+}
+
+void HamsterViewTestBase::clickUndo() {
+    viewInput->undoClicked();
+}
+
+void HamsterViewTestBase::clickRedo() {
+    viewInput->redoClicked();
+}
+
 void HamsterViewTestBase::assertTerritory(const std::string& expected) {
-    std::string actual = ViewModelStringifier(characterMap, maxCharsPerCell).territoryToExpectationString(*viewModel);
+    std::string actual = HamsterViewModelStringifier(characterMap, maxCharsPerCell).territoryToExpectationString(*viewModel);
     EXPECT_EQ(expected, actual);
     assertLocationsAreSet();
     assertSizeIsConsistent();
@@ -61,7 +78,7 @@ void HamsterViewTestBase::assertSizeIsConsistent() {
 }
 
 void HamsterViewTestBase::assertLog(const std::string& expected) {
-    std::string actual = ViewModelStringifier::logToString(*viewModel);
+    std::string actual = HamsterViewModelStringifier::logToString(*viewModel);
     EXPECT_EQ(expected, actual);
 }
 
@@ -103,4 +120,11 @@ void HamsterViewTestBase::assertLayersAt(mpw::Location location, const std::vect
         }
     }
     EXPECT_EQ(expected, actual);
+}
+
+void HamsterViewTestBase::assertButtons(const std::string& expected) {
+    std::string actual = HamsterViewModelStringifier::buttonBarToExpectationString(*viewModel);
+    EXPECT_EQ(expected, actual);
+    assertLocationsAreSet();
+    assertSizeIsConsistent();
 }

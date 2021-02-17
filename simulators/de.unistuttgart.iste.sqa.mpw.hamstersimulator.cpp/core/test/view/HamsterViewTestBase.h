@@ -24,11 +24,18 @@ protected:
     void withTerritory(const std::string& path);
     void createFurtherHamsterAt(mpw::Location location);
 
+    void clickPlay();
+    void clickPause();
+    void clickUndo();
+    void clickRedo();
+
     void assertTerritory(const std::string& expected);
     void assertLog(const std::string& expected);
     void assertLayersAt(mpw::Location location, const std::vector<std::string>& expectedLayerImageNames);
+    void assertButtons(const std::string& expected);
 
     std::shared_ptr<hamster::Hamster> paule;
+    std::shared_ptr<viewmodel::GameViewInput> viewInput;
     std::shared_ptr<viewmodel::GameViewModel> viewModel;
 
 private:

@@ -10,7 +10,7 @@ add_executable(hamstersimulator_tests
         util/TestUtils.cpp util/TestUtils.h
         util/DirectionTestHelper.cpp util/DirectionTestHelper.h
         view/HamsterViewTestBase.cpp view/HamsterViewTestBase.h
-        view/ViewModelStringifier.cpp view/ViewModelStringifier.h view/UserInputInterfaceFake.cpp view/UserInputInterfaceFake.h)
+        view/HamsterViewModelStringifier.cpp view/HamsterViewModelStringifier.h view/UserInputInterfaceFake.cpp view/UserInputInterfaceFake.h)
 target_link_libraries(hamstersimulator_tests hamster_core_lib gtest_main)
 add_test(NAME hamstersimulator_tests COMMAND hamstersimulator_tests WORKING_DIRECTORY $<TARGET_FILE_DIR:hamstersimulator_tests>)
 

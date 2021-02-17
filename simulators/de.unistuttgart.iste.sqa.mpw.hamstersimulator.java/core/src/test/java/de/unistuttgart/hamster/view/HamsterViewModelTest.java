@@ -127,4 +127,34 @@ class HamsterViewModelTest extends HamsterViewTestBase {
                 "Hello\n");
     }
 
+
+    /*
+     * [button] means: button is enabled
+     * /button/ means: button is disabled
+     */
+    @Test
+    public void testButtonsForModes() throws IOException {
+        withTerritory("/territories/example01.ter");
+        assertButtons("/play/ [pause] /undo/ /redo/");
+        paule.move();
+        paule.turnLeft();
+        assertButtons("/play/ [pause] /undo/ /redo/");
+        clickPause();
+        assertButtons("[play] /pause/ [undo] /redo/");
+        clickUndo();
+        assertButtons("[play] /pause/ [undo] [redo]");
+        clickUndo();
+        assertButtons("[play] /pause/ /undo/ [redo]");
+        clickRedo();
+        assertButtons("[play] /pause/ [undo] [redo]");
+        clickPlay();
+        assertButtons("/play/ [pause] /undo/ /redo/");
+        clickPause();
+        assertButtons("[play] /pause/ [undo] /redo/");
+        assertTerritory(
+                "|####|####|####|####|####|\n" +
+                "|####|    |^   | 2* |####|\n" +
+                "|####|####|####|####|####|\n");
+    }
+
 }

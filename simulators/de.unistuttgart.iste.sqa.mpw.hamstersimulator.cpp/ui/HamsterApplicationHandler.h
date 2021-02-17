@@ -33,7 +33,7 @@ public:
 
 private:
 
-    void createButton(const std::string& imageName, std::function<void()> clickFunction);
+    void createButton(const std::string& imageName, const framework::ObservablePrimitiveProperty<bool>& buttonEnabledProperty, std::function<void()> clickFunction);
 
     void renderToolbar(SDL_Renderer& renderer);
     void renderTerritory(SDL_Renderer& renderer);
@@ -60,8 +60,8 @@ private:
         SDL_Rect rect;
         SDL_Texture* texture;
         std::function<void()> clickFunction;
-        bool enabled;
         bool clicking;
+        const framework::ObservablePrimitiveProperty<bool>* buttonEnabledProperty;
     };
     std::vector<SimpleButton> buttons;
 

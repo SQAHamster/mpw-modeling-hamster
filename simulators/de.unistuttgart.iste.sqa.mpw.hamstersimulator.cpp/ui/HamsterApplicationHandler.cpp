@@ -33,10 +33,11 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
     this->sdlGameInputInterface = std::make_shared<SdlGameInputInterface>(application.getNanoguiScreen());
     this->game->setUserInputInterface(sdlGameInputInterface);
 
-    createButton("Play24", [this]() { presenter->playClicked(); });
-    createButton("Pause24", [this]() { presenter->pauseClicked(); });
-    createButton("Undo24", [this]() { presenter->undoClicked(); });
-    createButton("Redo24", [this]() { presenter->redoClicked(); });
+    auto viewModel = this->presenter->getViewModel();
+    createButton("Play24", viewModel->playButtonEnabledProperty(), [this]() { presenter->playClicked(); });
+    createButton("Pause24", viewModel->pauseButtonEnabledProperty(), [this]() { presenter->pauseClicked(); });
+    createButton("Undo24", viewModel->undoButtonEnabledProperty(), [this]() { presenter->undoClicked(); });
+    createButton("Redo24", viewModel->redoButtonEnabledProperty(), [this]() { presenter->redoClicked(); });
 
     loadTexture("Tile64");
 
@@ -59,7 +60,7 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
     hamsterThread = std::thread(hamsterProgram);
 }
 
-void HamsterApplicationHandler::createButton(const std::string& imageName, std::function<void()> clickFunction) {
+void HamsterApplicationHandler::createButton(const std::string& imageName, const framework::ObservablePrimitiveProperty<bool>& buttonEnabledProperty, std::function<void()> clickFunction) {
     SDL_Rect rect {TOOLBAR_MARGIN, TOOLBAR_MARGIN, BUTTON_SIZE, BUTTON_SIZE};
     int previousButtonsCount = static_cast<int>(buttons.size());
     rect.x += (previousButtonsCount * BUTTON_SIZE + previousButtonsCount * TOOLBAR_MARGIN);
@@ -70,7 +71,7 @@ void HamsterApplicationHandler::createButton(const std::string& imageName, std::
     button.texture = texturesByImageName[imageName];
     button.clickFunction = clickFunction;
     button.clicking = false;
-    button.enabled = true;
+    button.buttonEnabledProperty = &buttonEnabledProperty;
 }
 
 void HamsterApplicationHandler::loadTexture(const std::string& imageName) {
@@ -98,7 +99,10 @@ void HamsterApplicationHandler::onEvent(SDL_Event& event) {
         SDL_MouseButtonEvent& buttonEvent = event.button;
         auto buttonIndex = getButtonForPosition(buttonEvent.x, buttonEvent.y);
         if (buttonIndex.has_value()) {
-            buttons[buttonIndex.value()].clickFunction();
+            SimpleButton& button = buttons[buttonIndex.value()];
+            if (button.buttonEnabledProperty->get()) {
+                button.clickFunction();
+            }
         }
         for (auto& button : buttons) {
             button.clicking = false;
@@ -131,7 +135,7 @@ void HamsterApplicationHandler::onRender(SDL_Renderer& renderer) {
 
 void HamsterApplicationHandler::renderToolbar(SDL_Renderer& renderer) {
     for (auto& button : buttons) {
-        if (button.enabled == false) {
+        if (!button.buttonEnabledProperty->get()) {
             SDL_SetTextureColorMod(button.texture, 128, 128, 128);
         } else if (button.clicking) {
             SDL_SetTextureColorMod(button.texture, 128, 128, 255);
