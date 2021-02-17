@@ -40,6 +40,6 @@ if(MSVC)
             COMPILE_FLAGS  "/w")
 endif()
 
-target_include_directories(nanogui_lib PRIVATE ${NANOGUI_SRCS}/sdlgui)
+target_include_directories(nanogui_lib PRIVATE ${nanogui_SOURCE_DIR}/sdlgui)
 set_target_properties(nanogui_lib PROPERTIES LINKER_LANGUAGE CXX)
 set_target_properties(nanogui_lib PROPERTIES CMAKE_CXX_STANDARD 11)
