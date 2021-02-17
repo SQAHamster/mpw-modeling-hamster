@@ -10,7 +10,7 @@
 
 #include <string>
 
-#include <mutex>
+#include <condition_variable>
 
 namespace hamstersimulator {
 

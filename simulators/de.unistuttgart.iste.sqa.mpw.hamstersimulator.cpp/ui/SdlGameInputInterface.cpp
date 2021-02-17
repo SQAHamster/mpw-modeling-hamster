@@ -1,5 +1,7 @@
 #include "SdlGameInputInterface.h"
 
+#include <mutex>
+
 using namespace sdlgui;
 
 namespace hamstersimulator {
