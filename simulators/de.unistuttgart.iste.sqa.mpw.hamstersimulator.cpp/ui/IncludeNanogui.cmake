@@ -26,13 +26,13 @@ add_library(nanogui_lib STATIC ${NANOGUI_SRCS})
 if ( CMAKE_COMPILER_IS_GNUCC )
     set_source_files_properties(${NANOGUI_SRCS}
             PROPERTIES
-            COMPILE_FLAGS  "-Wno-all -Wno-extra")
+            COMPILE_FLAGS  "-Wno-all -Wno-extra -Wno-format-truncation -Wno-narrowing")
 endif()
 if(CMAKE_CXX_COMPILER_ID STREQUAL Clang OR
         CMAKE_CXX_COMPILER_ID STREQUAL AppleClang)
     set_source_files_properties(${NANOGUI_SRCS}
             PROPERTIES
-            COMPILE_FLAGS  "-Wno-c++11-narrowing")
+            COMPILE_FLAGS  "-Wno-c++11-narrowing -Wno-inconsistent-missing-override")
 endif()
 if(MSVC)
     set_source_files_properties(${NANOGUI_SRCS}
