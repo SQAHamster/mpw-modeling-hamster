@@ -1,8 +1,9 @@
 #include "SdlApplication.h"
 
-#include <iostream>
 #include <utility>
 #include <sstream>
+
+using namespace sdlgui;
 
 namespace hamstersimulator {
 
@@ -33,6 +34,8 @@ void SdlApplication::initialize(int width, int height) {
                 throwExceptionWithSdlTtfError("SDL_ttf could not initialize!");
             } else {
                 renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+                SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+                nanoGuiScreen = std::make_unique<Screen>(window, Vector2i { width, height }, title, true, true);
                 if (renderer == nullptr) {
                     throwExceptionWithSdlError("Renderer could not be created!");
                 } else {
@@ -48,6 +51,14 @@ void SdlApplication::initialize(int width, int height) {
 
 void SdlApplication::runApplication() {
     running = true;
+
+    SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
+    SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
     SDL_Event event;
     while (running) {
@@ -150,6 +161,10 @@ std::string SdlApplication::fontColorWithSizeToKey(int size, const SDL_Color& co
 
 SDL_Window& SdlApplication::getWindow() const {
     return *window;
+}
+
+sdlgui::Screen& SdlApplication::getNanoguiScreen() const {
+    return *nanoGuiScreen;
 }
 
 }

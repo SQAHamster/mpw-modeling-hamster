@@ -5,6 +5,7 @@
 #undef main // fixes compile error on Windows
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <sdlgui/screen.h>
 
 #include <string>
 #include <vector>
@@ -29,6 +30,7 @@ public:
     void dispose();
 
     SDL_Window& getWindow() const;
+    sdlgui::Screen& getNanoguiScreen() const;
 
 private:
 
@@ -40,6 +42,7 @@ private:
 
     SDL_Window* window = nullptr;
     SDL_Renderer* renderer = nullptr;
+    std::unique_ptr<sdlgui::Screen> nanoGuiScreen;
 
     std::vector<SDL_Texture*> loadedTextures;
     std::unordered_map<int, TTF_Font*> loadedFontsPerSize;

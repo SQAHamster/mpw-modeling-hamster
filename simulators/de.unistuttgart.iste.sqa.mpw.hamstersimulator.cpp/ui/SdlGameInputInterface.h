@@ -18,7 +18,7 @@ namespace hamstersimulator {
 class SdlGameInputInterface : public mpw::UserInputInterface {
 public:
 
-    SdlGameInputInterface(SdlApplication& sdlApplication);
+    SdlGameInputInterface(sdlgui::Screen& screen);
 
     void onRender(SDL_Renderer& renderer);
     void onEvent(SDL_Event& event);
@@ -26,7 +26,7 @@ public:
 
     int readInteger(std::string message) override;
     std::string readString(std::string message) override;
-    void confirmAlert(std::runtime_error t) override;
+    void confirmAlert(const std::exception& t) override;
     void abort() override;
 
 private:
@@ -36,10 +36,9 @@ private:
 
     bool active = false;
 
-    const std::unique_ptr<sdlgui::Screen> screen;
     InputDialogWindow* inputDialog;
 
-    SdlApplication& sdlApplication;
+    sdlgui::Screen& screen;
     std::condition_variable conditionVariable;
 
     void wait();

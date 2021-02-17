@@ -22,7 +22,8 @@ set(SRCS SdlApplicationListener.h
     SdlApplication.cpp SdlApplication.h
     HamsterApplicationHandler.cpp HamsterApplicationHandler.h
     SdlGameInputInterface.cpp SdlGameInputInterface.h
-    util/InputDialogWindow.cpp util/InputDialogWindow.h)
+    util/InputDialogWindow.cpp util/InputDialogWindow.h
+    SimpleHamsterGame.cpp SimpleHamsterGame.h)
 
 # Executable
 add_executable(hamstersimulator_cpp main.cpp ${SRCS})

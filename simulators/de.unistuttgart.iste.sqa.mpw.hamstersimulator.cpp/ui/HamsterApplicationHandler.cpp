@@ -24,7 +24,7 @@ HamsterApplicationHandler::HamsterApplicationHandler(std::shared_ptr<hamster::Ha
 void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
     this->application = &application;
 
-    this->sdlGameInputInterface = std::make_shared<SdlGameInputInterface>(application);
+    this->sdlGameInputInterface = std::make_shared<SdlGameInputInterface>(application.getNanoguiScreen());
     this->game->setUserInputInterface(sdlGameInputInterface);
 
     createButton("Play24", [this]() { presenter->playClicked(); });
@@ -48,7 +48,6 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
     }
     loadTexture("12PlusCorn32");
 
-    game->startGamePaused();
     presenter->bind();
 
     hamsterThread = std::thread(hamsterProgram);
