@@ -7,6 +7,12 @@ import java.util.function.Consumer;
 
 public class GameStringifier {
 	
+	public static HamsterGame createFromStringStarted(String map) {
+		var game = createFromString(map);
+		game.startGame();
+		return game;
+	}
+
 	public static HamsterGame createFromString(String map) {
 		var game = new HamsterGame();
 
@@ -21,7 +27,6 @@ public class GameStringifier {
 			handleLine(territoryBuilder, y, parts[y]);
 		}
 
-		game.startGame();
 		game.getPerformance().setDelayEnabled(false);
 
 		return game;

@@ -22,6 +22,12 @@ namespace util {
 static void handleLine(TerritoryBuilder& territoryBuilder, int y, const std::string& part);
 static void handleCell(TerritoryBuilder& territoryBuilder, int x, int y, char cell);
 
+std::shared_ptr<hamster::HamsterGame> GameStringifier::createFromStringStarted(const std::string& map) {
+    auto game = createFromString(map);
+    game->startGame();
+    return game;
+}
+
 std::shared_ptr<hamster::HamsterGame> GameStringifier::createFromString(const std::string& map) {
     auto game = HamsterGame::create();
 
@@ -37,7 +43,6 @@ std::shared_ptr<hamster::HamsterGame> GameStringifier::createFromString(const st
     }
 
     game->getPerformance()->setDelayEnabled(false);
-    game->startGame();
     return game;
 }
 

@@ -4,6 +4,7 @@
 #include "gtest/gtest.h"
 
 #include <regex>
+#include <exception>
 
 namespace util {
 

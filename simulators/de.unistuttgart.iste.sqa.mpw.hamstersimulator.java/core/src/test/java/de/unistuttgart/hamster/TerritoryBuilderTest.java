@@ -7,6 +7,7 @@ import de.unistuttgart.hamster.util.GameStringifier;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TerritoryBuilderTest {
 	private HamsterGame game;
@@ -81,6 +82,15 @@ public class TerritoryBuilderTest {
 		assertTerritory(" ;");
 	}
 
+	@Test // Scenario: editor commands only in INITIALIZING
+	public void givenTerritory1x1_andStartedGame_whenAddGrainsToTile_thenExceptionIsThrown() {
+		withTerritory(" ;");
+		startGame();
+		assertThrows(IllegalStateException.class, () -> {
+			sut.addGrainsToTile(locationOf(0, 0), amountOf(5));
+		});
+	}
+
 	//<editor-fold desc="helpers">
 
 	private TerritoryBuilder withTerritoryBuilder() {
@@ -94,6 +104,10 @@ public class TerritoryBuilderTest {
 		game = GameStringifier.createFromString(map);
 		sut = new TerritoryBuilder(game);
 		return sut;
+	}
+
+	private void startGame() {
+		game.startGamePaused();
 	}
 
 	private void assertGrainsOnTerritory(String expected) {

@@ -14,8 +14,8 @@ public class InitHamsterCommandTest {
 	
 	@Test
 	public void testInitHamsterOn1x1_and4Grains() {
-		HamsterGame game = GameStringifier.createFromString("   ;" +
-															"   ;");
+		HamsterGame game = GameStringifier.createFromStringStarted("   ;" +
+															       "   ;");
 
 		var sut = game.getTerritory().getDefaultHamster();
 		sut.init(game.getTerritory(), locationOf(1, 1), Direction.SOUTH, 4);
@@ -29,7 +29,7 @@ public class InitHamsterCommandTest {
 
 	@Test
 	public void testInitHamster_invalidGrainCount() {
-		HamsterGame game = GameStringifier.createFromString(" ;");
+		HamsterGame game = GameStringifier.createFromStringStarted(" ;");
 
 		var sut = game.getTerritory().getDefaultHamster();
 		assertThrows(CommandConstraintException.class, () -> {
@@ -39,7 +39,7 @@ public class InitHamsterCommandTest {
 
 	@Test
 	public void testUndoInitHamster() {
-		HamsterGame game = GameStringifier.createFromString("  ;");
+		HamsterGame game = GameStringifier.createFromStringStarted("  ;");
 
 		var sut = game.getTerritory().getDefaultHamster();
 		sut.init(game.getTerritory(), locationOf(0, 0), Direction.SOUTH, 2);

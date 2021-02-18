@@ -22,8 +22,8 @@ public:
 };
 
 TEST_F(InitHamsterCommandTest, testInitHamsterOn1x1_and4Grains) { /* NOLINT */
-    auto game = GameStringifier::createFromString("   ;"
-                                                        "   ;");
+    auto game = GameStringifier::createFromStringStarted("   ;"
+                                                         "   ;");
 
     auto sut = game->getTerritory()->getDefaultHamster();
     sut->init(game->getTerritory(), locationOf(1, 1), Direction::SOUTH, 4);
@@ -35,7 +35,7 @@ TEST_F(InitHamsterCommandTest, testInitHamsterOn1x1_and4Grains) { /* NOLINT */
 }
 
 TEST_F(InitHamsterCommandTest, testInitHamster_invalidGrainCount) { /* NOLINT */
-    auto game = GameStringifier::createFromString(" ;");
+    auto game = GameStringifier::createFromStringStarted(" ;");
 
     auto sut = game->getTerritory()->getDefaultHamster();
     TestUtils::assertThrows(typeid(CommandConstraintException), [&]() {
@@ -44,7 +44,7 @@ TEST_F(InitHamsterCommandTest, testInitHamster_invalidGrainCount) { /* NOLINT */
 }
 
 TEST_F(InitHamsterCommandTest, testUndoInitHamster) { /* NOLINT */
-    auto game = GameStringifier::createFromString("  ;");
+    auto game = GameStringifier::createFromStringStarted("  ;");
 
     auto sut = game->getTerritory()->getDefaultHamster();
     sut->init(game->getTerritory(), locationOf(0, 0), Direction::SOUTH, 2);

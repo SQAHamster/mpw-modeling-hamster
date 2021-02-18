@@ -293,7 +293,7 @@ TEST_F(HamsterCommandTest, givenHamster_whenExecuteAndCommand_thenGameLogIsAdded
 //<editor-fold desc="helpers">
 
 void HamsterCommandTest::withTerritory(const std::string& map) {
-    game = GameStringifier::createFromString(map);
+    game = GameStringifier::createFromStringStarted(map);
     sut = game->getTerritory()->getDefaultHamster();
 }
 

@@ -263,7 +263,7 @@ public class HamsterCommandsTest {
 	//<editor-fold desc="helpers">
 
 	private void withTerritory(String map) {
-		game = GameStringifier.createFromString(map);
+		game = GameStringifier.createFromStringStarted(map);
 		sut = game.getTerritory().getDefaultHamster();
 	}
 

@@ -22,8 +22,12 @@ private:
 
 public:
 
+    void TearDown() override;
+
     TerritoryBuilder& withTerritoryBuilder();
     TerritoryBuilder& withTerritory(const std::string& map);
+    void startGame();
+    TerritoryBuilder& getSut() const { return *sut;  }
     void assertGrainsOnTerritory(const std::string& expected);
     void assertTerritory(const std::string& expected);
     int amountOf(int amount);
@@ -93,7 +97,20 @@ TEST_F(TerritoryBuilderTest, givenTerritory1x1_andFiveGrainsOn0x0_whenClearTile0
     assertTerritory(" ;");
 }
 
+TEST_F(TerritoryBuilderTest, givenTerritory1x1_whenStartGame_andAddGrainToTile_thenExceptionIsThrown) { /* NOLINT */
+    withTerritory(" ;");
+    startGame();
+    TestUtils::assertThrows(typeid(std::runtime_error), [&]() {
+        getSut().addGrainsToTile(locationOf(0, 0), amountOf(5));
+    });
+}
+
 //<editor-fold desc="helpers">
+
+void TerritoryBuilderTest::TearDown()
+{
+    game->getPerformance()->abortOrStopGame();
+}
 
 TerritoryBuilder& TerritoryBuilderTest::withTerritoryBuilder() {
     game = HamsterGame::create();
@@ -106,6 +123,11 @@ TerritoryBuilder& TerritoryBuilderTest::withTerritory(const std::string& map) {
     game = GameStringifier::createFromString(map);
     sut = std::make_shared<TerritoryBuilder>(game);
     return *sut;
+}
+
+void TerritoryBuilderTest::startGame()
+{
+    game->startGamePaused();
 }
 
 void TerritoryBuilderTest::assertGrainsOnTerritory(const std::string& expected) {

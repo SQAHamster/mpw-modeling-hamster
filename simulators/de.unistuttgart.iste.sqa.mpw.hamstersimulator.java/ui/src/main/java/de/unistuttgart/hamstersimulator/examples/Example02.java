@@ -17,7 +17,7 @@ class Example02 extends SimpleHamsterGame {
     protected void run() {
         displayInNewGameWindow();
 
-        Hamster paula = new Hamster(game.getTerritory(), paule.getLocation(), paule.getDirection(), 1);
+        paula = new Hamster(game.getTerritory(), paule.getLocation(), paule.getDirection(), 1);
         paula.move();
         paula.putGrain();
         paula.move();

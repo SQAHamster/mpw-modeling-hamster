@@ -13,6 +13,7 @@ public:
     GameStringifier() = delete;
 
     static std::shared_ptr<hamster::HamsterGame> createFromString(const std::string& map);
+    static std::shared_ptr<hamster::HamsterGame> createFromStringStarted(const std::string& map);
     static std::string toString(const hamster::HamsterGame& game);
     static std::string grainsOnTerritoryToString(const hamster::HamsterGame& game);
 };
