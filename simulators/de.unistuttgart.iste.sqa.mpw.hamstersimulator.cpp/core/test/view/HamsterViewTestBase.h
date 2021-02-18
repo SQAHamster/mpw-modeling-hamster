@@ -20,6 +20,7 @@ private:
 protected:
 
     void SetUp() override;
+    void TearDown() override;
 
     void withTerritory(const std::string& path);
     void createFurtherHamsterAt(mpw::Location location);

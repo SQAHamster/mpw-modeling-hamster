@@ -15,6 +15,11 @@ void HamsterViewTestBase::SetUp() {
     initCharMapping();
 }
 
+void HamsterViewTestBase::TearDown()
+{
+    game->getPerformance()->abortOrStopGame();
+}
+
 void HamsterViewTestBase::withTerritory(const std::string& path) {
     game = HamsterGame::create();
     TerritoryLoader::initializeFor(*game)->loadFromResourceFile("resources" + path);

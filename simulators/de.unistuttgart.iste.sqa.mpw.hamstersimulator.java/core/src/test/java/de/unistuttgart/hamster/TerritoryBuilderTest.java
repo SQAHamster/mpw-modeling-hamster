@@ -2,6 +2,7 @@ package de.unistuttgart.hamster;
 
 import de.unistuttgart.hamster.hamster.HamsterGame;
 import de.unistuttgart.hamster.hamster.TerritoryBuilder;
+import de.unistuttgart.iste.sqa.mpw.framework.mpw.Direction;
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.Location;
 import de.unistuttgart.hamster.util.GameStringifier;
 import org.junit.jupiter.api.Test;
@@ -89,6 +90,30 @@ public class TerritoryBuilderTest {
 		assertThrows(IllegalStateException.class, () -> {
 			sut.addGrainsToTile(locationOf(0, 0), amountOf(5));
 		});
+	}
+
+	@Test // Scenario: init clears previous territory
+	public void givenTerritory3x2_andHamsterOn0x0_andWallOn1x1_whenReinitTerritory1x1_andAddHamsterOn0x0_thenTerritoryIsRebuilt() {
+		withTerritory("v *;" +
+				      " M ;");
+		sut.initTerritory(1, 1)
+		   .initDefaultHamster(0, 0, Direction.NORTH, 1);
+		assertTerritory("^;");
+	}
+
+	@Test // Scenario: hardReset allows editor commands again
+	public void givenTerritory3x2_andHamsterOn1x1_whenStartGame_andHardReset_andReinitTerritory1x1_andAddHamsterOn0x0_thenTerritoryIsRebuilt() {
+		withTerritory("   ;" +
+				      " > ;");
+		startGame();
+		hardReset();
+		sut.initTerritory(1, 1)
+		   .initDefaultHamster(0, 0, Direction.NORTH, 1);
+		assertTerritory("^;");
+	}
+
+	private void hardReset() {
+		game.hardReset();
 	}
 
 	//<editor-fold desc="helpers">

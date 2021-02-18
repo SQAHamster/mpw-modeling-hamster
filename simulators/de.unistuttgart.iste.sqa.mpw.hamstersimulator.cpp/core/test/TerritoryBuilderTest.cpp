@@ -27,6 +27,7 @@ public:
     TerritoryBuilder& withTerritoryBuilder();
     TerritoryBuilder& withTerritory(const std::string& map);
     void startGame();
+    void hardReset();
     TerritoryBuilder& getSut() const { return *sut;  }
     void assertGrainsOnTerritory(const std::string& expected);
     void assertTerritory(const std::string& expected);
@@ -105,6 +106,26 @@ TEST_F(TerritoryBuilderTest, givenTerritory1x1_whenStartGame_andAddGrainToTile_t
     });
 }
 
+// Scenario: init clears previous territory
+TEST_F(TerritoryBuilderTest, givenTerritory3x2_andHamsterOn0x0_andWallOn1x1_whenReinitTerritory1x1_andAddHamsterOn0x0_thenTerritoryIsRebuilt) { /* NOLINT */
+  withTerritory("v *;"
+                " M ;");
+  getSut().initTerritory(1, 1)
+    .initDefaultHamster(0, 0, Direction::NORTH, 1);
+  assertTerritory("^;");
+}
+
+// Scenario: hardReset allows editor commands again
+TEST_F(TerritoryBuilderTest, givenTerritory3x2_andHamsterOn1x1_whenStartGame_andHardReset_andReinitTerritory1x1_andAddHamsterOn0x0_thenTerritoryIsRebuilt) { /* NOLINT */
+  withTerritory("   ;"
+                " > ;");
+  startGame();
+  hardReset();
+  getSut().initTerritory(1, 1)
+    .initDefaultHamster(0, 0, Direction::NORTH, 1);
+  assertTerritory("^;");
+}
+
 //<editor-fold desc="helpers">
 
 void TerritoryBuilderTest::TearDown()
@@ -128,6 +149,11 @@ TerritoryBuilder& TerritoryBuilderTest::withTerritory(const std::string& map) {
 void TerritoryBuilderTest::startGame()
 {
     game->startGamePaused();
+}
+
+void TerritoryBuilderTest::hardReset()
+{
+    game->hardReset();
 }
 
 void TerritoryBuilderTest::assertGrainsOnTerritory(const std::string& expected) {
