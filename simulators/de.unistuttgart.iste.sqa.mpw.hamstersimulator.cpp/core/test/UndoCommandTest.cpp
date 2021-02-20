@@ -17,6 +17,7 @@ using namespace util;
 /// \note use 'NO-LINT' comment at tests to suppress a warning caused by TEST_F
 class UndoCommandTest : public testing::Test {
 public:
+  static std::string logToString(HamsterGame& game);
 };
 
 //<editor-fold desc="Feature: undo">
@@ -69,6 +70,46 @@ TEST_F(UndoCommandTest, testUndo) { /* NOLINT */
     actual = GameStringifier::toString(*game);
     EXPECT_EQ(" >*;"
               "   ;", actual);
+}
+
+TEST_F(UndoCommandTest, testUndoOfLogs) { /* NOLINT */
+  std::shared_ptr<HamsterGame> game = GameStringifier::createFromString(" >*;"
+                                                                        "   ;");
+    auto commandStack = game->getGameCommandStack();
+    
+    game->hardReset();
+    game->startGame();
+    
+    auto hamster = game->getTerritory()->getDefaultHamster();
+    hamster->move();
+    hamster->write("text");
+    hamster->pickGrain();
+    EXPECT_EQ("Move|text|Pick Grain", logToString(*game));
+    
+    commandStack->undo();
+    EXPECT_EQ("Move|text", logToString(*game));
+    
+    commandStack->undo();
+    EXPECT_EQ("Move", logToString(*game));
+    EXPECT_EQ("  >;"
+              "   ;", GameStringifier::toString(*game));
+    
+    commandStack->redo();
+    EXPECT_EQ("Move|text", logToString(*game));
+    
+    commandStack->redo();
+    EXPECT_EQ("Move|text|Pick Grain", logToString(*game));
+}
+
+std::string UndoCommandTest::logToString(HamsterGame& game) {
+    std::string result;
+    for (auto& logEntry : game.getGameLog()->getLogEntries()) {
+        if (!result.empty()) {
+            result += "|";
+        }
+        result += logEntry.getMessage();
+    }
+    return result;
 }
 
 //</editor-fold>

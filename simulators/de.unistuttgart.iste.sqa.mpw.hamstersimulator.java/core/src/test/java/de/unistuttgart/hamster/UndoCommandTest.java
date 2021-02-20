@@ -42,7 +42,6 @@ public class UndoCommandTest {
 	}
 
 	@Test
-	@Disabled
 	public void testUndoOfLogs() {
 		HamsterGame game = GameStringifier.createFromString(" >*;" +
 															"   ;");
