@@ -18,7 +18,7 @@ public class TileNode extends StackPane {
 
     static {
         loadHamsterImages();
-        loadCornImages();
+        loadPropImages();
     }
 
     private static void loadHamsterImages() {
@@ -29,7 +29,7 @@ public class TileNode extends StackPane {
         }
     }
 
-    private static void loadCornImages() {
+    private static void loadPropImages() {
         images.put("Wall", new Image("images/Wall32.png"));
         for (int i = 1; i <= 12; i++) {
             images.put(i + "Corn", new Image("images/" + i + "Corn32.png"));
