@@ -15,4 +15,5 @@ It uses Maven, Java 15 and JavaFX.
 ##  C++ Simulator
 
 The C++ simulator is based on CMake and SDL2.
-Note: For kara the C++ code is not implemented yet.
+Import the CMake project with an IDE like Visual Studio or CLion.
+How to setup the dependencies for SDL2 is explained in the `README.md` under `/simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/ui`.

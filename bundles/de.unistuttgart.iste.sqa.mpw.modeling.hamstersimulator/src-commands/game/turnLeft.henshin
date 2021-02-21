@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_NOYy8CXXEeuHDMx4P4HuOA" name="turnLeft" description="Changes the looking direction 90 degrees to the left, e.g., when looking north the hamster will look towards west afterwards.">
-  <imports href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#/"/>
+  <imports href="http://www.mpw.uni-stuttgart.de/mpw#/"/>
   <imports href="../../model/Hamster.ecore#/"/>
   <units xsi:type="henshin:Rule" xmi:id="_CYLcYCXtEeuiY_E2amZoVQ" name="turnLeftNorth">
     <lhs xmi:id="_CYnhQCXtEeuiY_E2amZoVQ" name="Lhs">
       <nodes xmi:id="_dOn6YCXtEeuiY_E2amZoVQ" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
         <attributes xmi:id="_i5iRgCZrEeuiY_E2amZoVQ" value="&quot;NORTH&quot;">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         </attributes>
       </nodes>
     </lhs>
@@ -15,7 +15,7 @@
       <nodes xmi:id="_dOn6YSXtEeuiY_E2amZoVQ" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
         <attributes xmi:id="_kCqcwCZrEeuiY_E2amZoVQ" value="&quot;WEST&quot;">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         </attributes>
       </nodes>
     </rhs>
@@ -26,7 +26,7 @@
       <nodes xmi:id="_o4x4IiZgEeuiY_E2amZoVQ" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
         <attributes xmi:id="_MyZbQCZrEeuiY_E2amZoVQ" value="&quot;SOUTH&quot;">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         </attributes>
       </nodes>
     </lhs>
@@ -34,7 +34,7 @@
       <nodes xmi:id="_o4x4KCZgEeuiY_E2amZoVQ" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
         <attributes xmi:id="_QI418CZrEeuiY_E2amZoVQ" value="&quot;EAST&quot;">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         </attributes>
       </nodes>
     </rhs>
@@ -45,7 +45,7 @@
       <nodes xmi:id="_p5lN9CZgEeuiY_E2amZoVQ" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
         <attributes xmi:id="_WDfzMCZrEeuiY_E2amZoVQ" value="&quot;WEST&quot;">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         </attributes>
       </nodes>
     </lhs>
@@ -53,7 +53,7 @@
       <nodes xmi:id="_p5lN-iZgEeuiY_E2amZoVQ" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
         <attributes xmi:id="_W7d9ACZrEeuiY_E2amZoVQ" value="&quot;SOUTH&quot;">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         </attributes>
       </nodes>
     </rhs>
@@ -64,7 +64,7 @@
       <nodes xmi:id="_FUGCUyZhEeuiY_E2amZoVQ" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
         <attributes xmi:id="_YQRMwCZrEeuiY_E2amZoVQ" value="&quot;EAST&quot;">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         </attributes>
       </nodes>
     </lhs>
@@ -72,7 +72,7 @@
       <nodes xmi:id="_FUGCWSZhEeuiY_E2amZoVQ" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
         <attributes xmi:id="_ZWuegCZrEeuiY_E2amZoVQ" value="&quot;NORTH&quot;">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         </attributes>
       </nodes>
     </rhs>

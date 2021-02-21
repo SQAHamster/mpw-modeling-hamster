@@ -11,6 +11,7 @@ Workflow {
 	bean = org.eclipse.emf.mwe.utils.StandaloneSetup { 
 		platformUri="${rootPath}"
 		scanClassPath = true
+        registerGeneratedEPackage = "mpw.MpwPackage"
 	}
 	
 	component = org.eclipse.emf.mwe2.ecore.EcoreGenerator {

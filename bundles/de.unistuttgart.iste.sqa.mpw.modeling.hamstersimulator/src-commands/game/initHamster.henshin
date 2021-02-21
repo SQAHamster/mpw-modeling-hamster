@@ -2,10 +2,10 @@
 <henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_NOYy8CXXEeuHDMx4P4HuOA" name="initHamster" description="Initialize a hamster object with the given parameters. Once a hamster is initialized, the method must not be called again.">
   <annotations xmi:id="_Ww4LUDTJEeu0KvmSgTDkRg" key="isInit" value="true"/>
   <imports href="../../model/Hamster.ecore#/"/>
-  <imports href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#/"/>
+  <imports href="http://www.mpw.uni-stuttgart.de/mpw#/"/>
   <units xsi:type="henshin:Rule" xmi:id="_FUGCUSZhEeuiY_E2amZoVQ" name="setProperties">
     <parameters xmi:id="_BWyvsDJVEeuWCcs7oPobTg" name="initialDirection" kind="IN">
-      <type xsi:type="ecore:EEnum" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Direction"/>
+      <type xsi:type="ecore:EEnum" href="http://www.mpw.uni-stuttgart.de/mpw#//Direction"/>
     </parameters>
     <lhs xmi:id="_FUGCUiZhEeuiY_E2amZoVQ" name="Lhs">
       <nodes xmi:id="_FUGCUyZhEeuiY_E2amZoVQ" name="self">
@@ -16,7 +16,7 @@
       <nodes xmi:id="_FUGCWSZhEeuiY_E2amZoVQ" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
         <attributes xmi:id="_w_JCEDIjEeupAp5-xI7a9A" value="initialDirection">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         </attributes>
       </nodes>
     </rhs>
@@ -30,10 +30,10 @@
       <type xsi:type="ecore:EClass" href="../../model/Hamster.ecore#//Territory"/>
     </parameters>
     <parameters xmi:id="_aacGEDIjEeupAp5-xI7a9A" name="location" kind="IN">
-      <type xsi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Location"/>
+      <type xsi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//Location"/>
     </parameters>
     <parameters xmi:id="_W8upETIjEeupAp5-xI7a9A" name="direction" kind="IN">
-      <type xsi:type="ecore:EEnum" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Direction"/>
+      <type xsi:type="ecore:EEnum" href="http://www.mpw.uni-stuttgart.de/mpw#//Direction"/>
     </parameters>
     <parameters xmi:id="_dgG2gDIjEeupAp5-xI7a9A" name="grainCount" kind="IN">
       <type xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -84,7 +84,7 @@
         <type href="../../model/Hamster.ecore#//Hamster/grains"/>
       </edges>
       <edges xmi:id="_YvYdADIkEeupAp5-xI7a9A" source="_VMWbITIkEeupAp5-xI7a9A" target="_QBxMoDIkEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/tileContents"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tileContents"/>
       </edges>
     </rhs>
     <mappings xmi:id="_N1jMsjIkEeupAp5-xI7a9A" origin="_N1jMsDIkEeupAp5-xI7a9A" image="_N1jMsTIkEeupAp5-xI7a9A"/>
@@ -95,32 +95,32 @@
       <type xsi:type="ecore:EClass" href="../../model/Hamster.ecore#//Territory"/>
     </parameters>
     <parameters xmi:id="_KtUbADIlEeupAp5-xI7a9A" name="location" kind="IN">
-      <type xsi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Location"/>
+      <type xsi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//Location"/>
     </parameters>
     <lhs xmi:id="_wcImMDIkEeupAp5-xI7a9A" name="Lhs">
       <nodes xmi:id="_yeuJADIkEeupAp5-xI7a9A" name="self">
         <type href="../../model/Hamster.ecore#//Hamster"/>
       </nodes>
       <nodes xmi:id="_3wVMkDIkEeupAp5-xI7a9A" incoming="_INaDADIlEeupAp5-xI7a9A" outgoing="_NsbQcDIlEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Tile"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Tile"/>
       </nodes>
       <nodes xmi:id="_-Wck8DIkEeupAp5-xI7a9A" name="territory" outgoing="_INaDADIlEeupAp5-xI7a9A">
         <type href="../../model/Hamster.ecore#//Territory"/>
       </nodes>
       <nodes xmi:id="_MO0qADIlEeupAp5-xI7a9A" incoming="_NsbQcDIlEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Location"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Location"/>
         <attributes xmi:id="_PAaA0DIlEeupAp5-xI7a9A" value="location.column">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Location/column"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Location/column"/>
         </attributes>
         <attributes xmi:id="_Su1aYDIlEeupAp5-xI7a9A" value="location.row">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Location/row"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Location/row"/>
         </attributes>
       </nodes>
       <edges xmi:id="_INaDADIlEeupAp5-xI7a9A" source="_-Wck8DIkEeupAp5-xI7a9A" target="_3wVMkDIkEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/tiles"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tiles"/>
       </edges>
       <edges xmi:id="_NsbQcDIlEeupAp5-xI7a9A" source="_3wVMkDIkEeupAp5-xI7a9A" target="_MO0qADIlEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Tile/location"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Tile/location"/>
       </edges>
     </lhs>
     <rhs xmi:id="_wcImMTIkEeupAp5-xI7a9A" name="Rhs">
@@ -128,31 +128,31 @@
         <type href="../../model/Hamster.ecore#//Hamster"/>
       </nodes>
       <nodes xmi:id="_3wVMkTIkEeupAp5-xI7a9A" incoming="_INaDATIlEeupAp5-xI7a9A _bRnTwDIlEeupAp5-xI7a9A" outgoing="_NsbQcTIlEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Tile"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Tile"/>
       </nodes>
       <nodes xmi:id="_-Wck8TIkEeupAp5-xI7a9A" name="territory" outgoing="_DMnCoDIlEeupAp5-xI7a9A _INaDATIlEeupAp5-xI7a9A">
         <type href="../../model/Hamster.ecore#//Territory"/>
       </nodes>
       <nodes xmi:id="_MO2fMDIlEeupAp5-xI7a9A" incoming="_NsbQcTIlEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Location"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Location"/>
         <attributes xmi:id="_PAaA0TIlEeupAp5-xI7a9A" value="location.column">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Location/column"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Location/column"/>
         </attributes>
         <attributes xmi:id="_Su1aYTIlEeupAp5-xI7a9A" value="location.row">
-          <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Location/row"/>
+          <type href="http://www.mpw.uni-stuttgart.de/mpw#//Location/row"/>
         </attributes>
       </nodes>
       <edges xmi:id="_DMnCoDIlEeupAp5-xI7a9A" source="_-Wck8TIkEeupAp5-xI7a9A" target="_yeuJATIkEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/tileContents"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tileContents"/>
       </edges>
       <edges xmi:id="_INaDATIlEeupAp5-xI7a9A" source="_-Wck8TIkEeupAp5-xI7a9A" target="_3wVMkTIkEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/tiles"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tiles"/>
       </edges>
       <edges xmi:id="_NsbQcTIlEeupAp5-xI7a9A" source="_3wVMkTIkEeupAp5-xI7a9A" target="_MO2fMDIlEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Tile/location"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Tile/location"/>
       </edges>
       <edges xmi:id="_bRnTwDIlEeupAp5-xI7a9A" source="_yeuJATIkEeupAp5-xI7a9A" target="_3wVMkTIkEeupAp5-xI7a9A">
-        <type href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
       </edges>
     </rhs>
     <mappings xmi:id="_yeuJAjIkEeupAp5-xI7a9A" origin="_yeuJADIkEeupAp5-xI7a9A" image="_yeuJATIkEeupAp5-xI7a9A"/>
