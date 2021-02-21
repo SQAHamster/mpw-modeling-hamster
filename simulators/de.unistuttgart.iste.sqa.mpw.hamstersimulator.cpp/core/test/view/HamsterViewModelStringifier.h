@@ -11,6 +11,13 @@
 
 namespace viewmodel {
 
+/**
+ * Helper class to represent the view-model in a string representation.
+ *
+ * With {@link HamsterViewModelStringifier::maxCharsPerCell} the width of a cell in characters is specified.
+ * Also, {@link HamsterViewModelStringifier::imageCharsMapping} defines a mapping from a symbolic image name to
+ * a character sequence, e.g. "4Grain" -> " 4*". Cells are further separated by '|'.
+ */
 class HamsterViewModelStringifier {
 public:
 

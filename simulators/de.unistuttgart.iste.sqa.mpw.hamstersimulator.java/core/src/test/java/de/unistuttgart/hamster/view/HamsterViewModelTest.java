@@ -9,6 +9,10 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Tests on the view-model layer, which are using the {@link HamsterViewModelStringifier} to create
+ * string based representations.
+ */
 class HamsterViewModelTest extends HamsterViewTestBase {
 
     @Test

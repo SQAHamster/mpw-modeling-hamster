@@ -6,6 +6,13 @@ import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelLogEntry;
 
 import java.util.Map;
 
+/**
+ * Helper class to represent the view-model in a string representation.
+ *
+ * With {@link #maxCharsPerCell} the width of a cell in characters is specified.
+ * Also, {@link #imageCharsMapping} defines a mapping from a symbolic image name to
+ * a character sequence, e.g. "4Grain" -> " 4*". Cells are further separated by '|'.
+ */
 public class HamsterViewModelStringifier {
     private final Map<String, String> imageCharsMapping;
     private final int maxCharsPerCell;

@@ -50,24 +50,24 @@ public class TerritoryBuilderTest {
 					  "   ;")
 				.addWallToTile(locationOf(2, 0));
 
-		assertTerritory("  M;" +
+		assertTerritory("  #;" +
 				        "   ;");
 	}
 
 	@Test
 	public void givenTerritory3x2_andHamsterOn0x0_andWallOn1x1_andGrainOn2x0_whenClearTile2x0_thenTile2x0IsEmpty() {
 		withTerritory("v *;" +
-					  " M ;")
+					  " # ;")
 				.clearTile(locationOf(2, 0));
 
 		assertTerritory("v  ;" +
-				        " M ;");
+				        " # ;");
 	}
 
 	@Test
 	public void givenTerritory3x2_andHamsterOn0x0_andWallOn1x1_andGrainOn2x0_whenClearTile1x1_thenTile1x1IsEmpty() {
 		withTerritory("v *;" +
-				      " M ;")
+				      " # ;")
 				.clearTile(locationOf(1, 1));
 
 		assertTerritory("v *;" +
@@ -95,7 +95,7 @@ public class TerritoryBuilderTest {
 	@Test // Scenario: init clears previous territory
 	public void givenTerritory3x2_andHamsterOn0x0_andWallOn1x1_whenReinitTerritory1x1_andAddHamsterOn0x0_thenTerritoryIsRebuilt() {
 		withTerritory("v *;" +
-				      " M ;");
+				      " # ;");
 		sut.initTerritory(1, 1)
 		   .initDefaultHamster(0, 0, Direction.NORTH, 1);
 		assertTerritory("^;");

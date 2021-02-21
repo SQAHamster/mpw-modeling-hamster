@@ -3,7 +3,7 @@
 #include "HamsterCore.h"
 #include "HamsterViewTestBase.h"
 
-#include "util/GameStringifier.h"
+#include "view/HamsterViewModelStringifier.h"
 #include "util/TestUtils.h"
 
 #include <utility>
@@ -15,7 +15,11 @@ using namespace hamster;
 using namespace framework;
 using namespace util;
 
-/// \note use 'NO-LINT' comment at tests to suppress a warning caused by TEST_F /* NOLINT */
+/**
+ * Tests on the view-model layer, which are using the {@link viewmodel::HamsterViewModelStringifier} to create
+ * string based representations.
+ * @note use 'NO-LINT' comment at tests to suppress a warning caused by TEST_F
+ */
 class HamsterViewModelTest : public HamsterViewTestBase {
 private:
 public:

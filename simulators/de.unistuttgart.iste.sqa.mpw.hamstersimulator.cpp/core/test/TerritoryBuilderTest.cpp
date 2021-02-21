@@ -68,22 +68,22 @@ TEST_F(TerritoryBuilderTest, givenEmptyTerritory3x2_whenAddWallTo2x0_thenWallIsP
                   "   ;")
             .addWallToTile(locationOf(2, 0));
 
-    assertTerritory("  M;"
+    assertTerritory("  #;"
                     "   ;");
 }
 
 TEST_F(TerritoryBuilderTest, givenTerritory3x2_andHamsterOn0x0_andWallOn1x1_andGrainOn2x0_whenClearTile2x0_thenTile2x0IsEmpty) { /* NOLINT */
     withTerritory("v *;"
-                  " M ;")
+                  " # ;")
             .clearTile(locationOf(2, 0));
 
     assertTerritory("v  ;"
-                    " M ;");
+                    " # ;");
 }
 
 TEST_F(TerritoryBuilderTest, givenTerritory3x2_andHamsterOn0x0_andWallOn1x1_andGrainOn2x0_whenClearTile1x1_thenTile1x1IsEmpty) { /* NOLINT */
     withTerritory("v *;"
-                  " M ;")
+                  " # ;")
             .clearTile(locationOf(1, 1));
 
     assertTerritory("v *;"
@@ -109,7 +109,7 @@ TEST_F(TerritoryBuilderTest, givenTerritory1x1_whenStartGame_andAddGrainToTile_t
 // Scenario: init clears previous territory
 TEST_F(TerritoryBuilderTest, givenTerritory3x2_andHamsterOn0x0_andWallOn1x1_whenReinitTerritory1x1_andAddHamsterOn0x0_thenTerritoryIsRebuilt) { /* NOLINT */
   withTerritory("v *;"
-                " M ;");
+                " # ;");
   getSut().initTerritory(1, 1)
     .initDefaultHamster(0, 0, Direction::NORTH, 1);
   assertTerritory("^;");

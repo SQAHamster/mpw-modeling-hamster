@@ -23,7 +23,11 @@ using namespace hamster;
 using namespace framework;
 using namespace util;
 
-/// \note use 'NO-LINT' comment at tests to suppress a warning caused by TEST_F
+/**
+ * Tests for game commands on the facade layer, which are using the {@link GameStringifier} to create
+ * simple string based representations.
+ * @note use 'NO-LINT' comment at tests to suppress a warning caused by TEST_F
+ */
 class HamsterCommandTest : public testing::Test {
 private:
     std::shared_ptr<HamsterGame> game {};
@@ -55,61 +59,61 @@ public:
 
 TEST_F(HamsterCommandTest, givenHamsterEast_whenMove_thenMovedToRight) { /* NOLINT */
     withTerritory(
-            "  M;"
-            "> M;"
-            "  M;");
+            "  #;"
+            "> #;"
+            "  #;");
 
     move();
 
     assertTerritory(
-            "  M;"
-            " >M;"
-            "  M;");
+            "  #;"
+            " >#;"
+            "  #;");
 }
 
 
 TEST_F(HamsterCommandTest, givenHamsterNorth_whenMove_thenMovedToNorth) { /* NOLINT */
     withTerritory(
-            "  M;"
-            "^ M;"
-            "  M;");
+            "  #;"
+            "^ #;"
+            "  #;");
 
     move();
 
     assertTerritory(
-            "^ M;"
-            "  M;"
-            "  M;");
+            "^ #;"
+            "  #;"
+            "  #;");
 }
 
 
 TEST_F(HamsterCommandTest, givenHamsterSouth_whenMove_thenMovedToSouth) { /* NOLINT */
     withTerritory(
-            "  M;"
-            "v M;"
-            "  M;");
+            "  #;"
+            "v #;"
+            "  #;");
 
     move();
 
     assertTerritory(
-            "  M;"
-            "  M;"
-            "v M;");
+            "  #;"
+            "  #;"
+            "v #;");
 }
 
 
 TEST_F(HamsterCommandTest, givenHamsterWest_whenMove_thenMovedToWest) { /* NOLINT */
     withTerritory(
-            "  M;"
-            " <M;"
-            "  M;");
+            "  #;"
+            " <#;"
+            "  #;");
 
     move();
 
     assertTerritory(
-            "  M;"
-            "< M;"
-            "  M;");
+            "  #;"
+            "< #;"
+            "  #;");
 }
 //</editor-fold>
 
@@ -202,16 +206,16 @@ TEST_F(HamsterCommandTest, givenHamsterInAnyDirection_andFrontCellIsEmpty_whenCh
 
 
 TEST_F(HamsterCommandTest, givenHamsterInAnyDirection_andFrontCellIsWall_whenCheckFrontIsNotClear_thenIsTrue) { /* NOLINT */
-    withTerritory("M<;");
+    withTerritory("#<;");
     assertFrontIsNotClear();
 
-    withTerritory(">M;");
+    withTerritory(">#;");
     assertFrontIsNotClear();
 
-    withTerritory("M;^;");
+    withTerritory("#;^;");
     assertFrontIsNotClear();
 
-    withTerritory("v;M;");
+    withTerritory("v;#;");
     assertFrontIsNotClear();
 }
 
@@ -231,7 +235,7 @@ TEST_F(HamsterCommandTest, givenHamsterInAnyDirection_andFrontCellIsGrain_whenCh
 }
 
 
-TEST_F(HamsterCommandTest, DISABLED_givenHamsterInAnyDirection_andFrontCellIsEndOfMap_whenCheckFrontIsNotClear_thenIsTrue) { /* NOLINT */
+TEST_F(HamsterCommandTest, givenHamsterInAnyDirection_andFrontCellIsEndOfMap_whenCheckFrontIsNotClear_thenIsTrue) { /* NOLINT */
     withTerritory("<;");
     assertFrontIsNotClear();
 
@@ -247,7 +251,7 @@ TEST_F(HamsterCommandTest, DISABLED_givenHamsterInAnyDirection_andFrontCellIsEnd
 
 
 TEST_F(HamsterCommandTest, givenHamsterBeforeWall_whenMove_ThenExceptionIsThrown) { /* NOLINT */
-    withTerritory("M<;");
+    withTerritory("#<;");
 
     TestUtils::assertThrows(typeid(CommandConstraintException), [&]() {
         move();

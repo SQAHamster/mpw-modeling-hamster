@@ -30,7 +30,7 @@ TEST_F(InitHamsterCommandTest, testInitHamsterOn1x1_and4Grains) { /* NOLINT */
 
     std::string actual = GameStringifier::toString(*game);
     EXPECT_EQ("   ;"
-                 " v ;", actual);
+              " v ;", actual);
     EXPECT_EQ(4, sut->getInternalHamster()->getGrains().size());
 }
 

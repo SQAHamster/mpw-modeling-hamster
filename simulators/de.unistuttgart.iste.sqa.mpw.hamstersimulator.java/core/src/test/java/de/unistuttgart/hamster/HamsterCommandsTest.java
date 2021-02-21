@@ -17,6 +17,10 @@ import org.junit.jupiter.api.Test;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+/**
+ * Tests for game commands on the facade layer, which are using the {@link GameStringifier} to create
+ * simple string based representations.
+ */
 public class HamsterCommandsTest {
 	private HamsterGame game;
 	private Hamster sut;
@@ -25,61 +29,61 @@ public class HamsterCommandsTest {
 	@Test
 	public void givenHamsterEast_whenMove_thenMovedToRight() {
 		withTerritory(
-				  "  M;"
-				+ "> M;"
-				+ "  M;");
+				  "  #;"
+				+ "> #;"
+				+ "  #;");
 
 		move();
 
 		assertTerritory(
-				  "  M;"
-				+ " >M;"
-				+ "  M;");
+				  "  #;"
+				+ " >#;"
+				+ "  #;");
 	}
 
 	@Test
 	public void givenHamsterNorth_whenMove_thenMovedToNorth() {
 		withTerritory(
-				  "  M;"
-				+ "^ M;"
-				+ "  M;");
+				  "  #;"
+				+ "^ #;"
+				+ "  #;");
 
 		move();
 
 		assertTerritory(
-				  "^ M;"
-				+ "  M;"
-				+ "  M;");
+				  "^ #;"
+				+ "  #;"
+				+ "  #;");
 	}
 
 	@Test
 	public void givenHamsterSouth_whenMove_thenMovedToSouth() {
 		withTerritory(
-				  "  M;"
-				+ "v M;"
-				+ "  M;");
+				  "  #;"
+				+ "v #;"
+				+ "  #;");
 
 		move();
 
 		assertTerritory(
-				  "  M;"
-				+ "  M;"
-				+ "v M;");
+				  "  #;"
+				+ "  #;"
+				+ "v #;");
 	}
 
 	@Test
 	public void givenHamsterWest_whenMove_thenMovedToWest() {
 		withTerritory(
-				  "  M;"
-				+ " <M;"
-				+ "  M;");
+				  "  #;"
+				+ " <#;"
+				+ "  #;");
 
 		move();
 
 		assertTerritory(
-				  "  M;"
-				+ "< M;"
-				+ "  M;");
+				  "  #;"
+				+ "< #;"
+				+ "  #;");
 	}
 	//</editor-fold>
 
@@ -172,16 +176,16 @@ public class HamsterCommandsTest {
 
 	@Test
 	public void givenHamsterInAnyDirection_andFrontCellIsWall_whenCheckFrontIsNotClear_thenIsTrue() {
-		withTerritory("M<;");
+		withTerritory("#<;");
 		assertFrontIsNotClear();
 
-		withTerritory(">M;");
+		withTerritory(">#;");
 		assertFrontIsNotClear();
 
-		withTerritory("M;^;");
+		withTerritory("#;^;");
 		assertFrontIsNotClear();
 
-		withTerritory("v;M;");
+		withTerritory("v;#;");
 		assertFrontIsNotClear();
 	}
 
@@ -217,7 +221,7 @@ public class HamsterCommandsTest {
 	
 	@Test
 	public void givenHamsterBeforeWall_whenMove_ThenExceptionIsThrown() {
-		withTerritory("M<;");
+		withTerritory("#<;");
 
 		assertThrows(CommandConstraintException.class, () -> {
 			move();			

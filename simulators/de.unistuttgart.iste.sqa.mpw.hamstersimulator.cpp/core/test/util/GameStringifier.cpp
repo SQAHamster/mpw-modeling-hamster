@@ -63,7 +63,7 @@ static void handleCell(TerritoryBuilder& territoryBuilder, int x, int y, char ce
         case '*':
             territoryBuilder.addGrainsToTile(x, y, 1);
             break;
-        case 'M':
+        case '#':
             territoryBuilder.addWallToTile(x, y);
             break;
         default: ;
@@ -81,7 +81,7 @@ std::string GameStringifier::toString(const HamsterGame& game) {
         if (hamster->getCurrentTile().get() == &currentTile) {
             actual += util::DirectionTestHelper::toDirection(hamster->getDirection());
         } else if (!collectionhelpers::type_select<Wall>(currentTile.getContents()).empty()) {
-            actual += 'M';
+            actual += '#';
         } else if (!collectionhelpers::type_select<Grain>(currentTile.getContents()).empty()) {
             actual += '*';
         } else {
