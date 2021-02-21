@@ -1,6 +1,6 @@
-# Polyglot Hamster Simulator
+# Polyglot Hamster - MPW Simulator
 
-Concrete MPW for the hamster-simulator based on the MPW framework (https://github.com/Fumapps/mpw-modeling-hamster).
+This is the modeled hamster MPW simulator example based on the MPW framework (https://github.com/Fumapps/mpw-modeling-framework).
 
 ![modeling approach](documentation/graphics/mdsd-approach-concrete-simulator.svg)
 
@@ -9,10 +9,10 @@ After code-generation with Maven `package`, in `/simulators` the both simulators
 
 ## Java Simulator
 
-The Java simulator is similar to the PSE-Simulator (https://git.rss.iste.uni-stuttgart.de/open-to-public/pse the PSE-Simulator).
+The Java simulator is similar to the PSE-Simulator (https://git.rss.iste.uni-stuttgart.de/open-to-public/pse).
+It uses Maven, Java 15 and JavaFX.
 
 ##  C++ Simulator
 
 The C++ simulator is based on CMake and SDL2.
-Import the CMake project with an IDE like Visual Studio or CLion.
-How to setup the dependencies for SDL2 is explained in the `README.md` under `/simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/ui` .
+Note: For kara the C++ code is not implemented yet.
