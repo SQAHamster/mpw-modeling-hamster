@@ -1,6 +1,6 @@
 context Hamster::initHamster(territory:Territory, location:Location, direction:Direction, grainCount:EInt)
 
-/** hamster must not be already initialized */
+/** the hamster must not be already initialized */
 precondition: 
     self.stage = null;
 
