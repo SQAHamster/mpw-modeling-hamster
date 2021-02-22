@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?p2f version='1.0.0'?>
+<p2f version='1.0.0'>
+  <ius size='6'>
+    <iu id='org.eclipse.cdt.feature.group' name='C/C++ Development Tools' version='10.1.0.202012020953'>
+      <repositories size='3'>
+        <repository location='https://download.eclipse.org/releases/latest'/>
+        <repository location='https://download.eclipse.org/tools/cdt/releases/10.1/'/>
+        <repository location='http://download.eclipse.org/releases/2020-12'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.emf.henshin.sdk.feature.group' name='Henshin SDK (Incubation)' version='1.6.0.202002251401'>
+      <repositories size='1'>
+        <repository location='http://download.eclipse.org/modeling/emft/henshin/updates/release'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.m2e.feature.feature.group' name='m2e - Maven Integration for Eclipse (includes Incubating components)' version='1.17.1.20201207-1112'>
+      <repositories size='2'>
+        <repository location='https://download.eclipse.org/releases/latest'/>
+        <repository location='http://download.eclipse.org/releases/2020-12'/>
+      </repositories>
+    </iu>
+    <iu id='de.unistuttgart.iste.sqa.mpw.feature.feature.group' name='MPW Framework Feature' version='0.0.0'>
+      <repositories size='1'>
+        <repository location='https://raw.githubusercontent.com/Fumapps/mpw-modeling-framework/mpw-update-site/repository'/>
+      </repositories>
+    </iu>
+    <iu id='de.unistuttgart.iste.sqa.mpw.modeling.querydsl.feature.feature.group' name='QueryDSL Feature' version='0.0.0'>
+      <repositories size='1'>
+        <repository location='https://raw.githubusercontent.com/Fumapps/mpw-modeling-querydsl/querydsl-updatesite/repository'/>
+      </repositories>
+    </iu>
+    <iu id='org.sonatype.tycho.m2e.feature.feature.group' name='Tycho Project Configurators' version='0.8.1.201704211436'>
+      <repositories size='1'>
+        <repository location='https://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.8.1/N/0.8.1.201704211436/'/>
+      </repositories>
+    </iu>
+    <iu id='org.eclipse.xpand.support.feature.group' name='Xpand/Xtend Additional Support' version='2.2.0.v201605260315'>
+      <repositories size='1'>
+        <repository location='https://download.eclipse.org/modeling/m2t/xpand/updates/'/>
+      </repositories>
+    </iu>
+  </ius>
+</p2f>
