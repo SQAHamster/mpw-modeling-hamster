@@ -2,7 +2,7 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
   <viewpoint:DAnalysis uid="_wD8NwGE5EeuzHa1GItotpw" selectedViews="_wLiqkGE5EeuzHa1GItotpw _wLx7IGE5EeuzHa1GItotpw _wLzJQGE5EeuzHa1GItotpw _wL4o0GE5EeuzHa1GItotpw" version="14.3.1.202003261200">
     <semanticResources>Hamster.ecore</semanticResources>
-    <semanticResources>platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore</semanticResources>
+    <semanticResources>http://www.mpw.uni-stuttgart.de/mpw</semanticResources>
     <semanticResources>platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/BaseTypes.ecore</semanticResources>
     <semanticResources>platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/Command.ecore</semanticResources>
     <semanticResources>platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/stereotypes/MpwStereotypes.ecore</semanticResources>
@@ -377,8 +377,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_xXEpkGE5EeuzHa1GItotpw" name=" currentTile : Tile" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_Fj0PsGE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_xXGewGE5EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -387,8 +387,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_xXHF0GE5EeuzHa1GItotpw" name=" stage : Stage" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_Fj0PsWE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_xXHs4GE5EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -419,8 +419,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_xXKwMGE5EeuzHa1GItotpw" name=" currentTile : Tile" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_GHrxwmE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_xXLXQGE5EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -429,8 +429,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_xXLXQWE5EeuzHa1GItotpw" name=" stage : Stage" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_GHrxwGE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_xXL-UGE5EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -450,8 +450,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_xXL-UWE5EeuzHa1GItotpw" name=" currentTile : Tile" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_GHrxwWE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_xXMlYGE5EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -460,8 +460,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_xXMlYWE5EeuzHa1GItotpw" name=" stage : Stage" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_GHrKsGE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_xXMlYmE5EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -524,8 +524,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_I7y4IGE6EeuzHa1GItotpw" name="Actor" tooltipText="" incomingEdges="_I8GaIGE6EeuzHa1GItotpw" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor"/>
+      <target xmi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//Actor"/>
+      <semanticElements xmi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//Actor"/>
       <decorations xmi:type="viewpoint:Decoration" uid="_I7zfMWE6EeuzHa1GItotpw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -538,8 +538,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I7-eUGE6EeuzHa1GItotpw" name="direction : Direction = NORTH" visible="false" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Actor/direction"/>
+        <target xmi:type="ecore:EAttribute" href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="http://www.mpw.uni-stuttgart.de/mpw#//Actor/direction"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_MzJkMWE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I7_FYGE6EeuzHa1GItotpw" labelAlignment="LEFT" description="_I7-eUWE6EeuzHa1GItotpw">
           <labelFormat>bold</labelFormat>
@@ -547,8 +547,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I7_scGE6EeuzHa1GItotpw" name=" currentTile : Tile" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_MzJkMGE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I7_scWE6EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -557,8 +557,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I7_scmE6EeuzHa1GItotpw" name=" stage : Stage" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_MzJkMmE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I7_sc2E6EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -568,8 +568,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_I70GQGE6EeuzHa1GItotpw" name="MiniProgrammingWorld" tooltipText="" outgoingEdges="_I8FzEGE6EeuzHa1GItotpw" incomingEdges="_I8JdcGE6EeuzHa1GItotpw" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld"/>
+      <target xmi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld"/>
+      <semanticElements xmi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld"/>
       <decorations xmi:type="viewpoint:Decoration" uid="_I70tUWE6EeuzHa1GItotpw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -583,8 +583,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I8ATgGE6EeuzHa1GItotpw" name=" editorCommandStack : CommandStack" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/editorCommandStack"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/editorCommandStack"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/editorCommandStack"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/editorCommandStack"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_VeaEImE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I8ATgmE6EeuzHa1GItotpw" labelAlignment="LEFT" description="_I8ATgWE6EeuzHa1GItotpw" color="114,159,207">
           <labelFormat>bold</labelFormat>
@@ -592,8 +592,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I8ATg2E6EeuzHa1GItotpw" name=" performance : GamePerformance" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/performance"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/performance"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/performance"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/performance"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_VeaEI2E6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I8A6kGE6EeuzHa1GItotpw" labelAlignment="LEFT" description="_I8ATgWE6EeuzHa1GItotpw" color="114,159,207">
           <labelFormat>bold</labelFormat>
@@ -601,8 +601,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I8A6kWE6EeuzHa1GItotpw" name=" gameLog : GameLog" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/gameLog"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/gameLog"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/gameLog"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/gameLog"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_VeaEIWE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I8A6kmE6EeuzHa1GItotpw" labelAlignment="LEFT" description="_I8ATgWE6EeuzHa1GItotpw" color="114,159,207">
           <labelFormat>bold</labelFormat>
@@ -610,8 +610,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I8A6k2E6EeuzHa1GItotpw" name=" userInputInterface : UserInputInterface" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/userInputInterface"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/userInputInterface"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/userInputInterface"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/userInputInterface"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_VeaEIGE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I8BhoGE6EeuzHa1GItotpw" labelAlignment="LEFT" description="_I8ATgWE6EeuzHa1GItotpw" color="114,159,207">
           <labelFormat>bold</labelFormat>
@@ -620,8 +620,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_I70tU2E6EeuzHa1GItotpw" name="Prop" tooltipText="" incomingEdges="_I8IPU2E6EeuzHa1GItotpw _I8I2YGE6EeuzHa1GItotpw" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Prop"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Prop"/>
+      <target xmi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//Prop"/>
+      <semanticElements xmi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//Prop"/>
       <decorations xmi:type="viewpoint:Decoration" uid="_I71UYWE6EeuzHa1GItotpw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -634,8 +634,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I8BhoWE6EeuzHa1GItotpw" name=" currentTile : Tile" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/currentTile"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_1ygWQGE9EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I8BhomE6EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -644,8 +644,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I8CIsGE6EeuzHa1GItotpw" name=" stage : Stage" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//TileContent/stage"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_1yg9UGE9EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I8CIsWE6EeuzHa1GItotpw" labelColor="125,125,125" labelAlignment="LEFT">
           <labelFormat>italic</labelFormat>
@@ -655,8 +655,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_I71UY2E6EeuzHa1GItotpw" name="Stage" tooltipText="" incomingEdges="_I8FzEGE6EeuzHa1GItotpw _I8HoQ2E6EeuzHa1GItotpw" width="12" height="10">
-      <target xmi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage"/>
-      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage"/>
+      <target xmi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//Stage"/>
+      <semanticElements xmi:type="ecore:EClass" href="http://www.mpw.uni-stuttgart.de/mpw#//Stage"/>
       <decorations xmi:type="viewpoint:Decoration" uid="_I717cWE6EeuzHa1GItotpw">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -669,8 +669,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I8CvwGE6EeuzHa1GItotpw" name=" tiles : Tile" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/tiles"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/tiles"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tiles"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tiles"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_OQnAsWE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I8CvwWE6EeuzHa1GItotpw" labelAlignment="LEFT" color="114,159,207">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
@@ -678,8 +678,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I8CvwmE6EeuzHa1GItotpw" name=" tileContents : TileContent" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/tileContents"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/tileContents"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tileContents"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tileContents"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_OQnAsmE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I8Cvw2E6EeuzHa1GItotpw" labelAlignment="LEFT" color="114,159,207">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
@@ -687,8 +687,8 @@
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_I8DW0GE6EeuzHa1GItotpw" name=" stageSize : Size" visible="false" tooltipText="">
-        <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/stageSize"/>
-        <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//Stage/stageSize"/>
+        <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/stageSize"/>
+        <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/stageSize"/>
         <graphicalFilters xmi:type="diagram:HideFilter" uid="_OQnAsGE6EeuzHa1GItotpw"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_I8DW0WE6EeuzHa1GItotpw" labelAlignment="LEFT" description="_I8ATgWE6EeuzHa1GItotpw" color="114,159,207">
           <labelFormat>bold</labelFormat>
@@ -697,8 +697,8 @@
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_I8FzEGE6EeuzHa1GItotpw" name="[1..1] /stage" sourceNode="_I70GQGE6EeuzHa1GItotpw" targetNode="_I71UY2E6EeuzHa1GItotpw">
-      <target xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/stage"/>
-      <semanticElements xmi:type="ecore:EReference" href="platform:/resource/de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/MiniProgrammingWorld.ecore#//MiniProgrammingWorld/stage"/>
+      <target xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/stage"/>
+      <semanticElements xmi:type="ecore:EReference" href="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld/stage"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_I8FzFGE6EeuzHa1GItotpw" description="_I8FzEWE6EeuzHa1GItotpw" routingStyle="manhattan" strokeColor="114,159,207">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_I8FzFmE6EeuzHa1GItotpw" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
