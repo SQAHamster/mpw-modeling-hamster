@@ -91,24 +91,22 @@ void HamsterGameViewPresenter::configureHamsterImageView(ViewModelCell& cell, co
 {
     updateColorMap();
 
-    auto& nonConstHamster = const_cast<ReadOnlyHamster&>(hamster);
-    // TODO const-correctness: adapt after migrate generator
     auto hamsterLayer = std::make_shared<ViewModelCellLayer>();
     std::string colorName = HamsterColors::toColorName(hamsterToColorMap[&hamster]);
     hamsterLayer->setImageName("Hamster32" + colorName);
 
-    changedHamsterDirectionListenerIds[&hamster] = nonConstHamster.directionProperty().addListener(
-        [this, &nonConstHamster, hamsterLayer](Direction oldValue, Direction newValue)
+    changedHamsterDirectionListenerIds[&hamster] = hamster.directionProperty().addListener(
+        [this, &hamster, hamsterLayer](Direction oldValue, Direction newValue)
         {
             auto lock = getSemaphore().lock();
-            refreshHamsterLayer(*hamsterLayer, nonConstHamster);
+            refreshHamsterLayer(*hamsterLayer, hamster);
         });
-    refreshHamsterLayer(*hamsterLayer, nonConstHamster);
+    refreshHamsterLayer(*hamsterLayer, hamster);
 
     cell.addToLayers(hamsterLayer);
 }
 
-void HamsterGameViewPresenter::refreshHamsterLayer(ViewModelCellLayer& layer, hamster::ReadOnlyHamster& hamster)
+void HamsterGameViewPresenter::refreshHamsterLayer(ViewModelCellLayer& layer, const hamster::ReadOnlyHamster& hamster)
 {
     layer.setVisible(hamster.getCurrentTile() != nullptr);
     if (hamster.getCurrentTile() == nullptr)
@@ -147,9 +145,8 @@ void HamsterGameViewPresenter::updateColorMap() {
 }
 
 Color HamsterGameViewPresenter::getColorForLogEntry(const LogEntry& entry) const {
-    // TODO const-correctness: adapt after migrate generator
-    Actor* actor = const_cast<LogEntry&>(entry).getActor().get();
-    auto iter = hamsterToColorMap.find(actor);
+    auto actor = entry.getActor();
+    auto iter = hamsterToColorMap.find(actor.get());
     if (iter != hamsterToColorMap.end()) {
         return (*iter).second;
     }

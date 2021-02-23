@@ -65,8 +65,8 @@ void HamsterViewTestBase::assertLocationsAreSet() {
     int rowIndex = 0;
     for (auto& row : viewModel->getRows()) {
         int columnIndex = 0;
-        for (auto& cell : row.getCells()) { // todo const-correctness
-            EXPECT_EQ(columnIndex, cell.getLocation().getColumn()); // todo const-correctness
+        for (auto& cell : row.getCells()) {
+            EXPECT_EQ(columnIndex, cell.getLocation().getColumn());
             EXPECT_EQ(rowIndex, cell.getLocation().getRow());
             columnIndex++;
         }
@@ -78,7 +78,7 @@ void HamsterViewTestBase::assertSizeIsConsistent() {
     auto& rows = viewModel->getRows();
     EXPECT_EQ(rows.size(), viewModel->getSize().getRowCount());
     for (auto& row : rows) {
-        EXPECT_EQ(row.getCells().size(), viewModel->getSize().getColumnCount()); // todo const-correctness
+        EXPECT_EQ(row.getCells().size(), viewModel->getSize().getColumnCount());
     }
 }
 

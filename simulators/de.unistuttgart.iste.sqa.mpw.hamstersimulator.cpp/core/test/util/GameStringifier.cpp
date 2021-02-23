@@ -75,7 +75,7 @@ static void iterateTiles(const HamsterGame& game, const std::function<void(Tile&
 std::string GameStringifier::toString(const HamsterGame& game) {
     std::string actual;
 
-    auto& nonConstGame = const_cast<HamsterGame&>(game); // TODO fix this const-correctness issue
+    auto& nonConstGame = const_cast<HamsterGame&>(game); // TODO const-correctness fix this const-correctness issue
     auto hamster = nonConstGame.getTerritory()->getDefaultHamster()->getInternalHamster();
     iterateTiles(game, [&](Tile& currentTile) {
         if (hamster->getCurrentTile().get() == &currentTile) {

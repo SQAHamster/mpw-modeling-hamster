@@ -40,7 +40,7 @@ private:
     void refreshWallLayer(ViewModelCellLayer& layer, const mpw::Tile& tile);
 
     void configureHamsterImageView(ViewModelCell& cell, const hamster::ReadOnlyHamster& hamster);
-    void refreshHamsterLayer(ViewModelCellLayer& layer, hamster::ReadOnlyHamster& hamster);
+    void refreshHamsterLayer(ViewModelCellLayer& layer, const hamster::ReadOnlyHamster& hamster);
 
     void updateColorMap();
 

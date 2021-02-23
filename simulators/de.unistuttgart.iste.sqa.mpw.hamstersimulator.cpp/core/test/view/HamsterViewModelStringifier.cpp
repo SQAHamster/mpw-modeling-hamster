@@ -14,9 +14,8 @@ HamsterViewModelStringifier::HamsterViewModelStringifier(
 }
 
 std::string HamsterViewModelStringifier::territoryToExpectationString(const GameViewModel& viewModel) {
-    auto& nonConstViewModel = const_cast<GameViewModel&>(viewModel); // TODO const-correctness: adapt after migrate generator
     std::string actual;
-    int height = nonConstViewModel.getSize().getRowCount();
+    int height = viewModel.getSize().getRowCount();
     for (int y = 0; y < height; y++) {
         std::string rowString = rowToString(viewModel, y);
         actual.append(rowString);
@@ -26,11 +25,10 @@ std::string HamsterViewModelStringifier::territoryToExpectationString(const Game
 }
 
 std::string HamsterViewModelStringifier::rowToString(const GameViewModel& viewModel, int y) const {
-    auto& nonConstViewModel = const_cast<GameViewModel&>(viewModel); // TODO const-correctness: adapt after migrate generator
     std::string result = "|";
-    int width = nonConstViewModel.getSize().getColumnCount();
+    int width = viewModel.getSize().getColumnCount();
     for (int x = 0; x < width; x++) {
-        auto cell = nonConstViewModel.getCellAt(y, x);
+        auto cell = viewModel.getCellAt(y, x);
         result.append(cellToString(*cell));
         result.append("|");
     }
@@ -38,14 +36,12 @@ std::string HamsterViewModelStringifier::rowToString(const GameViewModel& viewMo
 }
 
 std::string HamsterViewModelStringifier::cellToString(const ViewModelCell& cell) const {
-    auto& nonConstCell = const_cast<ViewModelCell&>(cell); // TODO const-correctness: adapt after migrate generator
     std::string result;
-    for (const auto& layer : nonConstCell.getLayers()) {
-        auto& nonConstLayer = const_cast<ViewModelCellLayer&>(layer);
-        if (nonConstLayer.getVisible()) {
-            std::string key = nonConstLayer.getImageName();
+    for (const auto& layer : cell.getLayers()) {
+        if (layer.getVisible()) {
+            std::string key = layer.getImageName();
             key = trimHamsterColor(key);
-            int rotation = nonConstLayer.getRotation();
+            int rotation = layer.getRotation();
             if (rotation != 0) {
                 key.append("[");
                 key.append(std::to_string(rotation));
@@ -63,9 +59,8 @@ std::string HamsterViewModelStringifier::cellToString(const ViewModelCell& cell)
 }
 
 std::string HamsterViewModelStringifier::logToString(const GameViewModel& viewModel) {
-    auto& nonConstViewModel = const_cast<GameViewModel&>(viewModel); // TODO const-correctness: adapt after migrate generator
     std::string actual;
-    auto& logEntries = nonConstViewModel.getLogEntries();
+    auto& logEntries = viewModel.getLogEntries();
     for (auto& entry : logEntries) {
         actual.append(entry.getMessage());
         actual.append("\n");
@@ -86,15 +81,14 @@ std::string HamsterViewModelStringifier::trimHamsterColor(const std::string& key
 }
 
 std::string HamsterViewModelStringifier::buttonBarToExpectationString(const GameViewModel& viewModel) {
-    auto& nonConstViewModel = const_cast<GameViewModel&>(viewModel); // TODO const-correctness: adapt after migrate generator
     std::string actual;
-    actual.append(buttonToString("play", nonConstViewModel.getPlayButtonEnabled()));
+    actual.append(buttonToString("play", viewModel.getPlayButtonEnabled()));
     actual.append(" ");
-    actual.append(buttonToString("pause", nonConstViewModel.getPauseButtonEnabled()));
+    actual.append(buttonToString("pause", viewModel.getPauseButtonEnabled()));
     actual.append(" ");
-    actual.append(buttonToString("undo", nonConstViewModel.getUndoButtonEnabled()));
+    actual.append(buttonToString("undo", viewModel.getUndoButtonEnabled()));
     actual.append(" ");
-    actual.append(buttonToString("redo", nonConstViewModel.getRedoButtonEnabled()));
+    actual.append(buttonToString("redo", viewModel.getRedoButtonEnabled()));
     return actual;
 }
 
