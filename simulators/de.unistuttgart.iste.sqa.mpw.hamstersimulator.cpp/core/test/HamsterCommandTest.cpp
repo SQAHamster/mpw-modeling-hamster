@@ -17,6 +17,7 @@
 #include <utility>
 #include <vector>
 #include <string>
+#include <TerritoryBuilder.h>
 
 using namespace mpw;
 using namespace hamster;
@@ -36,11 +37,12 @@ private:
 public:
 
     void withTerritory(const std::string& map);
+    std::shared_ptr<TerritoryBuilder> withTerritoryBuilder(const std::string& map);
     void initNewHamster(Location location, Direction direction);
     void removeFromStage();
     static Location locationOf(int x, int y);
-    void andGrainOn(int columnIndex, int rowIndex);
     void andGrainsInMouth(int count);
+    void start();
     void turnLeft();
     void move();
     void pickGrain();
@@ -52,7 +54,6 @@ public:
     void assertGrainsInMouth(int expected);
     void assertGrainsOnTerritory(const std::string& expected);
     void assertGameLog(const std::vector<std::string>& expectedStrings);
-    std::shared_ptr<Tile> getTileAt(int columnIndex, int rowIndex);
 };
 
 //<editor-fold desc="Feature: move">
@@ -120,9 +121,12 @@ TEST_F(HamsterCommandTest, givenHamsterWest_whenMove_thenMovedToWest) { /* NOLIN
 //<editor-fold desc="Feature: pick/put grains">
 
 
+static const int oneGrain = 1;
+
 TEST_F(HamsterCommandTest, givenHamsterWithGrainAvailable_whenPickGrain_thenPickedGrain) { /* NOLINT */
-    withTerritory(">;");
-    andGrainOn(0, 0);
+    withTerritoryBuilder(">;")
+        ->addGrainsToTile(locationOf(0, 0), oneGrain);
+    start();
 
     pickGrain();
 
@@ -301,6 +305,13 @@ void HamsterCommandTest::withTerritory(const std::string& map) {
     sut = game->getTerritory()->getDefaultHamster();
 }
 
+
+std::shared_ptr<TerritoryBuilder> HamsterCommandTest::withTerritoryBuilder(const std::string& map) {
+    game = GameStringifier::createFromString(map);
+    sut = game->getTerritory()->getDefaultHamster();
+    return std::make_shared<TerritoryBuilder>(game);
+}
+
 void HamsterCommandTest::initNewHamster(Location location, Direction direction) {
     sut = std::make_shared<Hamster>(game->getTerritory(), location, direction, 0);
 }
@@ -315,13 +326,6 @@ Location HamsterCommandTest::locationOf(int x, int y) {
     return Location::from(x, y);
 }
 
-void HamsterCommandTest::andGrainOn(int columnIndex, int rowIndex) {
-    auto tile = getTileAt(columnIndex, rowIndex);
-    auto grain = std::make_shared<Grain>();
-    tile->getStage()->addToTileContents(grain);
-    tile->addToContents(grain);
-}
-
 void HamsterCommandTest::andGrainsInMouth(int count) {
     auto internalHamster = dynamic_cast<ConcreteHamster*>(sut->getInternalHamster().get());
     auto stage = internalHamster->getStage();
@@ -334,6 +338,10 @@ void HamsterCommandTest::andGrainsInMouth(int count) {
 
 void HamsterCommandTest::turnLeft() {
     sut->turnLeft();
+}
+
+void HamsterCommandTest::start() {
+    game->startGame();
 }
 
 void HamsterCommandTest::move() {
@@ -388,11 +396,6 @@ void HamsterCommandTest::assertGameLog(const std::vector<std::string>& expectedS
     std::string actual = TestUtils::join("|", toMessages(*game->getGameLog()));
     std::string expected = TestUtils::join("|", expectedStrings);
     EXPECT_EQ(expected, actual);
-}
-
-std::shared_ptr<Tile> HamsterCommandTest::getTileAt(int columnIndex, int rowIndex) {
-    auto internalTerritory = game->getTerritory()->getInternalTerritory();
-    return internalTerritory->getTileAt(Location::from(columnIndex, rowIndex));
 }
 
 //</editor-fold>
