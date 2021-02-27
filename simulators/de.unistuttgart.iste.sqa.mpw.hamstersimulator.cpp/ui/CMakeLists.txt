@@ -23,6 +23,9 @@ set(SRCS SdlApplicationListener.h
     HamsterApplicationHandler.cpp HamsterApplicationHandler.h
     SdlGameInputInterface.cpp SdlGameInputInterface.h
     util/InputDialogWindow.cpp util/InputDialogWindow.h
+    util/GameLogControl.cpp util/GameLogControl.h
+    util/WidgetBackgroundWrapper.cpp util/WidgetBackgroundWrapper.h
+    util/LightTheme.h util/ListTheme.h
     SimpleHamsterGame.cpp SimpleHamsterGame.h)
 
 # Executable

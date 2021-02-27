@@ -1,6 +1,7 @@
 #include "HamsterApplicationHandler.h"
 
 #include "HamsterColors.h"
+#include "util/GameLogControl.h"
 
 #include <utility>
 #include <thread>
@@ -21,8 +22,7 @@ HamsterApplicationHandler::HamsterApplicationHandler(std::shared_ptr<hamster::Ha
         , presenter(std::make_shared<HamsterGameViewPresenter>(this->game))  {
 }
 
-HamsterApplicationHandler::~HamsterApplicationHandler()
-{
+HamsterApplicationHandler::~HamsterApplicationHandler() {
     this->game->getPerformance()->abortOrStopGame();
     hamsterThread.join();
 }
@@ -57,6 +57,11 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
 
     presenter->bind();
 
+    auto gameLogControl = new GameLogControl(application.getNanoguiScreen());
+    gameLogControl->bindToGameLog(*viewModel);
+
+    application.getNanoguiScreen().performLayout();
+
     hamsterThread = std::thread(hamsterProgram);
 }
 
@@ -83,9 +88,9 @@ void HamsterApplicationHandler::loadTextureWithCustomKey(const std::string& imag
 }
 
 void HamsterApplicationHandler::onEvent(SDL_Event& event) {
-    if (sdlGameInputInterface->isActive())
-    {
-        sdlGameInputInterface->onEvent(event);
+    sdlGameInputInterface->onEvent(event);
+
+    if (sdlGameInputInterface->isActive()) {
         return;
     }
 
@@ -123,12 +128,6 @@ std::optional<size_t> HamsterApplicationHandler::getButtonForPosition(int x, int
 void HamsterApplicationHandler::onRender(SDL_Renderer& renderer) {
     renderToolbar(renderer);
     renderTerritory(renderer);
-    renderGameLog(renderer);
-
-    if (sdlGameInputInterface->isActive())
-    {
-        sdlGameInputInterface->onRender(renderer);
-    }
 
     SDL_Delay(16);
 }
@@ -179,40 +178,6 @@ void HamsterApplicationHandler::render(SDL_Renderer& renderer, SDL_Rect& rect,
                                        const std::string& imageName, int rotation) {
     SDL_Texture* texture = texturesByImageName[imageName];
     SDL_RenderCopyEx(&renderer, texture, nullptr, &rect, rotation, nullptr, SDL_FLIP_NONE);
-}
-
-void HamsterApplicationHandler::renderGameLog(SDL_Renderer& renderer) {
-    static std::unordered_map<ViewModelLogEntry*, SDL_Texture*> textTextures;
-
-    auto lock = presenter->getSemaphore().lock();
-    auto viewModel = presenter->getViewModel();
-
-    const int offsetX = viewModel->getSize().getColumnCount() * TILE_SIZE + 20;
-    const int offsetY = 20;
-
-    SDL_Rect rect{offsetX, offsetY, 200, viewModel->getSize().getRowCount() * TILE_SIZE + TERRITORY_OFFSET - 20};
-    SDL_SetRenderDrawColor(&renderer, 0, 0, 0, 255);
-    SDL_RenderDrawRect(&renderer, &rect);
-
-    rect.x += 4;
-    rect.y += 4;
-
-    auto& logEntries = viewModel->getLogEntries();
-    for (auto iter = logEntries.rbegin(); iter != logEntries.rend(); ++iter) {
-        auto& logEntry = *iter;
-        SDL_Texture* texture;
-        if (textTextures.find(&logEntry) != textTextures.end()) {
-            texture = textTextures[&logEntry];
-        } else {
-            SDL_Color color = toSdlColor(logEntry.getColor());
-            texture = &application->createTextureForText(logEntry.getMessage(), 12, color);
-            textTextures[&logEntry] = texture;
-        }
-
-        SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
-        SDL_RenderCopyEx(&renderer, texture, nullptr, &rect, 0, nullptr, SDL_FLIP_NONE);
-        rect.y += rect.h;
-    }
 }
 
 void HamsterApplicationHandler::onClose() {

@@ -37,7 +37,6 @@ private:
 
     void renderToolbar(SDL_Renderer& renderer);
     void renderTerritory(SDL_Renderer& renderer);
-    void renderGameLog(SDL_Renderer& renderer);
 
     void loadTexture(const std::string& imageName);
     void loadTextureWithCustomKey(const std::string& imageName, const std::string& key);

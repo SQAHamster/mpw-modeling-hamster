@@ -1,7 +1,10 @@
 #include "SdlApplication.h"
 
+#include <sdlgui/theme.h>
 #include <utility>
 #include <sstream>
+
+#include "util/LightTheme.h"
 
 using namespace sdlgui;
 
@@ -36,6 +39,8 @@ void SdlApplication::initialize(int width, int height) {
                 renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
                 SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
                 nanoGuiScreen = std::make_unique<Screen>(window, Vector2i { width, height }, title, true, true);
+                nanoGuiScreen->setTheme(new LightTheme(renderer));
+
                 if (renderer == nullptr) {
                     throwExceptionWithSdlError("Renderer could not be created!");
                 } else {
@@ -73,6 +78,7 @@ void SdlApplication::runApplication() {
         SDL_RenderClear(renderer);
 
         listener.onRender(*renderer);
+        nanoGuiScreen->drawAll();
 
         SDL_RenderPresent(renderer);
     }
