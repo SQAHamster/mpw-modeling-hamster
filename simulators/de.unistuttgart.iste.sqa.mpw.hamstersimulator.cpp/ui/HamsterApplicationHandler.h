@@ -43,7 +43,6 @@ private:
     void renderCell(SDL_Rect& rect, viewmodel::ViewModelCell& cell, SDL_Renderer& renderer);
     void render(SDL_Renderer& renderer, SDL_Rect& rect, const std::string& imageName, int rotation = 0);
 
-    static SDL_Color toSdlColor(viewmodel::Color color);
     std::optional<size_t> getButtonForPosition(int x, int y);
 
     const std::shared_ptr<hamster::HamsterGame> game;

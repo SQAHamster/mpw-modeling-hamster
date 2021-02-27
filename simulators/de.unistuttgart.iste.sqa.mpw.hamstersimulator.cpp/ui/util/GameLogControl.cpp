@@ -2,6 +2,7 @@
 
 #include "WidgetBackgroundWrapper.h"
 #include "ListTheme.h"
+#include "ColorConverter.h"
 
 #include <sdlgui/label.h>
 #include <sdlgui/vscrollpanel.h>
@@ -35,9 +36,10 @@ void hamstersimulator::GameLogControl::bindToGameLog(const viewmodel::GameViewMo
             color = {0, 0, 0, 0};
         }
 
-        auto widget = listPanel->wdg<WidgetBackgroundWrapper>(color)
-            .withFixedSize({width()-6, 20})
-            .label(logEntry.getMessage());
+        auto& widget = listPanel->wdg<WidgetBackgroundWrapper>(color)
+            .withFixedSize({width()-6, 20});
+        widget.label(logEntry.getMessage())
+            .setColor(ColorConverter::toNanoguiColor(logEntry.getColor()));
         logEntryWidgets[&logEntry] = &widget;
         
         scrollPanel->scrollEvent({}, {0, static_cast<float>(-scrollPanel->height())});

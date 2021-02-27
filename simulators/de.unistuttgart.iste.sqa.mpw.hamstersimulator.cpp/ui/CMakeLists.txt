@@ -26,6 +26,7 @@ set(SRCS SdlApplicationListener.h
     util/GameLogControl.cpp util/GameLogControl.h
     util/WidgetBackgroundWrapper.cpp util/WidgetBackgroundWrapper.h
     util/LightTheme.h util/ListTheme.h
+    util/ColorConverter.h
     SimpleHamsterGame.cpp SimpleHamsterGame.h)
 
 # Executable

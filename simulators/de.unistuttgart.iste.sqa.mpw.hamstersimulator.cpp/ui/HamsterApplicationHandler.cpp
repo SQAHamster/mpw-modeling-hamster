@@ -2,6 +2,7 @@
 
 #include "HamsterColors.h"
 #include "util/GameLogControl.h"
+#include "util/ColorConverter.h"
 
 #include <utility>
 #include <thread>
@@ -46,7 +47,7 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
         const std::basic_string<char, std::char_traits<char>, std::allocator<char>>& textureName =
                 "Hamster32" + HamsterColors::toColorName(color);
         loadTextureWithCustomKey("Hamster32", textureName);
-        SDL_Color sdlColor = toSdlColor(color);
+        SDL_Color sdlColor = ColorConverter::toSdlColor(color);
         SDL_SetTextureColorMod(texturesByImageName[textureName], sdlColor.r, sdlColor.g, sdlColor.b);
     }
     loadTexture("Wall32");
@@ -183,19 +184,5 @@ void HamsterApplicationHandler::render(SDL_Renderer& renderer, SDL_Rect& rect,
 void HamsterApplicationHandler::onClose() {
 
 }
-
-SDL_Color HamsterApplicationHandler::toSdlColor(viewmodel::Color color) {
-    switch (color) {
-        case Color::BLACK: return { 0, 0, 0, 255 };
-        case Color::BLUE: return { 0, 0, 255, 255 };
-        case Color::GREEN: return { 0, 255, 0, 255 };
-        case Color::YELLOW: return { 255, 255, 0, 255 };
-        case Color::PINK: return { 255, 175, 175, 255 };
-        case Color::MAGENTA: return { 255, 0, 255, 255 };
-        case Color::RED: return { 255, 0, 0, 255 };
-    }
-    return { 0, 0, 0, 255 };
-}
-
 
 }
