@@ -3,7 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="hamster" nsURI="http://www.mpw.uni-stuttgart.de/hamster" nsPrefix="hamster">
   <eClassifiers xsi:type="ecore:EClass" name="Hamster" eSuperTypes="http://www.mpw.uni-stuttgart.de/mpw#//Actor">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Class for Hamster in the Hamster Simulator. This class allows to initialize&#xA;Hamsters, command Hamsters through their territory and query their state."/>
+      <details key="documentation" value="Class for Hamster in the Hamster Simulator. This class allows to initialize&#xA;Hamsters, command Hamsters through their territory and query their state.&#xA;&#xA;By deriving from Actor, a Hamster represents a TileContent which has a link to the parent Stage."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="grains" upperBound="-1"
         eType="#//Grain"/>
@@ -21,12 +21,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Grain" eSuperTypes="http://www.mpw.uni-stuttgart.de/mpw#//Prop">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A prop which represents grain to be picked or put by a hamster."/>
+      <details key="documentation" value="A prop which represents grain to be picked or put by a hamster.&#xA;&#xA;By deriving from Prop, a Grain represents a TileContent which has a link to the parent Stage."/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Wall" eSuperTypes="http://www.mpw.uni-stuttgart.de/mpw#//Prop">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A prop which represents a blocking content on a tile. A hamster&#xA;cannot be moved on a tile, if a wall is contained."/>
+      <details key="documentation" value="A prop which represents a blocking content on a tile. A hamster&#xA;cannot be moved on a tile, if a wall is contained.&#xA;&#xA;By deriving from Prop, a Wall represents a TileContent which has a link to the parent Stage."/>
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HamsterGame" eSuperTypes="http://www.mpw.uni-stuttgart.de/mpw#//MiniProgrammingWorld">
