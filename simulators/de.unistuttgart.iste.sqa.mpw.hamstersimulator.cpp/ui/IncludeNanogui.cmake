@@ -10,7 +10,7 @@ FetchContent_Declare(
 FetchContent_GetProperties(nanogui)
 FetchContent_MakeAvailable(nanogui)
 
-include_directories(${nanogui_SOURCE_DIR})
+include_directories(SYSTEM ${nanogui_SOURCE_DIR}) # use SYSTEM to avoid warnings
 
 get_directory_property(NANOGUI_SRCS DIRECTORY ${nanogui_SOURCE_DIR} DEFINITION NNGUI_BASIC_SOURCE)
 string(REGEX REPLACE "(sdlgui/[a-z_]+\\.(h|cpp|c))" "${nanogui_SOURCE_DIR}/\\1" NANOGUI_SRCS "${NANOGUI_SRCS}")

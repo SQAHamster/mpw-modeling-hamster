@@ -70,14 +70,13 @@ static void handleCell(TerritoryBuilder& territoryBuilder, int x, int y, char ce
     }
 }
 
-static void iterateTiles(const HamsterGame& game, const std::function<void(Tile&)>& lambda);
+static void iterateTiles(const HamsterGame& game, const std::function<void(const Tile&)>& lambda);
 
 std::string GameStringifier::toString(const HamsterGame& game) {
     std::string actual;
 
-    auto& nonConstGame = const_cast<HamsterGame&>(game); // TODO const-correctness fix this const-correctness issue
-    auto hamster = nonConstGame.getTerritory()->getDefaultHamster()->getInternalHamster();
-    iterateTiles(game, [&](Tile& currentTile) {
+    auto hamster = game.getTerritory()->getDefaultHamster()->getInternalHamster();
+    iterateTiles(game, [&](const Tile& currentTile) {
         if (hamster->getCurrentTile().get() == &currentTile) {
             actual += util::DirectionTestHelper::toDirection(hamster->getDirection());
         } else if (!collectionhelpers::type_select<Wall>(currentTile.getContents()).empty()) {
@@ -99,7 +98,7 @@ std::string GameStringifier::toString(const HamsterGame& game) {
 std::string GameStringifier::grainsOnTerritoryToString(const HamsterGame& game) {
     std::string actual;
 
-    iterateTiles(game, [&](Tile& currentTile) {
+    iterateTiles(game, [&](const Tile& currentTile) {
         auto grainsCount = collectionhelpers::type_select<Grain>(currentTile.getContents()).size();
         actual += std::to_string(grainsCount);
 
@@ -111,13 +110,12 @@ std::string GameStringifier::grainsOnTerritoryToString(const HamsterGame& game) 
     return actual;
 }
 
-static void iterateTiles(const HamsterGame& game, const std::function<void(Tile&)>& lambda) {
-    auto& nonConstGame = const_cast<HamsterGame&>(game); // TODO fix this const-correctness issue
-    auto& tiles = nonConstGame.getTerritory()->getInternalTerritory()->getTiles();
+static void iterateTiles(const HamsterGame& game, const std::function<void(const Tile&)>& lambda) {
+    auto& tiles = game.getTerritory()->getInternalTerritory()->getTiles();
     auto upperLeftTile = collectionhelpers::get_at(tiles, 0).value();
     auto firstOfRowTile = upperLeftTile;
 
-    std::shared_ptr<Tile> currentTile = upperLeftTile;
+    std::shared_ptr<const Tile> currentTile = upperLeftTile;
 
     while (currentTile != nullptr) {
         lambda(*currentTile);

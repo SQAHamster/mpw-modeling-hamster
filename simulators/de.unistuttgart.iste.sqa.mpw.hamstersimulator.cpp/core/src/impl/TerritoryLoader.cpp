@@ -37,7 +37,7 @@ void TerritoryLoader::interpretLoadedTerritoryLines(const std::vector<std::strin
 void TerritoryLoader::setSizeFromStrings(const std::vector<std::string>& lines) {
     this->loadedTerritoryDimensions.setColumnCount(std::stoi(lines[0]));
     this->loadedTerritoryDimensions.setRowCount(std::stoi(lines[1]));
-    this->territoryBuilder->initTerritory(this->loadedTerritoryDimensions.getColumnCount(), this->loadedTerritoryDimensions.getRowCount()); // todo allow size as parameter
+    this->territoryBuilder->initTerritory(this->loadedTerritoryDimensions.getColumnCount(), this->loadedTerritoryDimensions.getRowCount());
 }
 
 void TerritoryLoader::buildTiles(const std::vector<std::string>& lines) {
