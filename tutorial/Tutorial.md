@@ -23,9 +23,6 @@ Some notes on the extension:
 * Clone mpw-modeling-hamster
     * from https://github.com/Fumapps/mpw-modeling-hamster.git
         * `git clone https://github.com/Fumapps/mpw-modeling-hamster.git`
-    * switch to branch `review-2021-02`
-        * `cd mpw-modeling-hamster`
-        * `git checkout review-2021-02`
 * Import with Maven: "Existing Maven Projects"
     * Note: dependent on the checkout and concrete import steps, the root project either is imported as "mpw-modeling-hamster" or "hamster-modeling-root"
 
@@ -141,7 +138,7 @@ precondition: self.breadcrumbAvailable();
 postcondition: self.currentTile.contents->size() = 1 and self.currentTile.contents->at(0) = self;
 ```
 
-# Extend presenter
+# Extend presenter (Java)
 
 ## Regenerate
 
@@ -186,7 +183,7 @@ After finishing the modeling of the Breadcrumb entity, a query and the two comma
 
 * Note: `onSetTileNodeAtForCell` is called every time, if the tile contents have changed
 
-* now, add the `Breadcrumb32.png` ![Breadcrumb32.png](Breadcrumb32.png) (https://github.com/Fumapps/mpw-modeling-hamster/blob/review-2021-02/tutorial/Breadcrumb32.png) image to `/ui/src/main/resources/images`
+* now, add the `Breadcrumb32.png` ![Breadcrumb32.png](Breadcrumb32.png) (https://github.com/Fumapps/mpw-modeling-hamster/raw/master/tutorial/Breadcrumb32.png) image to `/ui/src/main/resources/images`
 
 * last, extend the `loadPropImages()` method in `ui/src/main/java/de/unistuttgart/hamstersimulator/ui/TileNode`, for mapping the symbolic image name
 
@@ -204,3 +201,96 @@ After finishing the modeling of the Breadcrumb entity, a query and the two comma
     * under `/ui/src/main/java/de/unistuttgart/hamstersimulator/examples`
     
 ![Screenshot finished](09%20Screenshot%20extended%20Simulator.png)
+
+# Extend presenter (C++)
+
+Optionally, also the C++ simulator can be extended for the new breadcrumb entity.
+
+## Extend the C++ HamsterGameViewPresenter
+
+* open the CMake-based C++ simulator under `/simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp`
+    * use an IDE of choice, like Visual Studio or CLion
+* goto "/core/src/impl" and open the "HamsterGameViewPresenter.h" class header
+    * include the "Breadcrumb.h" file
+    * declare two methods `configureBreadcrumbImageView()` and `refreshBreadcrumbLayer()`
+
+```cpp
+private:
+    ...
+    void configureBreadcrumbImageView(ViewModelCell& cell, const mpw::Tile& tile);
+    void refreshBreadcrumbLayer(ViewModelCellLayer& layer, const mpw::Tile& tile);
+```
+
+* declare a helper method to return the breadcrumbs on a given tile
+    
+```cpp
+private:
+...
+    static std::list<std::shared_ptr<hamster::Breadcrumb>> getBreadcrumbsOfTile(const mpw::Tile& tile);
+```
+
+* next, goto the related "HamsterGameViewPresenter.cpp" class source
+
+    * implement the `configureBreadcrumbImageView()` and `refreshBreadcrumbLayer()` methods
+
+```cpp
+void HamsterGameViewPresenter::configureBreadcrumbImageView(ViewModelCell& cell, const Tile& tile)
+{
+    auto breadcrumbLayer = std::make_shared<ViewModelCellLayer>();
+    breadcrumbLayer->setImageName("Breadcrumb32");
+    refreshBreadcrumbLayer(*breadcrumbLayer, tile);
+
+    cell.addToLayers(breadcrumbLayer);
+}
+
+void HamsterGameViewPresenter::refreshBreadcrumbLayer(ViewModelCellLayer& layer, const Tile& tile)
+{
+    layer.setVisible(!getBreadcrumbsOfTile(tile).empty());
+}
+```
+
+
+* implement the `getBreadcrumbsOfTile()`
+
+```cpp
+std::list<std::shared_ptr<hamster::Breadcrumb>> HamsterGameViewPresenter::getBreadcrumbsOfTile(const Tile& tile)
+{
+    return type_select<hamster::Breadcrumb>(const_cast<Tile&>(tile).getContents());
+}
+```
+
+* in the existing `onSetTileNodeAtForCell()` method, call the new configure method
+
+```cpp
+void HamsterGameViewPresenter::onSetTileNodeAtForCell(ViewModelCell& cell, const mpw::Tile& tile)
+{
+    configureWallImageView(cell, tile);
+    configureGrainImageView(cell, tile);
+    configureBreadcrumbImageView(cell, tile);
+    for (std::shared_ptr<ReadOnlyHamster> hamster : getHamstersOfTile(tile))
+    {
+        configureHamsterImageView(cell, *hamster);
+    }
+}
+```
+
+* now, add the `Breadcrumb32.png` ![Breadcrumb32.png](Breadcrumb32.png) (https://github.com/Fumapps/mpw-modeling-hamster/raw/master/tutorial/Breadcrumb32.png) image to `/ui/resources/images`
+
+* last, extend the `onInitialized()` method in `ui/HamsterApplicationHandler.cpp`, for loading the image
+
+```cpp
+void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
+    this->application = &application;
+...
+    loadTexture("Wall32");
+    loadTexture("Breadcrumb32");
+...
+}
+```
+
+* finally, adapt an example or create a new one, and test the C++ breadcrumb commands :-)
+    * under `ui/examples`
+
+# Sample solution
+
+If necessary, the sample solution for this tutorial can be found here: `https://github.com/Fumapps/mpw-modeling-hamster/tree/tutorial-solution`
