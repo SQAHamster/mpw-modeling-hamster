@@ -11,22 +11,22 @@
 
 #include <unordered_map>
 
-namespace viewmodel
-{
+namespace viewmodel {
 
-class HamsterGameViewPresenter : public GameViewPresenterBase
-{
+class HamsterGameViewPresenter : public GameViewPresenterBase {
 private:
     using inherited = GameViewPresenterBase;
 
 public:
 
-    HamsterGameViewPresenter(std::shared_ptr<hamster::HamsterGame> game);
+    explicit HamsterGameViewPresenter(std::shared_ptr<hamster::HamsterGame> game);
 
 protected:
 
     const mpw::Size& getStageSizeFromConcreteStage() override;
+
     const framework::ObservableListProperty<mpw::Tile>& getTilesPropertyFromConcreteStage() override;
+
     void onSetTileNodeAtForCell(ViewModelCell& cell, const mpw::Tile& tile) override;
 
     Color getColorForLogEntry(const mpw::LogEntry& entry) const override;

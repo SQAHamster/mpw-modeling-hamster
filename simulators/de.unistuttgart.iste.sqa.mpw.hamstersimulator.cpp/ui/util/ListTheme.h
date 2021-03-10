@@ -11,8 +11,8 @@ public:
     explicit ListTheme(SDL_Renderer* context) : LightTheme(context) {
         mWindowHeaderHeight = 0;
         mWindowDropShadowSize = 0;
-        mWindowFillFocused = { 255, 255 };
-        mWindowFillUnfocused = { 255, 255 };
+        mWindowFillFocused = {255, 255};
+        mWindowFillUnfocused = {255, 255};
     }
 };
 

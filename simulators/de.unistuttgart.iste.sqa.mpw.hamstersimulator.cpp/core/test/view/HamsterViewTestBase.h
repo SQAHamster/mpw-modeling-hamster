@@ -42,6 +42,7 @@ protected:
 private:
 
     static void initCharMapping();
+
     void assertLocationsAreSet();
     void assertSizeIsConsistent();
 

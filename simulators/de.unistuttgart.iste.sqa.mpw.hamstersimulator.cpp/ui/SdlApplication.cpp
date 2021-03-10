@@ -13,6 +13,7 @@ namespace hamstersimulator {
 static void throwExceptionWithSdlError(const std::string& message) {
     throw std::runtime_error(message + " SDL Error: " + SDL_GetError());
 }
+
 static void throwExceptionWithSdlTtfError(const std::string& message) {
     throw std::runtime_error(message + " TTF Error: " + TTF_GetError());
 }
@@ -26,7 +27,7 @@ void SdlApplication::initialize(int width, int height) {
         throwExceptionWithSdlError("SDL could not initialize!");
     } else {
         window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                                  width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN );
+                                  width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
         if (window == nullptr) {
             throwExceptionWithSdlError("Window could not be created!");
         } else {
@@ -38,7 +39,7 @@ void SdlApplication::initialize(int width, int height) {
             } else {
                 renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
                 SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-                nanoGuiScreen = std::make_unique<Screen>(window, Vector2i { width, height }, title, true, true);
+                nanoGuiScreen = std::make_unique<Screen>(window, Vector2i{width, height}, title, true, true);
                 nanoGuiScreen->setTheme(new LightTheme(renderer));
 
                 if (renderer == nullptr) {

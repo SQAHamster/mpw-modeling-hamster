@@ -5,7 +5,7 @@ FetchContent_Declare(
         nanogui
         GIT_REPOSITORY https://github.com/dalerank/nanogui-sdl
         GIT_TAG 24fc12ca7a0789f52b72204d88ddbf0a1c3eb0be
-        CMAKE_ARGS        "-Wno-dev"
+        CMAKE_ARGS "-Wno-dev"
 )
 FetchContent_GetProperties(nanogui)
 FetchContent_MakeAvailable(nanogui)
@@ -23,22 +23,22 @@ file(WRITE "${nanogui_SOURCE_DIR}/sdlgui/nanort.h" "${nanort_header_file_content
 add_library(nanogui_lib STATIC ${NANOGUI_SRCS})
 
 # Disable Nanogui warnings
-if ( CMAKE_COMPILER_IS_GNUCC )
+if (CMAKE_COMPILER_IS_GNUCC)
     set_source_files_properties(${NANOGUI_SRCS}
             PROPERTIES
-            COMPILE_FLAGS  "-Wno-all -Wno-extra -Wno-format-truncation -Wno-narrowing")
-endif()
-if(CMAKE_CXX_COMPILER_ID STREQUAL Clang OR
+            COMPILE_FLAGS "-Wno-all -Wno-extra -Wno-format-truncation -Wno-narrowing")
+endif ()
+if (CMAKE_CXX_COMPILER_ID STREQUAL Clang OR
         CMAKE_CXX_COMPILER_ID STREQUAL AppleClang)
     set_source_files_properties(${NANOGUI_SRCS}
             PROPERTIES
-            COMPILE_FLAGS  "-Wno-c++11-narrowing -Wno-inconsistent-missing-override")
-endif()
-if(MSVC)
+            COMPILE_FLAGS "-Wno-c++11-narrowing -Wno-inconsistent-missing-override")
+endif ()
+if (MSVC)
     set_source_files_properties(${NANOGUI_SRCS}
             PROPERTIES
-            COMPILE_FLAGS  "/w")
-endif()
+            COMPILE_FLAGS "/w")
+endif ()
 
 target_include_directories(nanogui_lib PRIVATE ${nanogui_SOURCE_DIR}/sdlgui)
 set_target_properties(nanogui_lib PROPERTIES LINKER_LANGUAGE CXX)

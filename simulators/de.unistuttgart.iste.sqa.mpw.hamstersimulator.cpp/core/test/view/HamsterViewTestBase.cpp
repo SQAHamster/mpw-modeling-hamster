@@ -15,8 +15,7 @@ void HamsterViewTestBase::SetUp() {
     initCharMapping();
 }
 
-void HamsterViewTestBase::TearDown()
-{
+void HamsterViewTestBase::TearDown() {
     game->getPerformance()->abortOrStopGame();
 }
 

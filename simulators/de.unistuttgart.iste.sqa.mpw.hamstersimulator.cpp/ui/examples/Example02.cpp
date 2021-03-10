@@ -2,8 +2,7 @@
 
 using namespace hamster;
 
-class Example02 : public hamstersimulator::SimpleHamsterGame
-{
+class Example02 : public hamstersimulator::SimpleHamsterGame {
 protected:
     void run() override;
 };

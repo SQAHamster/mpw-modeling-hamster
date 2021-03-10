@@ -66,7 +66,7 @@ static void handleCell(TerritoryBuilder& territoryBuilder, int x, int y, char ce
         case '#':
             territoryBuilder.addWallToTile(x, y);
             break;
-        default: ;
+        default:;
     }
 }
 

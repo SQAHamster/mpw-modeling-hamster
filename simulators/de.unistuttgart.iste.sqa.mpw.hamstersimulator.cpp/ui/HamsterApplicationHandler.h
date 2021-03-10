@@ -33,7 +33,9 @@ public:
 
 private:
 
-    void createButton(const std::string& imageName, const framework::ObservablePrimitiveProperty<bool>& buttonEnabledProperty, std::function<void()> clickFunction);
+    void createButton(const std::string& imageName,
+                      const framework::ObservablePrimitiveProperty<bool>& buttonEnabledProperty,
+                      std::function<void()> clickFunction);
 
     void renderToolbar(SDL_Renderer& renderer);
     void renderTerritory(SDL_Renderer& renderer);
@@ -49,7 +51,7 @@ private:
     const std::shared_ptr<viewmodel::GameViewPresenter> presenter;
     const std::function<void()> hamsterProgram;
 
-    SdlApplication* application {nullptr};
+    SdlApplication* application{nullptr};
     std::shared_ptr<SdlGameInputInterface> sdlGameInputInterface;
 
     std::unordered_map<std::string, SDL_Texture*> texturesByImageName;

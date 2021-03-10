@@ -14,7 +14,7 @@ std::unique_ptr<TerritoryLoader> TerritoryLoader::initializeFor(hamster::Hamster
 }
 
 TerritoryLoader::TerritoryLoader(std::shared_ptr<hamster::TerritoryBuilder> territoryBuilder)
-    : territoryBuilder(std::move(territoryBuilder)) {
+        : territoryBuilder(std::move(territoryBuilder)) {
 
 }
 
@@ -30,14 +30,15 @@ void TerritoryLoader::loadFromInputStream(std::ifstream& inputStream) {
 
 void TerritoryLoader::interpretLoadedTerritoryLines(const std::vector<std::string>& list) {
     setSizeFromStrings(list);
-    std::vector<std::string> territoryDefinition(list.begin()+2, list.end());
+    std::vector<std::string> territoryDefinition(list.begin() + 2, list.end());
     buildTiles(territoryDefinition);
 }
 
 void TerritoryLoader::setSizeFromStrings(const std::vector<std::string>& lines) {
     this->loadedTerritoryDimensions.setColumnCount(std::stoi(lines[0]));
     this->loadedTerritoryDimensions.setRowCount(std::stoi(lines[1]));
-    this->territoryBuilder->initTerritory(this->loadedTerritoryDimensions.getColumnCount(), this->loadedTerritoryDimensions.getRowCount());
+    this->territoryBuilder->initTerritory(this->loadedTerritoryDimensions.getColumnCount(),
+                                          this->loadedTerritoryDimensions.getRowCount());
 }
 
 void TerritoryLoader::buildTiles(const std::vector<std::string>& lines) {
@@ -85,7 +86,8 @@ void TerritoryLoader::buildTiles(const std::vector<std::string>& lines) {
     }
     size_t lineOffsetForGrainsInMouth = this->loadedTerritoryDimensions.getRowCount() + grainLocations.size();
     const int initialGrainCount = std::stoi(lines[lineOffsetForGrainsInMouth]);
-    territoryBuilder->initDefaultHamster(defaultHamsterLocation.value(), defaultHamsterDirection.value(), initialGrainCount);
+    territoryBuilder->initDefaultHamster(defaultHamsterLocation.value(), defaultHamsterDirection.value(),
+                                         initialGrainCount);
     placeGrain(lines, grainLocations);
 }
 

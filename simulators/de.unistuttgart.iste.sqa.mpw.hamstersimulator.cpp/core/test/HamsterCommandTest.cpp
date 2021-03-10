@@ -31,13 +31,14 @@ using namespace util;
  */
 class HamsterCommandTest : public testing::Test {
 private:
-    std::shared_ptr<HamsterGame> game {};
-    std::shared_ptr<Hamster> sut {};
+    std::shared_ptr<HamsterGame> game{};
+    std::shared_ptr<Hamster> sut{};
 
 public:
 
     void withTerritory(const std::string& map);
     std::shared_ptr<TerritoryBuilder> withTerritoryBuilder(const std::string& map);
+
     void initNewHamster(Location location, Direction direction);
     void removeFromStage();
     static Location locationOf(int x, int y);
@@ -48,6 +49,7 @@ public:
     void pickGrain();
     void putGrain();
     void write(std::string message);
+
     void assertTerritory(const std::string& expected);
     void assertFrontIsClear();
     void assertFrontIsNotClear();
@@ -125,7 +127,7 @@ static const int oneGrain = 1;
 
 TEST_F(HamsterCommandTest, givenHamsterWithGrainAvailable_whenPickGrain_thenPickedGrain) { /* NOLINT */
     withTerritoryBuilder(">;")
-        ->addGrainsToTile(locationOf(0, 0), oneGrain);
+            ->addGrainsToTile(locationOf(0, 0), oneGrain);
     start();
 
     pickGrain();
@@ -262,7 +264,7 @@ TEST_F(HamsterCommandTest, givenHamsterBeforeWall_whenMove_ThenExceptionIsThrown
     });
 }
 
- // test of invariant "isInitialized"
+// test of invariant "isInitialized"
 TEST_F(HamsterCommandTest, givenHamsterWithCurrentTileIsNull_whenMove_ThenExceptionIsThrown) { /* NOLINT */
     withTerritory(" <;");
     removeFromStage();

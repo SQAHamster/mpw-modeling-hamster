@@ -16,8 +16,7 @@ int main() {
     auto game = HamsterGame::create();
     TerritoryLoader::initializeFor(*game)->loadFromResourceFile("resources/territories/example01.ter");
 
-    HamsterApplicationHandler applicationHandler(game, []()
-    {
+    HamsterApplicationHandler applicationHandler(game, []() {
 
     });
 

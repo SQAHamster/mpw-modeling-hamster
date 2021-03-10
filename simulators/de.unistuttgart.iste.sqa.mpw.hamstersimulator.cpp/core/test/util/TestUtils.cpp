@@ -23,6 +23,7 @@ static std::string internalJoin(const std::string& separator, const T& strings) 
 std::string TestUtils::join(const std::string& separator, const std::vector<std::string>& strings) {
     return internalJoin(separator, strings);
 }
+
 std::string TestUtils::join(const std::string& separator, const std::list<std::string>& strings) {
     return internalJoin(separator, strings);
 }

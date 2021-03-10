@@ -12,19 +12,26 @@ public:
     }
 
     template<typename iterator_type=iterator>
-    typename std::enable_if<std::is_same<iterator_type, typename list::iterator>::value, iterator_type>::type endIter(list& l) {
+    typename std::enable_if<std::is_same<iterator_type, typename list::iterator>::value, iterator_type>::type
+    endIter(list& l) {
         return l.end();
     }
+
     template<typename iterator_type=iterator>
-    typename std::enable_if<std::is_same<iterator_type, typename list::const_iterator>::value, iterator_type>::type endIter(list& l) {
+    typename std::enable_if<std::is_same<iterator_type, typename list::const_iterator>::value, iterator_type>::type
+    endIter(list& l) {
         return l.cend();
     }
+
     template<typename iterator_type=iterator>
-    typename std::enable_if<std::is_same<iterator_type, typename list::reverse_iterator>::value, iterator_type>::type endIter(list& l) {
+    typename std::enable_if<std::is_same<iterator_type, typename list::reverse_iterator>::value, iterator_type>::type
+    endIter(list& l) {
         return l.rend();
     }
+
     template<typename iterator_type=iterator>
-    typename std::enable_if<std::is_same<iterator_type, typename list::const_reverse_iterator>::value, iterator_type>::type endIter(list& l) {
+    typename std::enable_if<std::is_same<iterator_type, typename list::const_reverse_iterator>::value, iterator_type>::type
+    endIter(list& l) {
         return l.crend();
     }
 
@@ -34,7 +41,6 @@ public:
 #include <list>
 
 namespace util {
-
 
 
 mpw::Direction DirectionTestHelper::toDirection(char c) {

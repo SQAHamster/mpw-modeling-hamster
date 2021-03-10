@@ -21,10 +21,13 @@ namespace viewmodel {
 class HamsterViewModelStringifier {
 public:
 
-    HamsterViewModelStringifier(const std::unordered_map<std::string, std::string>& imageCharsMapping, int maxCharsPerCell);
+    HamsterViewModelStringifier(const std::unordered_map<std::string, std::string>& imageCharsMapping,
+                                int maxCharsPerCell);
 
     std::string territoryToExpectationString(const GameViewModel& viewModel);
+
     static std::string logToString(const GameViewModel& viewModel);
+
     static std::string buttonBarToExpectationString(const GameViewModel& viewModel);
 
 private:

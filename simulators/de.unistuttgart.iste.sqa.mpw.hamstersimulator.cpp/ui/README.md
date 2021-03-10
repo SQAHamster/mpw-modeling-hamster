@@ -17,7 +17,6 @@
     * set a `SDL2_IMAGE_DIR` variable: `set(SDL2_IMAGE_DIR "<path-to-sdl-image-dir>")`
     * set a `SDL2_TTF_DIR` variable: `set(SDL2_TTF_DIR "<path-to-sdl-ttf-dir>")`
 
-
 ### SDL notes
 
 * setup based on: https://trenki2.github.io/blog/2017/07/04/using-sdl2-image-with-cmake/

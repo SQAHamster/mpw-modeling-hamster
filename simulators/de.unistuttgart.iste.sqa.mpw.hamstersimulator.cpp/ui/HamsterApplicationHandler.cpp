@@ -19,8 +19,8 @@ namespace hamstersimulator {
 
 HamsterApplicationHandler::HamsterApplicationHandler(std::shared_ptr<hamster::HamsterGame> game,
                                                      std::function<void()> hamsterProgram)
-        : game(std::move(game)), hamsterProgram(std::move(hamsterProgram))
-        , presenter(std::make_shared<HamsterGameViewPresenter>(this->game))  {
+        : game(std::move(game)), hamsterProgram(std::move(hamsterProgram)),
+          presenter(std::make_shared<HamsterGameViewPresenter>(this->game)) {
 }
 
 HamsterApplicationHandler::~HamsterApplicationHandler() {
@@ -42,7 +42,8 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
 
     loadTexture("Tile64");
 
-    std::vector<Color> colorValues { Color::BLACK, Color::BLUE, Color::GREEN, Color::YELLOW, Color::PINK, Color::MAGENTA, Color::RED };
+    std::vector<Color> colorValues{Color::BLACK, Color::BLUE, Color::GREEN, Color::YELLOW, Color::PINK, Color::MAGENTA,
+                                   Color::RED};
     for (auto color : colorValues) {
         const std::basic_string<char, std::char_traits<char>, std::allocator<char>>& textureName =
                 "Hamster32" + HamsterColors::toColorName(color);
@@ -66,8 +67,10 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
     hamsterThread = std::thread(hamsterProgram);
 }
 
-void HamsterApplicationHandler::createButton(const std::string& imageName, const framework::ObservablePrimitiveProperty<bool>& buttonEnabledProperty, std::function<void()> clickFunction) {
-    SDL_Rect rect {TOOLBAR_MARGIN, TOOLBAR_MARGIN, BUTTON_SIZE, BUTTON_SIZE};
+void HamsterApplicationHandler::createButton(const std::string& imageName,
+                                             const framework::ObservablePrimitiveProperty<bool>& buttonEnabledProperty,
+                                             std::function<void()> clickFunction) {
+    SDL_Rect rect{TOOLBAR_MARGIN, TOOLBAR_MARGIN, BUTTON_SIZE, BUTTON_SIZE};
     int previousButtonsCount = static_cast<int>(buttons.size());
     rect.x += (previousButtonsCount * BUTTON_SIZE + previousButtonsCount * TOOLBAR_MARGIN);
     loadTexture(imageName);
@@ -117,7 +120,7 @@ void HamsterApplicationHandler::onEvent(SDL_Event& event) {
 }
 
 std::optional<size_t> HamsterApplicationHandler::getButtonForPosition(int x, int y) {
-    SDL_Point point {x, y};
+    SDL_Point point{x, y};
     for (size_t i = 0; i < buttons.size(); i++) {
         if (SDL_PointInRect(&point, &buttons[i].rect)) {
             return i;

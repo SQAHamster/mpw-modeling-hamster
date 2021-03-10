@@ -3,8 +3,8 @@ project(hamstersimulator_sdl2)
 set(CMAKE_CXX_STANDARD 17)
 
 if (MSVC)
-  include(CMakeListsLocalProperties.cmake) # define SDL properties on Windows
-endif()
+    include(CMakeListsLocalProperties.cmake) # define SDL properties on Windows
+endif ()
 
 # SDL
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/") ## use helper SDL2 cmake file (see https://github.com/trenki2/SDL2Test/tree/master/cmake)
@@ -70,19 +70,19 @@ add_custom_command(TARGET hamstersimulator_example02 PRE_BUILD
         ${CMAKE_CURRENT_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
 
 if (MSVC)
-  # copy SDL DLLs to output
-  add_custom_command(TARGET hamstersimulator_cpp POST_BUILD
-          COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${SDL2_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_cpp>)
-  # copy SDL_image DLLs to output
-  add_custom_command(TARGET hamstersimulator_cpp POST_BUILD
-          COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${SDL2_IMAGE_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_cpp>)
-  # copy SDL_ttf DLLs to output
-  add_custom_command(TARGET hamstersimulator_cpp POST_BUILD
-          COMMAND ${CMAKE_COMMAND} -E copy_directory
-          ${SDL2_TTF_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_cpp>)
-endif()
+    # copy SDL DLLs to output
+    add_custom_command(TARGET hamstersimulator_cpp POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${SDL2_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_cpp>)
+    # copy SDL_image DLLs to output
+    add_custom_command(TARGET hamstersimulator_cpp POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${SDL2_IMAGE_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_cpp>)
+    # copy SDL_ttf DLLs to output
+    add_custom_command(TARGET hamstersimulator_cpp POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            ${SDL2_TTF_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_cpp>)
+endif ()
 
 ## From Stackoverflow (https://stackoverflow.com/a/62645348)
 # Never set CMAKE_CXX_FLAGS in your CMakeLists.txt

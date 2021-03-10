@@ -2,7 +2,9 @@
 #define HAMSTERSIMULATOR_CPP_SDLAPPLICATION_H
 
 #include <SDL.h>
+
 #undef main // fixes compile error on Windows
+
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include <sdlgui/screen.h>

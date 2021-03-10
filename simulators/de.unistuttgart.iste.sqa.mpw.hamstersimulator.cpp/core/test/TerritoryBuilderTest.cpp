@@ -17,8 +17,8 @@ using namespace util;
 /// \note use 'NO-LINT' comment at tests to suppress a warning caused by TEST_F /* NOLINT */
 class TerritoryBuilderTest : public testing::Test {
 private:
-    std::shared_ptr<HamsterGame> game {};
-    std::shared_ptr<TerritoryBuilder> sut {};
+    std::shared_ptr<HamsterGame> game{};
+    std::shared_ptr<TerritoryBuilder> sut{};
 
 public:
 
@@ -26,11 +26,15 @@ public:
 
     TerritoryBuilder& withTerritoryBuilder();
     TerritoryBuilder& withTerritory(const std::string& map);
+
     void startGame();
     void hardReset();
-    TerritoryBuilder& getSut() const { return *sut;  }
+
+    TerritoryBuilder& getSut() const { return *sut; }
+
     void assertGrainsOnTerritory(const std::string& expected);
     void assertTerritory(const std::string& expected);
+
     int amountOf(int amount);
     Location locationOf(int column, int row);
 
@@ -108,28 +112,27 @@ TEST_F(TerritoryBuilderTest, givenTerritory1x1_whenStartGame_andAddGrainToTile_t
 
 // Scenario: init clears previous territory
 TEST_F(TerritoryBuilderTest, givenTerritory3x2_andHamsterOn0x0_andWallOn1x1_whenReinitTerritory1x1_andAddHamsterOn0x0_thenTerritoryIsRebuilt) { /* NOLINT */
-  withTerritory("v *;"
-                " # ;");
-  getSut().initTerritory(1, 1)
-    .initDefaultHamster(0, 0, Direction::NORTH, 1);
-  assertTerritory("^;");
+    withTerritory("v *;"
+                  " # ;");
+    getSut().initTerritory(1, 1)
+            .initDefaultHamster(0, 0, Direction::NORTH, 1);
+    assertTerritory("^;");
 }
 
 // Scenario: hardReset allows editor commands again
 TEST_F(TerritoryBuilderTest, givenTerritory3x2_andHamsterOn1x1_whenStartGame_andHardReset_andReinitTerritory1x1_andAddHamsterOn0x0_thenTerritoryIsRebuilt) { /* NOLINT */
-  withTerritory("   ;"
-                " > ;");
-  startGame();
-  hardReset();
-  getSut().initTerritory(1, 1)
-    .initDefaultHamster(0, 0, Direction::NORTH, 1);
-  assertTerritory("^;");
+    withTerritory("   ;"
+                  " > ;");
+    startGame();
+    hardReset();
+    getSut().initTerritory(1, 1)
+            .initDefaultHamster(0, 0, Direction::NORTH, 1);
+    assertTerritory("^;");
 }
 
 //<editor-fold desc="helpers">
 
-void TerritoryBuilderTest::TearDown()
-{
+void TerritoryBuilderTest::TearDown() {
     game->getPerformance()->abortOrStopGame();
 }
 
@@ -146,13 +149,11 @@ TerritoryBuilder& TerritoryBuilderTest::withTerritory(const std::string& map) {
     return *sut;
 }
 
-void TerritoryBuilderTest::startGame()
-{
+void TerritoryBuilderTest::startGame() {
     game->startGamePaused();
 }
 
-void TerritoryBuilderTest::hardReset()
-{
+void TerritoryBuilderTest::hardReset() {
     game->hardReset();
 }
 

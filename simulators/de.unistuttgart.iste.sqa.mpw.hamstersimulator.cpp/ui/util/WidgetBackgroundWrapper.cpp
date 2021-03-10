@@ -7,8 +7,7 @@
 namespace hamstersimulator {
 
 WidgetBackgroundWrapper::WidgetBackgroundWrapper(sdlgui::Widget* parent, const SDL_Color& color)
-    : Widget(parent)
-    , color(color) {
+        : Widget(parent), color(color) {
 }
 
 void WidgetBackgroundWrapper::draw(SDL_Renderer* renderer) {

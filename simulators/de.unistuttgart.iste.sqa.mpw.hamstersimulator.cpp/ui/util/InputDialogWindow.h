@@ -11,10 +11,12 @@ public:
 
     using Type = sdlgui::MessageDialog::Type;
 
-    explicit InputDialogWindow(Widget *parent, Type type, const std::string &title, const std::string &message);
+    explicit InputDialogWindow(Widget* parent, Type type, const std::string& title, const std::string& message);
 
     void setNumeric(bool numeric);
+
     void setInputFieldVisible(bool visible);
+
     void setCallback(std::function<void()> callback) {
         mCallback = callback;
     }

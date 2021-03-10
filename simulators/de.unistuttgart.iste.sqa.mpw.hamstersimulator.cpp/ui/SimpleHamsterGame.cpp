@@ -7,8 +7,7 @@ using namespace hamster;
 namespace hamstersimulator {
 
 SimpleHamsterGame::SimpleHamsterGame()
-        : game(HamsterGame::create())
-        , paule(*game->getTerritory()->getDefaultHamster()) {
+        : game(HamsterGame::create()), paule(*game->getTerritory()->getDefaultHamster()) {
     initializeGame();
     game->startGamePaused();
 }
@@ -27,8 +26,7 @@ void SimpleHamsterGame::doRun() {
 }
 
 void SimpleHamsterGame::displayInNewGameWindow() {
-    HamsterApplicationHandler applicationHandler(game, [&]()
-    {
+    HamsterApplicationHandler applicationHandler(game, [&]() {
         try {
             run();
         } catch (framework::GameAbortedException& e) {

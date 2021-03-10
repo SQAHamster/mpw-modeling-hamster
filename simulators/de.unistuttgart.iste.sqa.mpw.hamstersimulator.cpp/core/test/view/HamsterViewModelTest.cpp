@@ -41,92 +41,92 @@ TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */ /* NOLINT */
 
 
 TEST_F(HamsterViewModelTest, testMove) { /* NOLINT */
-        withTerritory("/territories/example01.ter");
-        paule->move();
-        assertTerritory(
-        "|####|####|####|####|####|\n"
-        "|####|    |>   | 2* |####|\n"
-        "|####|####|####|####|####|\n");
-        EXPECT_EQ(true, paule->mouthEmpty());
-        EXPECT_EQ(true, paule->frontIsClear());
-        EXPECT_EQ(false, paule->grainAvailable());
-        EXPECT_EQ(Direction::EAST, paule->getDirection());
-        EXPECT_EQ(1, paule->getLocation().getRow());
-        EXPECT_EQ(2, paule->getLocation().getColumn());
+    withTerritory("/territories/example01.ter");
+    paule->move();
+    assertTerritory(
+            "|####|####|####|####|####|\n"
+            "|####|    |>   | 2* |####|\n"
+            "|####|####|####|####|####|\n");
+    EXPECT_EQ(true, paule->mouthEmpty());
+    EXPECT_EQ(true, paule->frontIsClear());
+    EXPECT_EQ(false, paule->grainAvailable());
+    EXPECT_EQ(Direction::EAST, paule->getDirection());
+    EXPECT_EQ(1, paule->getLocation().getRow());
+    EXPECT_EQ(2, paule->getLocation().getColumn());
 }
 
 TEST_F(HamsterViewModelTest, testPickGrain) { /* NOLINT */
-        withTerritory("/territories/example01.ter");
-        paule->move();
-        paule->move();
-        paule->pickGrain();
-        assertTerritory(
-        "|####|####|####|####|####|\n"
-        "|####|    |    | 1*>|####|\n"
-        "|####|####|####|####|####|\n");
-        EXPECT_EQ(false, paule->mouthEmpty());
-        EXPECT_EQ(false, paule->frontIsClear());
-        EXPECT_EQ(true, paule->grainAvailable());
-        EXPECT_EQ(Direction::EAST, paule->getDirection());
-        EXPECT_EQ(1, paule->getLocation().getRow());
-        EXPECT_EQ(3, paule->getLocation().getColumn());
+    withTerritory("/territories/example01.ter");
+    paule->move();
+    paule->move();
+    paule->pickGrain();
+    assertTerritory(
+            "|####|####|####|####|####|\n"
+            "|####|    |    | 1*>|####|\n"
+            "|####|####|####|####|####|\n");
+    EXPECT_EQ(false, paule->mouthEmpty());
+    EXPECT_EQ(false, paule->frontIsClear());
+    EXPECT_EQ(true, paule->grainAvailable());
+    EXPECT_EQ(Direction::EAST, paule->getDirection());
+    EXPECT_EQ(1, paule->getLocation().getRow());
+    EXPECT_EQ(3, paule->getLocation().getColumn());
 }
 
 TEST_F(HamsterViewModelTest, testPickGrainAndPutGrain) { /* NOLINT */
-        withTerritory("/territories/example01.ter");
-        paule->move();
-        paule->move();
-        paule->pickGrain();
-        paule->putGrain();
-        assertTerritory(
-        "|####|####|####|####|####|\n"
-        "|####|    |    | 2*>|####|\n"
-        "|####|####|####|####|####|\n");
-        EXPECT_EQ(true, paule->mouthEmpty());
-        EXPECT_EQ(false, paule->frontIsClear());
-        EXPECT_EQ(true, paule->grainAvailable());
-        EXPECT_EQ(Direction::EAST, paule->getDirection());
-        EXPECT_EQ(1, paule->getLocation().getRow());
-        EXPECT_EQ(3, paule->getLocation().getColumn());
+    withTerritory("/territories/example01.ter");
+    paule->move();
+    paule->move();
+    paule->pickGrain();
+    paule->putGrain();
+    assertTerritory(
+            "|####|####|####|####|####|\n"
+            "|####|    |    | 2*>|####|\n"
+            "|####|####|####|####|####|\n");
+    EXPECT_EQ(true, paule->mouthEmpty());
+    EXPECT_EQ(false, paule->frontIsClear());
+    EXPECT_EQ(true, paule->grainAvailable());
+    EXPECT_EQ(Direction::EAST, paule->getDirection());
+    EXPECT_EQ(1, paule->getLocation().getRow());
+    EXPECT_EQ(3, paule->getLocation().getColumn());
 }
 
 TEST_F(HamsterViewModelTest, testMoveAndRotateAndMove) { /* NOLINT */
-        withTerritory("/territories/example01.ter");
-        paule->move();
-        paule->turnLeft();
-        paule->turnLeft();
-        paule->move();
-        assertTerritory(
-        "|####|####|####|####|####|\n"
-        "|####|<   |    | 2* |####|\n"
-        "|####|####|####|####|####|\n");
-        EXPECT_EQ(true, paule->mouthEmpty());
-        EXPECT_EQ(false, paule->frontIsClear());
-        EXPECT_EQ(false, paule->grainAvailable());
-        EXPECT_EQ(Direction::WEST, paule->getDirection());
-        EXPECT_EQ(1, paule->getLocation().getRow());
-        EXPECT_EQ(1, paule->getLocation().getColumn());
+    withTerritory("/territories/example01.ter");
+    paule->move();
+    paule->turnLeft();
+    paule->turnLeft();
+    paule->move();
+    assertTerritory(
+            "|####|####|####|####|####|\n"
+            "|####|<   |    | 2* |####|\n"
+            "|####|####|####|####|####|\n");
+    EXPECT_EQ(true, paule->mouthEmpty());
+    EXPECT_EQ(false, paule->frontIsClear());
+    EXPECT_EQ(false, paule->grainAvailable());
+    EXPECT_EQ(Direction::WEST, paule->getDirection());
+    EXPECT_EQ(1, paule->getLocation().getRow());
+    EXPECT_EQ(1, paule->getLocation().getColumn());
 }
 
 TEST_F(HamsterViewModelTest, testMoveAgainstWall) { /* NOLINT */
-        withTerritory("/territories/example01.ter");
-        paule->move();
-        paule->turnLeft();
+    withTerritory("/territories/example01.ter");
+    paule->move();
+    paule->turnLeft();
 
-        TestUtils::assertThrows(typeid(CommandConstraintException), [&] {
-            paule->move();
-        });
+    TestUtils::assertThrows(typeid(CommandConstraintException), [&] {
+        paule->move();
+    });
 }
 
 TEST_F(HamsterViewModelTest, testLog) { /* NOLINT */
-        withTerritory("/territories/example01.ter");
-        paule->move();
-        paule->move();
-        paule->pickGrain();
-        paule->putGrain();
-        paule->turnLeft();
-        paule->write("Hello");
-        assertLog(
+    withTerritory("/territories/example01.ter");
+    paule->move();
+    paule->move();
+    paule->pickGrain();
+    paule->putGrain();
+    paule->turnLeft();
+    paule->write("Hello");
+    assertLog(
             "Move\n"
             "Move\n"
             "Pick Grain\n"
@@ -143,13 +143,13 @@ TEST_F(HamsterViewModelTest, testColors) { /* NOLINT */
         createFurtherHamsterAt(location);
     }
     assertLayersAt(location, {
-       "Hamster32Blue",
-       "Hamster32Green",
-       "Hamster32Yellow",
-       "Hamster32Pink",
-       "Hamster32Magenta",
-       "Hamster32Red",
-       "Hamster32Blue"
+            "Hamster32Blue",
+            "Hamster32Green",
+            "Hamster32Yellow",
+            "Hamster32Pink",
+            "Hamster32Magenta",
+            "Hamster32Red",
+            "Hamster32Blue"
     });
 }
 
@@ -176,7 +176,7 @@ TEST_F(HamsterViewModelTest, testButtonsForModes) { /* NOLINT */
     clickPause();
     assertButtons("[play] /pause/ [undo] /redo/");
     assertTerritory(
-        "|####|####|####|####|####|\n"
-        "|####|    |^   | 2* |####|\n"
-        "|####|####|####|####|####|\n");
+            "|####|####|####|####|####|\n"
+            "|####|    |^   | 2* |####|\n"
+            "|####|####|####|####|####|\n");
 }

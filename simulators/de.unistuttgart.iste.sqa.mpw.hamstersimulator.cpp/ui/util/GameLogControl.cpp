@@ -13,17 +13,16 @@ const int LOG_OFFSET = 10;
 using namespace sdlgui;
 
 hamstersimulator::GameLogControl::GameLogControl(sdlgui::Screen& screen)
-    : Window(&screen, "")
-    , screen(screen) {
+        : Window(&screen, ""), screen(screen) {
 
-    Vector2i windowSize(200, screen.height() - LOG_OFFSET*2);
+    Vector2i windowSize(200, screen.height() - LOG_OFFSET * 2);
     setFixedSize(windowSize);
 
     setTheme(new ListTheme(screen.sdlRenderer()));
     scrollPanel = &vscrollpanel();
-    listPanel = &scrollPanel->withFixedSize({ windowSize.x, windowSize.y - 8 })
-        .widget()
-        .withLayout<BoxLayout>(Orientation::Vertical, Alignment::Fill, 0, 0);
+    listPanel = &scrollPanel->withFixedSize({windowSize.x, windowSize.y - 8})
+            .widget()
+            .withLayout<BoxLayout>(Orientation::Vertical, Alignment::Fill, 0, 0);
 }
 
 void hamstersimulator::GameLogControl::bindToGameLog(const viewmodel::GameViewModel& viewModel) {
@@ -37,11 +36,11 @@ void hamstersimulator::GameLogControl::bindToGameLog(const viewmodel::GameViewMo
         }
 
         auto& widget = listPanel->wdg<WidgetBackgroundWrapper>(color)
-            .withFixedSize({width()-6, 20});
+                .withFixedSize({width() - 6, 20});
         widget.label(logEntry.getMessage())
-            .setColor(ColorConverter::toNanoguiColor(logEntry.getColor()));
+                .setColor(ColorConverter::toNanoguiColor(logEntry.getColor()));
         logEntryWidgets[&logEntry] = &widget;
-        
+
         scrollPanel->scrollEvent({}, {0, static_cast<float>(-scrollPanel->height())});
         screen.performLayout();
     });
@@ -55,7 +54,7 @@ void hamstersimulator::GameLogControl::bindToGameLog(const viewmodel::GameViewMo
         }
         screen.performLayout();
     });
-    
+
     screen.performLayout();
 }
 
@@ -64,7 +63,7 @@ void hamstersimulator::GameLogControl::draw(SDL_Renderer* surface) {
     SDL_RenderGetClipRect(surface, &previousSdlRect);
 
     const PntRect& rect = getAbsoluteCliprect();
-    SDL_Rect sdlRect = {rect.x1, rect.y1, rect.x2-rect.x1, rect.y2-rect.y1};
+    SDL_Rect sdlRect = {rect.x1, rect.y1, rect.x2 - rect.x1, rect.y2 - rect.y1};
 
     SDL_RenderSetClipRect(surface, &sdlRect);
     Window::draw(surface);

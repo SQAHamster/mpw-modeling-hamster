@@ -12,27 +12,31 @@ using namespace sdlgui;
 
 namespace hamstersimulator {
 
-InputDialogWindow::InputDialogWindow(Widget *parent, Type type, const std::string &title, const std::string &message)
-    : Window(parent, title)
-{
+InputDialogWindow::InputDialogWindow(Widget* parent, Type type, const std::string& title, const std::string& message)
+        : Window(parent, title) {
     setLayout(new BoxLayout(Orientation::Vertical,
                             Alignment::Middle, 10, 10));
     setModal(true);
 
-    Widget *panel1 = new Widget(this);
+    Widget* panel1 = new Widget(this);
     panel1->setLayout(new BoxLayout(Orientation::Horizontal,
                                     Alignment::Middle, 10, 15));
     int icon = 0;
-    switch (type)
-    {
-        case Type::Information: icon = ENTYPO_ICON_CIRCLED_INFO; break;
-        case Type::Question: icon = ENTYPO_ICON_CIRCLED_HELP; break;
-        case Type::Warning: icon = ENTYPO_ICON_WARNING; break;
+    switch (type) {
+        case Type::Information:
+            icon = ENTYPO_ICON_CIRCLED_INFO;
+            break;
+        case Type::Question:
+            icon = ENTYPO_ICON_CIRCLED_HELP;
+            break;
+        case Type::Warning:
+            icon = ENTYPO_ICON_WARNING;
+            break;
     }
-    Label *iconLabel = new Label(panel1, std::string(utf8(icon).data()), "icons");
+    Label* iconLabel = new Label(panel1, std::string(utf8(icon).data()), "icons");
     iconLabel->setFontSize(50);
-    Label *mMessageLabel = new Label(panel1, message);
-    Widget *panel2 = new Widget(this);
+    Label* mMessageLabel = new Label(panel1, message);
+    Widget* panel2 = new Widget(this);
     panel2->setLayout(new BoxLayout(Orientation::Vertical,
                                     Alignment::Middle, 0, 15));
 
@@ -42,8 +46,11 @@ InputDialogWindow::InputDialogWindow(Widget *parent, Type type, const std::strin
     textBox->setFixedSize(Vector2i(100, 20));
     textBox->setFontSize(16);
 
-    Button *button = new Button(panel2, "OK");
-    button->setCallback([&] { if (mCallback) mCallback(); dispose(); });
+    Button* button = new Button(panel2, "OK");
+    button->setCallback([&] {
+        if (mCallback) mCallback();
+        dispose();
+    });
     center();
     requestFocus();
 }

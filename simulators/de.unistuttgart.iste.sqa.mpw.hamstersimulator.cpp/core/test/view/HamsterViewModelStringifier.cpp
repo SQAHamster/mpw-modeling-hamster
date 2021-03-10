@@ -8,9 +8,7 @@ namespace viewmodel {
 
 HamsterViewModelStringifier::HamsterViewModelStringifier(
         const std::unordered_map<std::string, std::string>& imageCharsMapping, int maxCharsPerCell)
-    : imageCharsMapping(imageCharsMapping)
-    , maxCharsPerCell(maxCharsPerCell)
-{
+        : imageCharsMapping(imageCharsMapping), maxCharsPerCell(maxCharsPerCell) {
 }
 
 std::string HamsterViewModelStringifier::territoryToExpectationString(const GameViewModel& viewModel) {
