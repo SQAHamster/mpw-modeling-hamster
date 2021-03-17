@@ -29,11 +29,12 @@ set(SRCS SdlApplicationListener.h
     util/ColorConverter.h
     SimpleHamsterGame.cpp SimpleHamsterGame.h)
 
-# Executable
-add_executable(hamstersimulator_cpp main.cpp ${SRCS})
-target_link_libraries(hamstersimulator_cpp hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
+# Library
 
-# Examples
+add_library(hamstersimulator_ui_lib STATIC ${SRCS})
+target_link_libraries(hamstersimulator_ui_lib hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
+
+# Executable Examples
 add_executable(hamstersimulator_example01 examples/Example01.cpp ${SRCS})
 target_link_libraries(hamstersimulator_example01 hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
 
@@ -41,13 +42,6 @@ add_executable(hamstersimulator_example02 examples/Example02.cpp ${SRCS})
 target_link_libraries(hamstersimulator_example02 hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
 
 # Copy resources
-add_custom_command(TARGET hamstersimulator_cpp PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
-add_custom_command(TARGET hamstersimulator_cpp PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
-
 add_custom_command(TARGET hamstersimulator_example01 PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
@@ -71,22 +65,15 @@ add_custom_command(TARGET hamstersimulator_example02 PRE_BUILD
 
 if (MSVC)
     # copy SDL DLLs to output
-    add_custom_command(TARGET hamstersimulator_cpp POST_BUILD
+    add_custom_command(TARGET hamstersimulator_ui_lib POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${SDL2_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_cpp>)
+            ${SDL2_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_ui_lib>)
     # copy SDL_image DLLs to output
-    add_custom_command(TARGET hamstersimulator_cpp POST_BUILD
+    add_custom_command(TARGET hamstersimulator_ui_lib POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${SDL2_IMAGE_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_cpp>)
+            ${SDL2_IMAGE_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_ui_lib>)
     # copy SDL_ttf DLLs to output
-    add_custom_command(TARGET hamstersimulator_cpp POST_BUILD
+    add_custom_command(TARGET hamstersimulator_ui_lib POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
-            ${SDL2_TTF_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_cpp>)
+            ${SDL2_TTF_DIR}/lib/x64/ $<TARGET_FILE_DIR:hamstersimulator_ui_lib>)
 endif ()
-
-## From Stackoverflow (https://stackoverflow.com/a/62645348)
-# Never set CMAKE_CXX_FLAGS in your CMakeLists.txt
-# Never use include_directories or link_directories
-# Never use target_link_libraries without a visibility specifier.
-# Never set paths to libs manually.
-# Don't set your target names equal to the project name. It's pointless complexity and bad style.

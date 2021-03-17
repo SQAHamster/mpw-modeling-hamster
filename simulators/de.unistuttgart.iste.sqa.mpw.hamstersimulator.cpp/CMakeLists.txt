@@ -8,12 +8,15 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON) # -fPIC on gcc
 ## Setup MPW Simulator Framework
 
 include(FetchContent)
-FetchContent_Populate(mpw_lib
-    GIT_REPOSITORY https://github.com/Fumapps/mpw-modeling-framework.git
-    GIT_TAG cpp-framework
-    SOURCE_DIR mpw_lib
+
+FetchContent_Declare(mpw_lib
+        GIT_REPOSITORY https://github.com/Fumapps/mpw-modeling-framework.git
+        GIT_TAG cpp-framework
+        SOURCE_DIR mpw_lib
+        CMAKE_ARGS "-Wno-dev"
 )
-add_subdirectory(${mpw_lib_SOURCE_DIR} mpw_lib/build)
+FetchContent_GetProperties(mpw_lib)
+FetchContent_MakeAvailable(mpw_lib)
 
 include_directories(${mpw_lib_SOURCE_DIR}/core/src/generated)
 include_directories(${mpw_lib_SOURCE_DIR}/core/src/impl)
