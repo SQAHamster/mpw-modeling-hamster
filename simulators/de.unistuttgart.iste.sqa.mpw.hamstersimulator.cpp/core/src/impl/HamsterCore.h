@@ -8,6 +8,7 @@
 #include "GameLog.h"
 #include "CommandStack.h"
 #include "GamePerformance.h"
+#include "GameAbortedException.h"
 #include "CommandConstraintException.h"
 #include "GameHamster.h"
 #include "EditorHamster.h"

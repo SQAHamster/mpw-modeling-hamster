@@ -1,13 +1,14 @@
 #ifndef DE_UNISTUTTGART_ISTE_SQA_MPW_HAMSTERSIMULATOR_CPP_SIMPLEHAMSTERGAME_H
 #define DE_UNISTUTTGART_ISTE_SQA_MPW_HAMSTERSIMULATOR_CPP_SIMPLEHAMSTERGAME_H
 
-#include "HamsterCore.h"
+#include "Hamster.h"
+#include "Territory.h"
+#include "HamsterGame.h"
 
 #include <string>
 #include <exception>
 #include <stdexcept>
 #include <utility>
-#include <GameAbortedException.h>
 
 namespace hamstersimulator {
 

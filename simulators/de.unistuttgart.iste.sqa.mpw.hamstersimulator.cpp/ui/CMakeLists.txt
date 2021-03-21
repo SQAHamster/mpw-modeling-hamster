@@ -1,4 +1,4 @@
-project(hamstersimulator_sdl2)
+project(hamstersimulator_ui)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -11,13 +11,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/") ## use 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIR} ${SDL2TTF_INCLUDE_DIR})
-include_directories(${SDL2_INCLUDE_DIRS}/.. ${SDL2IMAGE_INCLUDE_DIR}/.. ${SDL2TTF_INCLUDE_DIR}/..) # for nanogui internal includes
 
 include(IncludeNanogui.cmake)
 
 # Own Sources
-include_directories(.)
 set(SRCS SdlApplicationListener.h
     SdlApplication.cpp SdlApplication.h
     HamsterApplicationHandler.cpp HamsterApplicationHandler.h
@@ -26,42 +23,19 @@ set(SRCS SdlApplicationListener.h
     util/GameLogControl.cpp util/GameLogControl.h
     util/WidgetBackgroundWrapper.cpp util/WidgetBackgroundWrapper.h
     util/LightTheme.h util/ListTheme.h
-    util/ColorConverter.h
-    SimpleHamsterGame.cpp SimpleHamsterGame.h)
+    util/ColorConverter.h)
 
 # Library
 
 add_library(hamstersimulator_ui_lib STATIC ${SRCS})
-target_link_libraries(hamstersimulator_ui_lib hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
+target_include_directories(hamstersimulator_ui_lib PUBLIC .)
+target_link_libraries(hamstersimulator_ui_lib PUBLIC hamstersimulator_core_lib)
+target_link_libraries(hamstersimulator_ui_lib PUBLIC SYSTEM nanogui_lib) # use SYSTEM to avoid warnings caused by nanogui sources
 
-# Executable Examples
-add_executable(hamstersimulator_example01 examples/Example01.cpp ${SRCS})
-target_link_libraries(hamstersimulator_example01 hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
-
-add_executable(hamstersimulator_example02 examples/Example02.cpp ${SRCS})
-target_link_libraries(hamstersimulator_example02 hamster_core_lib ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} nanogui_lib)
-
-# Copy resources
-add_custom_command(TARGET hamstersimulator_example01 PRE_BUILD
+# Copy resources to binary root
+add_custom_command(TARGET hamstersimulator_ui_lib PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
-add_custom_command(TARGET hamstersimulator_example01 PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
-
-add_custom_command(TARGET hamstersimulator_example02 PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
-add_custom_command(TARGET hamstersimulator_example02 PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
-
-add_custom_command(TARGET hamstersimulator_example02 PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
-add_custom_command(TARGET hamstersimulator_example02 PRE_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_CURRENT_SOURCE_DIR}/resources/ ${CMAKE_CURRENT_BINARY_DIR}/resources)
+        ${CMAKE_CURRENT_SOURCE_DIR}/resources/ ${CMAKE_BINARY_DIR}/resources)
 
 if (MSVC)
     # copy SDL DLLs to output

@@ -4,6 +4,7 @@
 #include "SdlApplicationListener.h"
 #include "SdlApplication.h"
 
+#include "SdlGameInputInterface.h"
 #include "HamsterCore.h"
 #include "HamsterView.h"
 
@@ -13,8 +14,6 @@
 #include <optional>
 #include <vector>
 #include <string>
-
-#include "SdlGameInputInterface.h"
 
 namespace hamstersimulator {
 
