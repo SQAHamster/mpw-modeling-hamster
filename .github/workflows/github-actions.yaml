@@ -50,7 +50,8 @@ jobs:
           mkdir ~/deploy-cpp-simulator-to-branch
           cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/core ~/deploy-cpp-simulator-to-branch
           cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/ui ~/deploy-cpp-simulator-to-branch
-          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/resources ~/deploy-cpp-simulator-to-branch
+          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/main ~/deploy-cpp-simulator-to-branch
+          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/examples ~/deploy-cpp-simulator-to-branch
           cp simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/CMakeLists.txt ~/deploy-cpp-simulator-to-branch
 
       # Prepare Git Repository
@@ -63,10 +64,11 @@ jobs:
       - name: cpp simulator branch core folder
         run: |
           git clean -ffd
-          rm -rf ./core && rm -rf ./ui && rm -rf ./resources && rm -f CMakeLists.txt
+          rm -rf ./core && rm -rf ./ui && rm -rf ./main && rm -rf ./examples && rm -f CMakeLists.txt
           cp -R ~/deploy-cpp-simulator-to-branch/core ./core
-          cp -R ~/deploy-cpp-simulator-to-branch/resources ./resources
           cp -R ~/deploy-cpp-simulator-to-branch/ui ./ui
+          cp -R ~/deploy-cpp-simulator-to-branch/main ./main
+          cp -R ~/deploy-cpp-simulator-to-branch/examples ./examples
           cp ~/deploy-cpp-simulator-to-branch/CMakeLists.txt ./CMakeLists.txt
       - name: commit
         run: git add -A && git commit -am 'C++ hamstersimulator code snapshot' && git push origin cpp-simulator --force
