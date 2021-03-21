@@ -30,7 +30,7 @@ set(SRCS SdlApplicationListener.h
 add_library(hamstersimulator_ui_lib STATIC ${SRCS})
 target_include_directories(hamstersimulator_ui_lib PUBLIC .)
 target_link_libraries(hamstersimulator_ui_lib PUBLIC hamstersimulator_core_lib)
-target_link_libraries(hamstersimulator_ui_lib PUBLIC SYSTEM nanogui_lib) # use SYSTEM to avoid warnings caused by nanogui sources
+target_link_libraries(hamstersimulator_ui_lib PUBLIC nanogui_lib)
 
 # Copy resources to binary root
 add_custom_command(TARGET hamstersimulator_ui_lib PRE_BUILD
