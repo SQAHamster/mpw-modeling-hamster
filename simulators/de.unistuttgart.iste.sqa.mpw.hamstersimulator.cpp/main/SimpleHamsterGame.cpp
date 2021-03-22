@@ -14,15 +14,27 @@ SimpleHamsterGame::SimpleHamsterGame()
 
 void SimpleHamsterGame::initializeGame() {
     try {
-        TerritoryLoader::initializeFor(*game)->loadFromResourceFile("resources/" + DEFAULT_HAMSTER_TERRITORY);
-        game->hardReset();
+        loadTerritoryFromResourceFile("resources/" + DEFAULT_HAMSTER_TERRITORY);
     } catch (std::exception& e) {
         throw std::runtime_error("failed to load the default territory: " + std::string(e.what()));
     }
 }
 
+void SimpleHamsterGame::startGame() {
+    game->startGame();
+}
+
 void SimpleHamsterGame::doRun() {
     displayInNewGameWindow();
+}
+
+void SimpleHamsterGame::loadTerritoryFromResourceFile(const std::string& resourceFilePath) {
+    try {
+        game->hardReset();
+        TerritoryLoader::initializeFor(*game)->loadFromResourceFile(resourceFilePath);
+    } catch (std::exception& e) {
+        throw std::runtime_error("failed to load the territory '" + resourceFilePath + "' :" + std::string(e.what()));
+    }
 }
 
 void SimpleHamsterGame::displayInNewGameWindow() {

@@ -52,7 +52,18 @@ public:
     SimpleHamsterGame();
 
 protected:
+    /**
+     * Initialized a simple hamster game by loading a default territory.
+     * This resets the game if it was already started. After the territory was loaded, the game is
+     * in mode INITIALIZING. To start the game, game.startGame() should be called.
+     */
     void initializeGame();
+
+    /**
+     * Convenient method to start the current game.
+     * The game has to be in mode INITIALIZING.
+     */
+    void startGame();
 
 public:
     /**
@@ -69,6 +80,19 @@ protected:
      * is empty, so that the hamster does not do anything by default.
      */
     virtual void run() = 0;
+
+    /**
+     * Loads the Territory from a resources file.
+     * Only resource paths relative to the binary output are allowed. E.g. the fileName "/territory.ter" represents the
+     * file territory.ter in the binary output directory
+     * This resets the game if it was already started. After the territory was loaded, the game is
+     * in mode INITIALIZING. To start the game, game.startGame() should be called
+     *
+     * @param fileName An absolute path to the resource file.
+     * @throws std::runtime_error if fileName is no valid resource path
+     *                            or if the file was not found
+     */
+    void loadTerritoryFromResourceFile(const std::string& resourceFilePath);
 
 
     /**
