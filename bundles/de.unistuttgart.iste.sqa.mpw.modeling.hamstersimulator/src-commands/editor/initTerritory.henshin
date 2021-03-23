@@ -398,7 +398,7 @@
     <mappings xmi:id="_A9aJ8TGSEeuDH7pHwTyKiw" origin="_A9YUwDGSEeuDH7pHwTyKiw" image="_A9aJ8DGSEeuDH7pHwTyKiw"/>
     <mappings xmi:id="_IS5JwTGSEeuDH7pHwTyKiw" origin="_D4O8UDGSEeuDH7pHwTyKiw" image="_IS5JwDGSEeuDH7pHwTyKiw"/>
   </units>
-  <units xsi:type="henshin:SequentialUnit" xmi:id="_fTAPYDGSEeuDH7pHwTyKiw" name="initTerritory" subUnits="_DNXQIHIZEeu85cU8d0uOUw _R6N7QDGQEeuDH7pHwTyKiw _qWt0cDGSEeuDH7pHwTyKiw _v4HAcDGSEeuDH7pHwTyKiw _m9tbsDf9Eeu0KvmSgTDkRg">
+  <units xsi:type="henshin:SequentialUnit" xmi:id="_fTAPYDGSEeuDH7pHwTyKiw" name="initTerritory" subUnits="_DNXQIHIZEeu85cU8d0uOUw _m9tbsDf9Eeu0KvmSgTDkRg _R6N7QDGQEeuDH7pHwTyKiw _qWt0cDGSEeuDH7pHwTyKiw _v4HAcDGSEeuDH7pHwTyKiw">
     <parameters xmi:id="_frM3gDGTEeuDH7pHwTyKiw" name="self" kind="IN">
       <type xsi:type="ecore:EClass" href="../../model/Hamster.ecore#//Territory"/>
     </parameters>
@@ -414,10 +414,10 @@
     <parameterMappings xmi:id="_zhVJ4TGSEeuDH7pHwTyKiw" source="_xJcsgDGSEeuDH7pHwTyKiw" target="_iqfvoTGSEeuDH7pHwTyKiw"/>
     <parameterMappings xmi:id="_zhVJ4jGSEeuDH7pHwTyKiw" source="_iqfvojGSEeuDH7pHwTyKiw" target="_xJcsgTGSEeuDH7pHwTyKiw"/>
     <parameterMappings xmi:id="_zhVJ4zGSEeuDH7pHwTyKiw" source="_xJcsgTGSEeuDH7pHwTyKiw" target="_iqfvojGSEeuDH7pHwTyKiw"/>
-    <parameterMappings xmi:id="_tDu-wDf9Eeu0KvmSgTDkRg" source="_iqfvoTGSEeuDH7pHwTyKiw" target="_qbyFEDf9Eeu0KvmSgTDkRg"/>
-    <parameterMappings xmi:id="_tDu-wTf9Eeu0KvmSgTDkRg" source="_qbyFEDf9Eeu0KvmSgTDkRg" target="_iqfvoTGSEeuDH7pHwTyKiw"/>
-    <parameterMappings xmi:id="_tDu-wjf9Eeu0KvmSgTDkRg" source="_iqfvojGSEeuDH7pHwTyKiw" target="_qbyFETf9Eeu0KvmSgTDkRg"/>
-    <parameterMappings xmi:id="_tDu-wzf9Eeu0KvmSgTDkRg" source="_qbyFETf9Eeu0KvmSgTDkRg" target="_iqfvojGSEeuDH7pHwTyKiw"/>
+    <parameterMappings xmi:id="_lofpEIurEeuQHPUNBEJHXA" source="_iqfvoTGSEeuDH7pHwTyKiw" target="_qbyFEDf9Eeu0KvmSgTDkRg"/>
+    <parameterMappings xmi:id="_logQIIurEeuQHPUNBEJHXA" source="_qbyFEDf9Eeu0KvmSgTDkRg" target="_iqfvoTGSEeuDH7pHwTyKiw"/>
+    <parameterMappings xmi:id="_logQIYurEeuQHPUNBEJHXA" source="_iqfvojGSEeuDH7pHwTyKiw" target="_qbyFETf9Eeu0KvmSgTDkRg"/>
+    <parameterMappings xmi:id="_logQIourEeuQHPUNBEJHXA" source="_qbyFETf9Eeu0KvmSgTDkRg" target="_iqfvojGSEeuDH7pHwTyKiw"/>
   </units>
   <units xsi:type="henshin:IteratedUnit" xmi:id="_qWt0cDGSEeuDH7pHwTyKiw" name="createFirstRow" subUnit="_KqqZwDGPEeuDH7pHwTyKiw" iterations="columns-1">
     <parameters xmi:id="_sylZ8DGSEeuDH7pHwTyKiw" name="columns" kind="IN">
