@@ -37,6 +37,11 @@ void HamsterViewTestBase::withTerritory(const std::string& path) {
     game->setUserInputInterface(std::make_shared<UserInputInterfaceFake>());
 }
 
+void HamsterViewTestBase::initializeOtherTerritory(const std::string& path) {
+    game->hardReset();
+    TerritoryLoader::initializeFor(*game)->loadFromResourceFile("resources" + path);
+}
+
 void HamsterViewTestBase::clickPlay() {
     viewInput->playClicked();
 }

@@ -23,7 +23,8 @@ public:
 
 protected:
 
-    const mpw::Size& getStageSizeFromConcreteStage() override;
+
+    const framework::ObservablePrimitiveProperty<mpw::Size>& getStageSizeFromConcreteStage() override;
 
     const framework::ObservableListProperty<mpw::Tile>& getTilesPropertyFromConcreteStage() override;
 
@@ -49,7 +50,6 @@ private:
     static std::list<std::shared_ptr<hamster::Grain>> getGrainOfTile(const mpw::Tile& tile);
 
     const std::shared_ptr<hamster::HamsterGame> game;
-    mpw::Size territorySize;
     std::unordered_map<const basetypes::Entity*, Color> hamsterToColorMap;
 
     std::unordered_map<const hamster::ReadOnlyHamster*, unsigned int> changedHamsterDirectionListenerIds;

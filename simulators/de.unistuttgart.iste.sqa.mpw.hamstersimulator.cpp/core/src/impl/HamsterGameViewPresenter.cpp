@@ -25,11 +25,10 @@ namespace viewmodel {
 
 HamsterGameViewPresenter::HamsterGameViewPresenter(std::shared_ptr<hamster::HamsterGame> game)
         : inherited(game), game(std::move(game)) {
-    territorySize = this->game->getTerritory()->getTerritorySize();
 }
 
-const mpw::Size& HamsterGameViewPresenter::getStageSizeFromConcreteStage() {
-    return territorySize;
+const ObservablePrimitiveProperty<mpw::Size>& HamsterGameViewPresenter::getStageSizeFromConcreteStage() {
+    return this->game->getTerritory()->getInternalTerritory()->stageSizeProperty();
 }
 
 const framework::ObservableListProperty<mpw::Tile>& HamsterGameViewPresenter::getTilesPropertyFromConcreteStage() {

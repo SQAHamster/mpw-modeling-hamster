@@ -9,7 +9,7 @@ protected:
 };
 
 void Example03::run() {
-    loadTerritoryFromResourceFile("resources/territories/example02.ter");
+    loadTerritoryFromResourceFile("resources/territories/example03.ter");
     startGame();
 
     turnRight();

@@ -108,6 +108,22 @@ TEST_F(HamsterViewModelTest, testMoveAndRotateAndMove) { /* NOLINT */
     EXPECT_EQ(1, paule->getLocation().getColumn());
 }
 
+TEST_F(HamsterViewModelTest, testInitializeFurtherTerritory) { /* NOLINT */
+    withTerritory("/territories/example01.ter");
+    initializeOtherTerritory("/territories/example03.ter");
+    assertTerritory(
+            "|####|####|####|\n"
+            "|####|v   |####|\n"
+            "|####|    |####|\n"
+            "|####| 2* |####|\n"
+            "|####|####|####|\n");
+    initializeOtherTerritory("/territories/example01.ter");
+    assertTerritory(
+            "|####|####|####|####|####|\n"
+            "|####|>   |    | 2* |####|\n"
+            "|####|####|####|####|####|\n");
+}
+
 TEST_F(HamsterViewModelTest, testMoveAgainstWall) { /* NOLINT */
     withTerritory("/territories/example01.ter");
     paule->move();
