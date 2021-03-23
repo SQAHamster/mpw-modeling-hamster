@@ -16,6 +16,7 @@
     * set a `SDL2_DIR` variable: `set(SDL2_DIR "<path-to-sdl-dir>")`
     * set a `SDL2_IMAGE_DIR` variable: `set(SDL2_IMAGE_DIR "<path-to-sdl-image-dir>")`
     * set a `SDL2_TTF_DIR` variable: `set(SDL2_TTF_DIR "<path-to-sdl-ttf-dir>")`
+* Note: `CMakeListsLocalProperties.cmake` has to be placed on simulator root directory (besides top-level CMakeLists.txt / CMAKE_CURRENT_SOURCE_DIR)
 
 ### SDL notes
 

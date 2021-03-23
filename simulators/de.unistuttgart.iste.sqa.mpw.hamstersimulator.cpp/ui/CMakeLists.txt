@@ -3,7 +3,7 @@ project(hamstersimulator_ui)
 set(CMAKE_CXX_STANDARD 17)
 
 if (MSVC)
-    include(CMakeListsLocalProperties.cmake) # define SDL properties on Windows
+    include(${CMAKE_SOURCE_DIR}/CMakeListsLocalProperties.cmake) # define SDL properties on Windows
 endif ()
 
 # SDL
