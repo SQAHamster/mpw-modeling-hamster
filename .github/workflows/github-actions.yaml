@@ -39,7 +39,12 @@ jobs:
           sudo apt-get install libsdl2-image-dev
           sudo apt-get install libsdl2-ttf-dev
       - name: Build C++ Hamstersimulator
-        run: cmake -S $PROJECT_CPP_DIR -B $BUILD_DIR && cmake --build $BUILD_DIR && cd $BUILD_DIR && ctest --extra-verbose
+        run: cmake -S $PROJECT_CPP_DIR -B $BUILD_DIR && cmake --build $BUILD_DIR
+        env:
+          PROJECT_CPP_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp
+          BUILD_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/build
+      - name: Test C++ Hamstersimulator
+        run: cd $BUILD_DIR && ctest --extra-verbose
         env:
           PROJECT_CPP_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp
           BUILD_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/build
