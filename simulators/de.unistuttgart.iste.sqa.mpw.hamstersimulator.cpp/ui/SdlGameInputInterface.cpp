@@ -35,10 +35,8 @@ int SdlGameInputInterface::readInteger(std::string message) {
 }
 
 void SdlGameInputInterface::wait() {
-    std::mutex mutex;
-    std::unique_lock<std::mutex> lock(mutex);
     active = true;
-    conditionVariable.wait(lock);
+    semaphore.lock();
     active = false;
 }
 
@@ -61,13 +59,13 @@ void SdlGameInputInterface::showMessageForTextInput(const std::string& message, 
 void SdlGameInputInterface::showMessage(const std::string& message, InputDialogWindow::Type type) {
     inputDialog = &screen.wdg<InputDialogWindow>(MessageDialog::Type::Information, "Message box", message);
     inputDialog->setCallback([&] {
-        conditionVariable.notify_all();
+        semaphore.release();
     });
     inputDialog->setInputFieldVisible(false);
 }
 
 void SdlGameInputInterface::abort() {
-    conditionVariable.notify_all();
+    semaphore.release();
 }
 
 }

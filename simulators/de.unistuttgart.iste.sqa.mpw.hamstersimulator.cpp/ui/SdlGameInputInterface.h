@@ -4,13 +4,12 @@
 #include "UserInputInterface.h"
 #include "SdlApplication.h"
 #include "util/InputDialogWindow.h"
+#include "MpwSemaphore.h"
 
 #include <SDL.h>
 #include <sdlgui/screen.h>
 
 #include <string>
-
-#include <condition_variable>
 
 namespace hamstersimulator {
 
@@ -39,7 +38,7 @@ private:
     InputDialogWindow* inputDialog;
 
     sdlgui::Screen& screen;
-    std::condition_variable conditionVariable;
+    framework::Semaphore semaphore;
 
     void wait();
 };
