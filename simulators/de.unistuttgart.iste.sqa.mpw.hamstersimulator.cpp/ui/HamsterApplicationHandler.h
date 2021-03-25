@@ -65,6 +65,8 @@ private:
     std::vector<SimpleButton> buttons;
 
     std::thread hamsterThread;
+
+    int calculateTileSize();
 };
 
 }

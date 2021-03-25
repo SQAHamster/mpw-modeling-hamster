@@ -27,7 +27,8 @@ void SdlApplication::initialize(int width, int height) {
         throwExceptionWithSdlError("SDL could not initialize!");
     } else {
         window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-                                  width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+                                  width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+        SDL_SetWindowMinimumSize(window, 300, 300);
         if (window == nullptr) {
             throwExceptionWithSdlError("Window could not be created!");
         } else {
@@ -71,6 +72,12 @@ void SdlApplication::runApplication() {
         while (SDL_PollEvent(&event) != 0) {
             if (event.type == SDL_QUIT) {
                 running = false;
+            }
+            if (event.type == SDL_WINDOWEVENT) {
+                if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
+                    nanoGuiScreen->setSize(Vector2i{event.window.data1, event.window.data2});
+                    nanoGuiScreen->performLayout(renderer);
+                }
             }
             listener.onEvent(event);
         }

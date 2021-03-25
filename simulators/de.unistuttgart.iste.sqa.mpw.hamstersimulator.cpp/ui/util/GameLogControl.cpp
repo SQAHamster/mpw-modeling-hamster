@@ -71,3 +71,11 @@ void hamstersimulator::GameLogControl::draw(SDL_Renderer* surface) {
 
     SDL_RenderDrawRect(surface, &sdlRect);
 }
+
+void hamstersimulator::GameLogControl::performLayout(SDL_Renderer* ctx) {
+    setPosition(screen.width()-fixedWidth()-LOG_OFFSET, position().y);
+    int heightToSet = screen.height() - LOG_OFFSET * 2;
+    setHeight(heightToSet);
+    scrollPanel->setFixedHeight(heightToSet-8);
+    Window::performLayout(ctx);
+}

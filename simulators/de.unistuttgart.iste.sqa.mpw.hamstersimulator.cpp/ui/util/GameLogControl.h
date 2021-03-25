@@ -19,6 +19,8 @@ public:
 
     void draw(SDL_Renderer* surface) override;
 
+    void performLayout(SDL_Renderer* ctx) override;
+
 private:
 
     sdlgui::Screen& screen;

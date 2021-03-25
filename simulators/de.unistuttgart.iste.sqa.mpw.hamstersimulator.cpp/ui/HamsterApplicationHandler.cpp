@@ -12,7 +12,7 @@ using namespace viewmodel;
 const int TOOLBAR_MARGIN = 8;
 const int BUTTON_SIZE = 48;
 const int TERRITORY_OFFSET = 80;
-const int TILE_SIZE = 80;
+const int MINIMUM_TILE_SIZE = 20;
 const std::string imagePath = "resources/images/";
 
 namespace hamstersimulator {
@@ -150,7 +150,8 @@ void HamsterApplicationHandler::renderToolbar(SDL_Renderer& renderer) {
 }
 
 void HamsterApplicationHandler::renderTerritory(SDL_Renderer& renderer) {
-    SDL_Rect rect{0, 0, TILE_SIZE, TILE_SIZE};
+    const int tileSize = calculateTileSize();
+    SDL_Rect rect{0, 0, tileSize, tileSize};
 
     auto lock = presenter->getSemaphore().lock();
     auto viewModel = presenter->getViewModel();
@@ -158,9 +159,9 @@ void HamsterApplicationHandler::renderTerritory(SDL_Renderer& renderer) {
     unsigned rowIndex = 0;
     for (auto& row : viewModel->getRows()) {
         unsigned columnIndex = 0;
-        rect.y = rowIndex * TILE_SIZE + TERRITORY_OFFSET;
+        rect.y = rowIndex * tileSize + TERRITORY_OFFSET;
         for (auto& cell : row.getCells()) {
-            rect.x = columnIndex * TILE_SIZE;
+            rect.x = columnIndex * tileSize;
             renderCell(rect, cell, renderer);
             columnIndex++;
         }
@@ -186,6 +187,19 @@ void HamsterApplicationHandler::render(SDL_Renderer& renderer, SDL_Rect& rect,
 
 void HamsterApplicationHandler::onClose() {
 
+}
+
+int HamsterApplicationHandler::calculateTileSize() {
+    const mpw::Size size = game->getTerritory()->getTerritorySize();
+    const int columns = size.getColumnCount();
+    const int rows = size.getRowCount();
+    
+    sdlgui::Screen& screen = application->getNanoguiScreen();
+    const int pixPerCellWidth = (screen.width() - 220) / (columns == 0 ? 1 : columns);
+    const int pixPerCellHeight = (screen.height() - TOOLBAR_MARGIN) / (rows == 0 ? 1 : rows);
+
+    const int tileSize = std::min(pixPerCellHeight, pixPerCellWidth);
+    return std::max(MINIMUM_TILE_SIZE, tileSize);
 }
 
 }
