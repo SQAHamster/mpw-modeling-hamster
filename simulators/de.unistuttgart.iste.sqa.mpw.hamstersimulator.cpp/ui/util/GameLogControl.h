@@ -4,13 +4,21 @@
 #include <sdlgui/screen.h>
 #include <sdlgui/window.h>
 #include <sdlgui/vscrollpanel.h>
-#include "HamsterView.h"
-
 #include <unordered_map>
+
+#include "HamsterView.h"
 
 namespace hamstersimulator {
 
 class GameLogControl : public sdlgui::Window {
+private:
+
+    sdlgui::Screen& screen;
+    sdlgui::Widget* listPanel;
+    sdlgui::VScrollPanel* scrollPanel;
+
+    std::unordered_map<const viewmodel::ViewModelLogEntry*, sdlgui::Widget*> logEntryWidgets;
+
 public:
 
     explicit GameLogControl(sdlgui::Screen& screen);
@@ -20,14 +28,6 @@ public:
     void draw(SDL_Renderer* surface) override;
 
     void performLayout(SDL_Renderer* ctx) override;
-
-private:
-
-    sdlgui::Screen& screen;
-    sdlgui::Widget* listPanel;
-    sdlgui::VScrollPanel* scrollPanel;
-
-    std::unordered_map<const viewmodel::ViewModelLogEntry*, sdlgui::Widget*> logEntryWidgets;
 };
 
 }

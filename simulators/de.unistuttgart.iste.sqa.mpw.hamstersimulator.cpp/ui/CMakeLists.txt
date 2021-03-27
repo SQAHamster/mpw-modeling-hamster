@@ -21,8 +21,9 @@ set(SRCS SdlApplicationListener.h
     SdlGameInputInterface.cpp SdlGameInputInterface.h
     util/InputDialogWindow.cpp util/InputDialogWindow.h
     util/GameLogControl.cpp util/GameLogControl.h
+    util/SpeedSliderControl.cpp util/SpeedSliderControl.h
     util/WidgetBackgroundWrapper.cpp util/WidgetBackgroundWrapper.h
-    util/LightTheme.h util/ListTheme.h
+    util/LightTheme.h util/ControlWindowTheme.h
     util/ColorConverter.h)
 
 # Library

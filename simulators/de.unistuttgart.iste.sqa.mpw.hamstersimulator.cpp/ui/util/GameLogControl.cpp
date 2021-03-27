@@ -1,7 +1,7 @@
 #include "GameLogControl.h"
 
 #include "WidgetBackgroundWrapper.h"
-#include "ListTheme.h"
+#include "ControlWindowTheme.h"
 #include "ColorConverter.h"
 
 #include <sdlgui/label.h>
@@ -18,7 +18,7 @@ hamstersimulator::GameLogControl::GameLogControl(sdlgui::Screen& screen)
     Vector2i windowSize(200, screen.height() - LOG_OFFSET * 2);
     setFixedSize(windowSize);
 
-    setTheme(new ListTheme(screen.sdlRenderer()));
+    setTheme(new ControlWindowTheme(screen.sdlRenderer()));
     scrollPanel = &vscrollpanel();
     listPanel = &scrollPanel->withFixedSize({windowSize.x, windowSize.y - 8})
             .widget()

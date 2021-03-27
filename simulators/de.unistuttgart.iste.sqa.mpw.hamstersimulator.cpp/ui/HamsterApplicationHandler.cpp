@@ -2,6 +2,7 @@
 
 #include "HamsterColors.h"
 #include "util/GameLogControl.h"
+#include "util/SpeedSliderControl.h"
 #include "util/ColorConverter.h"
 
 #include <utility>
@@ -61,6 +62,9 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
 
     auto gameLogControl = new GameLogControl(application.getNanoguiScreen());
     gameLogControl->bindToGameLog(*viewModel);
+
+    auto speedControl = new SpeedSliderControl(application.getNanoguiScreen());
+    speedControl->bindToSpeed(*viewModel, *presenter);
 
     application.getNanoguiScreen().performLayout();
 
