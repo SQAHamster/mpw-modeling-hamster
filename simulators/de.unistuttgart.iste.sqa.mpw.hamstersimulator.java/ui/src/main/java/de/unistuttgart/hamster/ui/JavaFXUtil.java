@@ -1,4 +1,4 @@
-package de.unistuttgart.hamstersimulator.ui;
+package de.unistuttgart.hamster.ui;
 
 import javafx.application.Platform;
 import javafx.scene.image.Image;

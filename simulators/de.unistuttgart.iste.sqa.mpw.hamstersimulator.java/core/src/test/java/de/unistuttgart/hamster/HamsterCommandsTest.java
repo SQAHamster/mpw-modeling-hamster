@@ -7,8 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import de.unistuttgart.iste.sqa.mpw.framework.exceptions.CommandConstraintException;
 import de.unistuttgart.hamster.hamster.*;
-import de.unistuttgart.iste.sqa.mpw.framework.mpw.Direction;
-import de.unistuttgart.iste.sqa.mpw.framework.mpw.Location;
+import de.unistuttgart.hamster.facade.*;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Direction;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Location;
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.LogEntry;
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.Tile;
 import de.unistuttgart.hamster.util.GameStringifier;

@@ -1,10 +1,11 @@
 package de.unistuttgart.hamster.viewmodel.impl;
 
+import de.unistuttgart.hamster.facade.*;
 import de.unistuttgart.hamster.hamster.*;
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.LogEntry;
-import de.unistuttgart.iste.sqa.mpw.framework.mpw.Size;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Size;
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.Tile;
-import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.Color;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Color;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelCell;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelCellLayer;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.impl.GameViewPresenterBase;

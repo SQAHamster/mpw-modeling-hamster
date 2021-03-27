@@ -1,9 +1,9 @@
 package de.unistuttgart.hamster;
 
-import de.unistuttgart.hamster.hamster.HamsterGame;
-import de.unistuttgart.hamster.hamster.TerritoryBuilder;
-import de.unistuttgart.iste.sqa.mpw.framework.mpw.Direction;
-import de.unistuttgart.iste.sqa.mpw.framework.mpw.Location;
+import de.unistuttgart.hamster.facade.HamsterGame;
+import de.unistuttgart.hamster.facade.TerritoryBuilder;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Direction;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Location;
 import de.unistuttgart.hamster.util.GameStringifier;
 import org.junit.jupiter.api.Test;
 

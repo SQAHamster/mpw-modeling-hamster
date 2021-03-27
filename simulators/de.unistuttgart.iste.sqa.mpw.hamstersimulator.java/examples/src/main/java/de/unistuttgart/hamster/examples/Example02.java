@@ -1,8 +1,9 @@
-package de.unistuttgart.hamstersimulator.examples;
+package de.unistuttgart.hamster.examples;
 
-import de.unistuttgart.hamster.hamster.Hamster;
+import de.unistuttgart.hamster.main.SimpleHamsterGame;
+import de.unistuttgart.hamster.facade.Hamster;
 
-class Example02 extends SimpleHamsterGame {
+public class Example02 extends SimpleHamsterGame {
     public static void main(final String[] args) {
         createInstance(Example02.class);
     }

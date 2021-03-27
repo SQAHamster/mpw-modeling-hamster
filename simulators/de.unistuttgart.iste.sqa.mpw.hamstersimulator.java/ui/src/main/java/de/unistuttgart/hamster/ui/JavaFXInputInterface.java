@@ -1,4 +1,4 @@
-package de.unistuttgart.hamstersimulator.ui;
+package de.unistuttgart.hamster.ui;
 
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.UserInputInterface;
 import javafx.application.Platform;

@@ -1,6 +1,11 @@
-package de.unistuttgart.hamstersimulator.examples;
+package de.unistuttgart.hamster.examples;
 
-class Example01 extends SimpleHamsterGame {
+import de.unistuttgart.hamster.main.SimpleHamsterGame;
+
+public class Example01 extends SimpleHamsterGame {
+    public static void main(final String[] args) {
+        createInstance(Example01.class);
+    }
 
     /**
      * How often Paule should repeat its behaviour.

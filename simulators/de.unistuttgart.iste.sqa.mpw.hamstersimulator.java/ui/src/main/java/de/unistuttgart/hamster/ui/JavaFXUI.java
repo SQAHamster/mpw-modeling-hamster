@@ -1,6 +1,6 @@
-package de.unistuttgart.hamstersimulator.ui;
+package de.unistuttgart.hamster.ui;
 
-import de.unistuttgart.hamster.hamster.HamsterGame;
+import de.unistuttgart.hamster.facade.HamsterGame;
 import de.unistuttgart.hamster.viewmodel.impl.HamsterGameViewPresenter;
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.UserInputInterface;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.GameViewInput;

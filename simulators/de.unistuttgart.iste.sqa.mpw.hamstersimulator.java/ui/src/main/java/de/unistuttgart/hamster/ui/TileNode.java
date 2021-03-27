@@ -1,6 +1,6 @@
-package de.unistuttgart.hamstersimulator.ui;
+package de.unistuttgart.hamster.ui;
 
-import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.Color;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Color;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelCell;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelCellLayer;
 import javafx.beans.binding.Bindings;

@@ -1,8 +1,8 @@
 package de.unistuttgart.hamster.util;
 
-import de.unistuttgart.iste.sqa.mpw.framework.mpw.Direction;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Direction;
 
-import static de.unistuttgart.iste.sqa.mpw.framework.mpw.Direction.*;
+import static de.unistuttgart.iste.sqa.mpw.framework.datatypes.Direction.*;
 
 public class DirectionTestHelper {
     public static Direction toDirection(char c) {

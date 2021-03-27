@@ -1,8 +1,8 @@
 package de.unistuttgart.hamster.view;
 
-import de.unistuttgart.hamster.TerritoryLoader;
-import de.unistuttgart.hamster.hamster.Hamster;
-import de.unistuttgart.hamster.hamster.HamsterGame;
+import de.unistuttgart.hamster.facade.TerritoryLoader;
+import de.unistuttgart.hamster.facade.Hamster;
+import de.unistuttgart.hamster.facade.HamsterGame;
 import de.unistuttgart.hamster.viewmodel.impl.HamsterGameViewPresenter;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.GameViewInput;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.GameViewModel;

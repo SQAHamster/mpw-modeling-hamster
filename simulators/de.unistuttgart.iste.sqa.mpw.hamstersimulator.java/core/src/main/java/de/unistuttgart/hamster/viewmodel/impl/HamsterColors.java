@@ -1,6 +1,6 @@
 package de.unistuttgart.hamster.viewmodel.impl;
 
-import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.Color;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Color;
 
 public class HamsterColors {
     private HamsterColors() {}

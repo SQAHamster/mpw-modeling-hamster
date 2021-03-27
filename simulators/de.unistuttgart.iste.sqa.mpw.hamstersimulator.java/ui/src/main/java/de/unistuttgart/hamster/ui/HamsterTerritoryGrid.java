@@ -1,8 +1,8 @@
-package de.unistuttgart.hamstersimulator.ui;
+package de.unistuttgart.hamster.ui;
 
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.Actor;
-import de.unistuttgart.iste.sqa.mpw.framework.mpw.Location;
-import de.unistuttgart.iste.sqa.mpw.framework.mpw.Size;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Location;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Size;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.GameViewModel;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelCell;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelRow;

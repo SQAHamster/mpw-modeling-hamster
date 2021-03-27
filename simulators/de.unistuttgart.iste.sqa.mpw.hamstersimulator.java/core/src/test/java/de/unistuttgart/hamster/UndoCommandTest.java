@@ -1,6 +1,6 @@
 package de.unistuttgart.hamster;
 
-import de.unistuttgart.hamster.hamster.HamsterGame;
+import de.unistuttgart.hamster.facade.HamsterGame;
 import de.unistuttgart.hamster.util.GameStringifier;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

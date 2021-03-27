@@ -1,9 +1,9 @@
-package de.unistuttgart.hamstersimulator.examples;
+package de.unistuttgart.hamster.main;
 
-import de.unistuttgart.hamster.TerritoryLoader;
-import de.unistuttgart.hamster.hamster.Hamster;
-import de.unistuttgart.hamster.hamster.HamsterGame;
-import de.unistuttgart.hamstersimulator.ui.JavaFXUI;
+import de.unistuttgart.hamster.facade.TerritoryLoader;
+import de.unistuttgart.hamster.facade.Hamster;
+import de.unistuttgart.hamster.facade.HamsterGame;
+import de.unistuttgart.hamster.ui.JavaFXUI;
 import de.unistuttgart.iste.sqa.mpw.framework.exceptions.GameAbortedException;
 
 import java.io.Console;
@@ -18,21 +18,12 @@ public abstract class SimpleHamsterGame {
 
     protected static void createInstance(Class<? extends SimpleHamsterGame> hamsterProgramClass) {
         try {
-            var program = hamsterProgramClass.getDeclaredConstructor().newInstance();
+            var program = hamsterProgramClass.getConstructor().newInstance();
             program.doRun();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
-
-    /**
-     * Main method used to start the simple hamster game.
-     * @param args Default command line arguments, not used.
-     */
-    public static void main(final String[] args) {
-        createInstance(Example01.class);
-    }
-
 
     /**
      * Name of the environment variable used to determine the output interface

@@ -1,7 +1,7 @@
 package de.unistuttgart.hamster.view;
 
 import de.unistuttgart.iste.sqa.mpw.framework.exceptions.CommandConstraintException;
-import de.unistuttgart.iste.sqa.mpw.framework.mpw.Direction;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Direction;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
