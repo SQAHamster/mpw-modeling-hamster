@@ -17,6 +17,7 @@ Some notes on the extension:
         * Note: the file has to be on the local file-system, Eclipse will not accept the URL directly
     * File / Import / Install / Install Software Items from File
     * Note: Includes Maven, Henshin, Query-DSL, MPW Modeling Framework, CDT, Tycho Configurators, Xpand
+* Optional: install Docker on the local machine (use to have an isolated build environment)
 
 ## Import Hamster Modeling Enviroment
     
@@ -24,7 +25,7 @@ Some notes on the extension:
     * from https://github.com/Fumapps/mpw-modeling-hamster.git
         * `git clone https://github.com/Fumapps/mpw-modeling-hamster.git`
 * Import with Maven: "Existing Maven Projects"
-    * Note: dependent on the checkout and concrete import steps, the root project either is imported as "mpw-modeling-hamster" or "hamster-modeling-root"
+    * Note: Dependent on the checkout and concrete import steps, the root project either is imported as "mpw-modeling-hamster" or "hamster-modeling-root"
 
 ![import-maven](02%20Import%20Maven%20Projects.png)
 
@@ -93,7 +94,12 @@ Note: If you change the action in the properties to "delete" and the diagram doe
 
 ![pickBreadcrumb](08%20pickBreadcrumb%20rule.png)
 
-When finished, perform a `Maven install` or `Maven package` on "mpw-modeling-hamster" and see if it no errors occur.
+When finished, perform a `mvn install` or `mvn package` on "mpw-modeling-hamster" and see if it no errors occur.
+
+Optionally, use the following docker command to avoid possible complications with the environment:
+
+`docker run -it --rm --name mpw-modeling-hamster -v "$(pwd)":/usr/src/mpw-modeling-hamster -v"$(pwd)/local-m2":/root/.m2 -w /usr/src/mpw-modeling-hamster maven:3.6.3-openjdk-15-slim mvn install`
+
 You might inspect the transformed models in the "/debugout" folder.
 
 # Model breadcrumbAvailable query
@@ -294,3 +300,13 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
 # Sample solution
 
 If necessary, the sample solution for this tutorial can be found here: `https://github.com/Fumapps/mpw-modeling-hamster/tree/tutorial-solution`
+
+# Troubleshoooting
+
+## Maven Build Errors for Modeling Environment
+
+Please use Docker if any error occurs which not seems to be caused by the tutorial steps.
+
+`docker run -it --rm --name mpw-modeling-hamster -v "$(pwd)":/usr/src/mpw-modeling-hamster -v"$(pwd)/local-m2":/root/.m2 -w /usr/src/mpw-modeling-hamster maven:3.6.3-openjdk-15-slim mvn install`
+
+Note: Perform the command on the root of the check-out directory.
