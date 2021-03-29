@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>core</artifactId>
 
-	<name>Polyglot Hamstersimulator Core Model Library</name>
+	<name>Hamster Simulator Core Model Library</name>
 
 	<parent>
 		<groupId>de.unistuttgart.iste.sqa.mpw.hamstersimulator</groupId>

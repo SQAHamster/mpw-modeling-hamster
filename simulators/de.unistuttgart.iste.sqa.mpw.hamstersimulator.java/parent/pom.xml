@@ -4,7 +4,7 @@
 	<artifactId>parent</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 		
-	<name>Hamstersimulator Java Maven Parent Project</name>
+	<name>Hamster Simulator Java Maven Parent Project</name>
 	<packaging>pom</packaging>
 
 	<properties>
