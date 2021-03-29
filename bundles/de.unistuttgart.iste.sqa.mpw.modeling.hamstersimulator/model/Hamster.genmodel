@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator/src-gen" modelPluginID="de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator"
-    modelName="Hamster" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
-    usedGenPackages="../../de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/mpw.genmodel#//commands ../../de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/mpw.genmodel#//stereotypes ../../de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/mpw.genmodel#//basetypes ../../de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/mpw.genmodel#//mpw"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator/src-gen"
+    modelPluginID="de.unistuttgart.iste.sqa.mpw.modeling.hamstersimulator" modelName="Hamster"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/mpw.genmodel#//commands ../../de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/mpw.genmodel#//stereotypes ../../de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/mpw.genmodel#//basetypes ../../de.unistuttgart.iste.sqa.mpw.modeling.mpw/model/mpw.genmodel#//mpw"
     operationReflection="true" importOrganizing="true">
   <foreignModel>Hamster.ecore</foreignModel>
   <genPackages prefix="Hamster" disposableProviderFactory="true" ecorePackage="Hamster.ecore#/">
@@ -18,5 +18,6 @@
     <genClasses ecoreClass="Hamster.ecore#//HamsterGame">
       <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference Hamster.ecore#//HamsterGame/territory"/>
     </genClasses>
+    <genClasses ecoreClass="Hamster.ecore#//Breadcrumb"/>
   </genPackages>
 </genmodel:GenModel>

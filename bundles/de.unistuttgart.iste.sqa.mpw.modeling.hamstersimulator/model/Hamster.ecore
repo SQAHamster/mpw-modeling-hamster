@@ -36,4 +36,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="territory" lowerBound="1"
         eType="#//Territory" changeable="false" containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Breadcrumb" eSuperTypes="http://www.mpw.uni-stuttgart.de/mpw#//Prop"/>
 </ecore:EPackage>

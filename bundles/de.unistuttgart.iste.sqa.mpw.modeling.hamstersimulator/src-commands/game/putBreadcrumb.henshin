@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<henshin:Module xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:henshin="http://www.eclipse.org/emf/2011/Henshin" xmi:id="_cfAssHOcEeuT_ooKJQKOTw" name="putBreadcrumb">
+  <imports href="http://www.mpw.uni-stuttgart.de/mpw#/"/>
+  <imports href="../../model/Hamster.ecore#/"/>
+  <units xsi:type="henshin:Rule" xmi:id="_eLk8MHOcEeuT_ooKJQKOTw" name="putBreadcrumb">
+    <lhs xmi:id="_eLtfEHOcEeuT_ooKJQKOTw" name="Lhs">
+      <nodes xmi:id="_l5S10HOcEeuT_ooKJQKOTw" name="self" incoming="_ola9gHOfEeuAwZxWltvlKw" outgoing="_JbUR8HOfEeuAwZxWltvlKw _ct4u0HOfEeuAwZxWltvlKw">
+        <type href="../../model/Hamster.ecore#//Hamster"/>
+      </nodes>
+      <nodes xmi:id="_nBxg0HOcEeuT_ooKJQKOTw" incoming="_JbUR8HOfEeuAwZxWltvlKw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Tile"/>
+      </nodes>
+      <nodes xmi:id="_cFvwwHOfEeuAwZxWltvlKw" incoming="_ct4u0HOfEeuAwZxWltvlKw" outgoing="_ola9gHOfEeuAwZxWltvlKw">
+        <type href="../../model/Hamster.ecore#//Territory"/>
+      </nodes>
+      <edges xmi:id="_JbUR8HOfEeuAwZxWltvlKw" source="_l5S10HOcEeuT_ooKJQKOTw" target="_nBxg0HOcEeuT_ooKJQKOTw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
+      </edges>
+      <edges xmi:id="_ct4u0HOfEeuAwZxWltvlKw" source="_l5S10HOcEeuT_ooKJQKOTw" target="_cFvwwHOfEeuAwZxWltvlKw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
+      </edges>
+      <edges xmi:id="_ola9gHOfEeuAwZxWltvlKw" source="_cFvwwHOfEeuAwZxWltvlKw" target="_l5S10HOcEeuT_ooKJQKOTw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tileContents"/>
+      </edges>
+    </lhs>
+    <rhs xmi:id="_eLtfEXOcEeuT_ooKJQKOTw" name="Rhs">
+      <nodes xmi:id="_l5S10XOcEeuT_ooKJQKOTw" name="self" incoming="_ola9gXOfEeuAwZxWltvlKw" outgoing="_JbUR8XOfEeuAwZxWltvlKw _ct4u0XOfEeuAwZxWltvlKw">
+        <type href="../../model/Hamster.ecore#//Hamster"/>
+      </nodes>
+      <nodes xmi:id="_nBxg0XOcEeuT_ooKJQKOTw" incoming="_JbUR8XOfEeuAwZxWltvlKw" outgoing="_KUqUwHOfEeuAwZxWltvlKw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Tile"/>
+      </nodes>
+      <nodes xmi:id="_cFwX0HOfEeuAwZxWltvlKw" incoming="_ct4u0XOfEeuAwZxWltvlKw" outgoing="_ola9gXOfEeuAwZxWltvlKw _dxikMHOfEeuAwZxWltvlKw">
+        <type href="../../model/Hamster.ecore#//Territory"/>
+      </nodes>
+      <nodes xmi:id="_Z2YWMHOfEeuAwZxWltvlKw" incoming="_KUqUwHOfEeuAwZxWltvlKw _dxikMHOfEeuAwZxWltvlKw">
+        <type href="../../model/Hamster.ecore#//Breadcrumb"/>
+      </nodes>
+      <edges xmi:id="_JbUR8XOfEeuAwZxWltvlKw" source="_l5S10XOcEeuT_ooKJQKOTw" target="_nBxg0XOcEeuT_ooKJQKOTw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/currentTile"/>
+      </edges>
+      <edges xmi:id="_ct4u0XOfEeuAwZxWltvlKw" source="_l5S10XOcEeuT_ooKJQKOTw" target="_cFwX0HOfEeuAwZxWltvlKw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//TileContent/stage"/>
+      </edges>
+      <edges xmi:id="_ola9gXOfEeuAwZxWltvlKw" source="_cFwX0HOfEeuAwZxWltvlKw" target="_l5S10XOcEeuT_ooKJQKOTw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tileContents"/>
+      </edges>
+      <edges xmi:id="_KUqUwHOfEeuAwZxWltvlKw" source="_nBxg0XOcEeuT_ooKJQKOTw" target="_Z2YWMHOfEeuAwZxWltvlKw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Tile/contents"/>
+      </edges>
+      <edges xmi:id="_dxikMHOfEeuAwZxWltvlKw" source="_cFwX0HOfEeuAwZxWltvlKw" target="_Z2YWMHOfEeuAwZxWltvlKw">
+        <type href="http://www.mpw.uni-stuttgart.de/mpw#//Stage/tileContents"/>
+      </edges>
+    </rhs>
+    <mappings xmi:id="_l5S10nOcEeuT_ooKJQKOTw" origin="_l5S10HOcEeuT_ooKJQKOTw" image="_l5S10XOcEeuT_ooKJQKOTw"/>
+    <mappings xmi:id="_nBxg0nOcEeuT_ooKJQKOTw" origin="_nBxg0HOcEeuT_ooKJQKOTw" image="_nBxg0XOcEeuT_ooKJQKOTw"/>
+    <mappings xmi:id="_cFwX0XOfEeuAwZxWltvlKw" origin="_cFvwwHOfEeuAwZxWltvlKw" image="_cFwX0HOfEeuAwZxWltvlKw"/>
+  </units>
+</henshin:Module>

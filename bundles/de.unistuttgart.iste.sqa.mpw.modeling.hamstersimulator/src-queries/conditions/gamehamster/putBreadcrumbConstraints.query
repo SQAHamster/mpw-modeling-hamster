@@ -1,0 +1,7 @@
+context Hamster::putBreadcrumb
+
+/** on the current tile, only the hamster has to be contained */
+precondition: self.currentTile.contents->size() = 1 and self.currentTile.contents->at(0) = self;
+
+/** on the current tile, now also a breadcrumb has to be contained */
+postcondition: self.currentTile.contents->size() = 2 and self.breadcrumbAvailable();

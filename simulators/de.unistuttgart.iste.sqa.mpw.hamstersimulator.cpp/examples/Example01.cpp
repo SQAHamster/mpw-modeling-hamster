@@ -8,7 +8,9 @@ protected:
 };
 
 void Example01::run() {
-    // displayInNewGameWindow();
+    paule.putBreadcrumb();
+    paule.pickBreadcrumb();
+    paule.putBreadcrumb();
     paule.move();
     paule.move();
     paule.pickGrain();
@@ -16,6 +18,7 @@ void Example01::run() {
     paule.turnLeft();
     paule.move();
     paule.move();
+    paule.pickBreadcrumb();
     paule.putGrain();
     paule.turnLeft();
     paule.turnLeft();

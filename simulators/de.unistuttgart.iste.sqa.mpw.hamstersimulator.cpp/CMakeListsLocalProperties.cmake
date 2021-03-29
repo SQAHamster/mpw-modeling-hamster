@@ -1,0 +1,5 @@
+# set(CORE_DIR "D:/Workspace/eclipse-poly-hamster/poly-hamster-simulator/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp")
+# set(CORE_LIB "${CORE_DIR}/out/build/x64-Debug (default)/hamster_core_lib.lib")
+set(SDL2_DIR "D:/Workspace/VisualStudio/libraries/SDL2-2.0.14")
+set(SDL2_IMAGE_DIR "D:/Workspace/VisualStudio/libraries/SDL2_image-2.0.5")
+set(SDL2_TTF_DIR "D:/Workspace/VisualStudio/libraries/SDL2_ttf-2.0.15")

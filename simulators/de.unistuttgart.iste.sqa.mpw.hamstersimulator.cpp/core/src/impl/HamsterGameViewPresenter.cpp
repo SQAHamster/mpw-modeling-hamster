@@ -38,6 +38,7 @@ const framework::ObservableListProperty<mpw::Tile>& HamsterGameViewPresenter::ge
 void HamsterGameViewPresenter::onSetTileNodeAtForCell(ViewModelCell& cell, const mpw::Tile& tile) {
     configureWallImageView(cell, tile);
     configureGrainImageView(cell, tile);
+    configureBreadcrumbImageView(cell, tile);
     for (std::shared_ptr<ReadOnlyHamster> hamster : getHamstersOfTile(tile)) {
         configureHamsterImageView(cell, *hamster);
     }
@@ -70,6 +71,18 @@ void HamsterGameViewPresenter::configureWallImageView(ViewModelCell& cell, const
 
 void HamsterGameViewPresenter::refreshWallLayer(ViewModelCellLayer& layer, const Tile& tile) {
     layer.setVisible(!getWallsOfTile(tile).empty());
+}
+
+void HamsterGameViewPresenter::configureBreadcrumbImageView(ViewModelCell& cell, const Tile& tile) {
+  auto breadcrumbLayer = std::make_shared<ViewModelCellLayer>();
+  breadcrumbLayer->setImageName("Breadcrumb32");
+  refreshBreadcrumbLayer(*breadcrumbLayer, tile);
+
+  cell.addToLayers(breadcrumbLayer);
+}
+
+void HamsterGameViewPresenter::refreshBreadcrumbLayer(ViewModelCellLayer& layer, const Tile& tile) {
+  layer.setVisible(!getBreadcrumbsOfTile(tile).empty());
 }
 
 void HamsterGameViewPresenter::configureHamsterImageView(ViewModelCell& cell, const ReadOnlyHamster& hamster) {
@@ -107,6 +120,10 @@ std::list<std::shared_ptr<hamster::Wall>> HamsterGameViewPresenter::getWallsOfTi
 
 std::list<std::shared_ptr<hamster::Grain>> HamsterGameViewPresenter::getGrainOfTile(const Tile& tile) {
     return type_select<hamster::Grain>(const_cast<Tile&>(tile).getContents());
+}
+
+std::list<std::shared_ptr<hamster::Breadcrumb>> HamsterGameViewPresenter::getBreadcrumbsOfTile(const Tile& tile) {
+  return type_select<hamster::Breadcrumb>(const_cast<Tile&>(tile).getContents());
 }
 
 void HamsterGameViewPresenter::updateColorMap() {

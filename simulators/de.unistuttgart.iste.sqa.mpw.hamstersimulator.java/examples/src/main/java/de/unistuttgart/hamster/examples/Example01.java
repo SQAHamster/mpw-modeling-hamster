@@ -16,8 +16,9 @@ public class Example01 extends SimpleHamsterGame {
     protected void run() {
         displayInNewGameWindow();
         for (int i = 0; i < SCENARIO_REPETITION_COUNT; i++) {
-            paule.write("Hallo!");
+            paule.putBreadcrumb();
             paule.move();
+            paule.putBreadcrumb();
             paule.move();
             paule.pickGrain();
             paule.pickGrain();
@@ -26,7 +27,9 @@ public class Example01 extends SimpleHamsterGame {
             paule.turnLeft();
             paule.turnLeft();
             paule.move();
+            paule.pickBreadcrumb();
             paule.move();
+            paule.pickBreadcrumb();
             paule.turnLeft();
             paule.turnLeft();
         }

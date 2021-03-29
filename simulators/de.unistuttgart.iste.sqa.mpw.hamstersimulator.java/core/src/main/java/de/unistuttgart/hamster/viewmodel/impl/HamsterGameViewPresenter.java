@@ -49,6 +49,7 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 	protected void onSetTileNodeAtForCell(final ViewModelCell cell, final Tile tile) {
 		configureWallImageView(cell, tile);
 		configureGrainImageView(cell, tile);
+		configureBreadcrumbImageView(cell, tile);
 
 		final Optional<ReadOnlyHamster> hamsterOptional = findHamsterOnTile(tile);
 		hamsterOptional.ifPresent(readOnlyHamster -> configureHamsterImageView(cell, readOnlyHamster));
@@ -86,6 +87,20 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 		} else {
 			layer.setImageName("12PlusCorn");
 		}
+	}
+
+	// create a layer for the breadcrumb image
+	private void configureBreadcrumbImageView(final ViewModelCell cell, final Tile tile) {
+		final var layer = new ViewModelCellLayer();
+		layer.setImageName("Breadcrumb");
+		refreshBreadcrumbLayer(layer, tile);
+		cell.getLayers().add(layer);
+	}
+
+	// set the breadcrumb visibility to true, if the tile contains a Breadcrumb object
+	private void refreshBreadcrumbLayer(final ViewModelCellLayer layer, final Tile tile) {
+		final boolean containsBreadcrumb = tile.getContents().stream().anyMatch(Breadcrumb.class::isInstance);
+		layer.setVisible(containsBreadcrumb);
 	}
 
 	private List<Grain> getGrainOfTile(final Tile tile) {

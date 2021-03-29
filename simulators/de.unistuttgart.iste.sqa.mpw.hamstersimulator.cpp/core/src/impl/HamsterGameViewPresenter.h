@@ -7,6 +7,7 @@
 #include "Tile.h"
 #include "Wall.h"
 #include "Grain.h"
+#include "Breadcrumb.h"
 #include "ReadOnlyHamster.h"
 
 #include <unordered_map>
@@ -40,6 +41,9 @@ private:
     void configureWallImageView(ViewModelCell& cell, const mpw::Tile& tile);
     void refreshWallLayer(ViewModelCellLayer& layer, const mpw::Tile& tile);
 
+    void configureBreadcrumbImageView(ViewModelCell& cell, const mpw::Tile& tile);
+    void refreshBreadcrumbLayer(ViewModelCellLayer& layer, const mpw::Tile& tile);
+
     void configureHamsterImageView(ViewModelCell& cell, const hamster::ReadOnlyHamster& hamster);
     void refreshHamsterLayer(ViewModelCellLayer& layer, const hamster::ReadOnlyHamster& hamster);
 
@@ -48,6 +52,7 @@ private:
     static std::list<std::shared_ptr<hamster::ReadOnlyHamster>> getHamstersOfTile(const mpw::Tile& tile);
     static std::list<std::shared_ptr<hamster::Wall>> getWallsOfTile(const mpw::Tile& tile);
     static std::list<std::shared_ptr<hamster::Grain>> getGrainOfTile(const mpw::Tile& tile);
+    static std::list<std::shared_ptr<hamster::Breadcrumb>> getBreadcrumbsOfTile(const mpw::Tile& tile);
 
     const std::shared_ptr<hamster::HamsterGame> game;
     std::unordered_map<const basetypes::Entity*, Color> hamsterToColorMap;

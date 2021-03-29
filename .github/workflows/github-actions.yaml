@@ -2,9 +2,9 @@ name: CI with Maven / CMake
 
 on:
   push:
-    branches: [ 'master' ]
+    branches: [ 'master', 'tutorial-solution' ]
   pull_request:
-    branches: [ 'master' ]
+    branches: [ 'master', 'tutorial-solution' ]
 
 jobs:
   build:
@@ -48,32 +48,3 @@ jobs:
         env:
           PROJECT_CPP_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp
           BUILD_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/build
-
-      # Copy deployment artifacts
-      - name: copy cpp simulator
-        run: |
-          mkdir ~/deploy-cpp-simulator-to-branch
-          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/core ~/deploy-cpp-simulator-to-branch
-          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/ui ~/deploy-cpp-simulator-to-branch
-          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/main ~/deploy-cpp-simulator-to-branch
-          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/examples ~/deploy-cpp-simulator-to-branch
-          cp simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/CMakeLists.txt ~/deploy-cpp-simulator-to-branch
-
-      # Prepare Git Repository
-      - name: set identity
-        run: git config user.email "44242539+fumapps@users.noreply.github.com" && git config user.name "Mario Fuksa"
-
-      # Deploy cpp-simulator to branch
-      - name: switch to cpp simulator branch
-        run: git fetch && git checkout cpp-simulator && git reset --hard 74be83085c54c29e2d554db2bf8942b49dde1a5d
-      - name: cpp simulator branch core folder
-        run: |
-          git clean -ffd
-          rm -rf ./core && rm -rf ./ui && rm -rf ./main && rm -rf ./examples && rm -f CMakeLists.txt
-          cp -R ~/deploy-cpp-simulator-to-branch/core ./core
-          cp -R ~/deploy-cpp-simulator-to-branch/ui ./ui
-          cp -R ~/deploy-cpp-simulator-to-branch/main ./main
-          cp -R ~/deploy-cpp-simulator-to-branch/examples ./examples
-          cp ~/deploy-cpp-simulator-to-branch/CMakeLists.txt ./CMakeLists.txt
-      - name: commit
-        run: git add -A && git commit -am 'C++ hamstersimulator code snapshot' && git push origin cpp-simulator --force

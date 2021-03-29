@@ -53,6 +53,7 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
         SDL_SetTextureColorMod(texturesByImageName[textureName], sdlColor.r, sdlColor.g, sdlColor.b);
     }
     loadTexture("Wall32");
+    loadTexture("Breadcrumb32");
     for (int i = 1; i <= 12; i++) {
         loadTexture(std::to_string(i) + "Corn32");
     }
