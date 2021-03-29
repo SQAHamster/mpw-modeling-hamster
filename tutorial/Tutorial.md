@@ -191,7 +191,7 @@ After finishing the modeling of the Breadcrumb entity, a query and the two comma
 
 * now, add the `Breadcrumb32.png` ![Breadcrumb32.png](Breadcrumb32.png) (https://github.com/Fumapps/mpw-modeling-hamster/raw/master/tutorial/Breadcrumb32.png) image to `/ui/src/main/resources/images`
 
-* last, extend the `loadPropImages()` method in `ui/src/main/java/de/unistuttgart/hamstersimulator/ui/TileNode`, for mapping the symbolic image name
+* last, extend the `loadPropImages()` method in `ui/src/main/java/de/unistuttgart/hamster/ui/TileNode`, for mapping the symbolic image name
 
 ```java
     private static void loadPropImages() {
@@ -204,7 +204,7 @@ After finishing the modeling of the Breadcrumb entity, a query and the two comma
 ```
 
 * finally, adapt an example or create a new one, and test the breadcrumb commands :-)
-    * under `/ui/src/main/java/de/unistuttgart/hamstersimulator/examples`
+    * under `/examples/src/main/java/de/unistuttgart/hamster/examples`
     
 ![Screenshot finished](09%20Screenshot%20extended%20Simulator.png)
 
@@ -240,8 +240,7 @@ private:
     * implement the `configureBreadcrumbImageView()` and `refreshBreadcrumbLayer()` methods
 
 ```cpp
-void HamsterGameViewPresenter::configureBreadcrumbImageView(ViewModelCell& cell, const Tile& tile)
-{
+void HamsterGameViewPresenter::configureBreadcrumbImageView(ViewModelCell& cell, const Tile& tile) {
     auto breadcrumbLayer = std::make_shared<ViewModelCellLayer>();
     breadcrumbLayer->setImageName("Breadcrumb32");
     refreshBreadcrumbLayer(*breadcrumbLayer, tile);
@@ -249,8 +248,7 @@ void HamsterGameViewPresenter::configureBreadcrumbImageView(ViewModelCell& cell,
     cell.addToLayers(breadcrumbLayer);
 }
 
-void HamsterGameViewPresenter::refreshBreadcrumbLayer(ViewModelCellLayer& layer, const Tile& tile)
-{
+void HamsterGameViewPresenter::refreshBreadcrumbLayer(ViewModelCellLayer& layer, const Tile& tile) {
     layer.setVisible(!getBreadcrumbsOfTile(tile).empty());
 }
 ```
@@ -259,8 +257,7 @@ void HamsterGameViewPresenter::refreshBreadcrumbLayer(ViewModelCellLayer& layer,
 * implement the `getBreadcrumbsOfTile()`
 
 ```cpp
-std::list<std::shared_ptr<hamster::Breadcrumb>> HamsterGameViewPresenter::getBreadcrumbsOfTile(const Tile& tile)
-{
+std::list<std::shared_ptr<hamster::Breadcrumb>> HamsterGameViewPresenter::getBreadcrumbsOfTile(const Tile& tile) {
     return type_select<hamster::Breadcrumb>(const_cast<Tile&>(tile).getContents());
 }
 ```
@@ -268,8 +265,7 @@ std::list<std::shared_ptr<hamster::Breadcrumb>> HamsterGameViewPresenter::getBre
 * in the existing `onSetTileNodeAtForCell()` method, call the new configure method
 
 ```cpp
-void HamsterGameViewPresenter::onSetTileNodeAtForCell(ViewModelCell& cell, const mpw::Tile& tile)
-{
+void HamsterGameViewPresenter::onSetTileNodeAtForCell(ViewModelCell& cell, const mpw::Tile& tile) {
     configureWallImageView(cell, tile);
     configureGrainImageView(cell, tile);
     configureBreadcrumbImageView(cell, tile);
@@ -295,7 +291,7 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
 ```
 
 * finally, adapt an example or create a new one, and test the C++ breadcrumb commands :-)
-    * under `ui/examples`
+    * under `/examples`
 
 # Sample solution
 
