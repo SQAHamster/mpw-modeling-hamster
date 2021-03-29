@@ -28,7 +28,7 @@ void SdlApplication::initialize(int width, int height) {
     } else {
         window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                   width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
-        SDL_SetWindowMinimumSize(window, 300, 300);
+        SDL_SetWindowMinimumSize(window, 660, 300);
         if (window == nullptr) {
             throwExceptionWithSdlError("Window could not be created!");
         } else {
