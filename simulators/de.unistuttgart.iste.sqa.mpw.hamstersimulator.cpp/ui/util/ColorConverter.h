@@ -17,6 +17,12 @@ public:
         return {sdlColor.r, sdlColor.g, sdlColor.b, sdlColor.a};
     }
 
+    static sdlgui::Color toDarkerColor(viewmodel::Color color, float factor) {
+        sdlgui::Color nanoguiColor = toNanoguiColor(color);
+        sdlgui::Color resultColor = nanoguiColor * factor;
+        return resultColor.withAlpha(nanoguiColor.a()); // retain alpha
+    }
+
     static SDL_Color toSdlColor(viewmodel::Color color) {
         switch (color) {
             case viewmodel::Color::BLACK:

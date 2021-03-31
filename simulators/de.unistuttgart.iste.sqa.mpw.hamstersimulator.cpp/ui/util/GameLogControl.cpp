@@ -9,6 +9,8 @@
 
 const int TILE_SIZE = 80; // TODO: reuse
 const int LOG_OFFSET = 10;
+const float COLOR_DARK_FACTOR = 0.5;
+const SDL_Color LOG_ENTRY_ALTERNATE_COLOR = {216, 216, 216, 150};
 
 using namespace sdlgui;
 
@@ -30,15 +32,16 @@ void hamstersimulator::GameLogControl::bindToGameLog(const viewmodel::GameViewMo
     setPosition(x, LOG_OFFSET);
 
     viewModel.logEntriesProperty().addOnAddedListener([&](const viewmodel::ViewModelLogEntry& logEntry) {
-        SDL_Color color = {174, 214, 241, 150};
+        SDL_Color color = LOG_ENTRY_ALTERNATE_COLOR;
         if (viewModel.getLogEntries().size() % 2 == 0) {
             color = {0, 0, 0, 0};
         }
 
         auto& widget = listPanel->wdg<WidgetBackgroundWrapper>(color)
                 .withFixedSize({width() - 6, 20});
+        Color darkifiedColor = ColorConverter::toDarkerColor(logEntry.getColor(), COLOR_DARK_FACTOR);
         widget.label(logEntry.getMessage())
-                .setColor(ColorConverter::toNanoguiColor(logEntry.getColor()));
+                .setColor(darkifiedColor);
         logEntryWidgets[&logEntry] = &widget;
 
         scrollPanel->scrollEvent({}, {0, static_cast<float>(-scrollPanel->height())});
