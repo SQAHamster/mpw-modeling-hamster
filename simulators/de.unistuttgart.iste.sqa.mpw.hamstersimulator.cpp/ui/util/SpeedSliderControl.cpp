@@ -1,6 +1,7 @@
 #include "SpeedSliderControl.h"
 
 #include "ControlWindowTheme.h"
+#include "util/UiDimensions.h"
 
 using namespace sdlgui;
 
@@ -13,11 +14,11 @@ SpeedSliderControl::SpeedSliderControl(sdlgui::Screen& screen)
         : Window(&screen, "") {
 
     setTheme(new ControlWindowTheme(screen.sdlRenderer()));
-    setPosition(250, 20);
+    setPosition(SLIDER_X, SLIDER_HEIGHT);
 
     sliderControl = &slider();
-    sliderControl->withFixedWidth(200);
-    withFixedWidth(200);
+    sliderControl->withFixedWidth(SLIDER_WIDTH);
+    withFixedWidth(SLIDER_WIDTH);
 }
 
 void SpeedSliderControl::bindToSpeed(const viewmodel::GameViewModel& viewModel,
