@@ -113,7 +113,7 @@ TEST_F(HamsterViewModelTest, testInitializeFurtherTerritory) { /* NOLINT */
     initializeOtherTerritory("/territories/example03.ter");
     assertTerritory(
             "|####|####|####|\n"
-            "|####|v   |####|\n"
+            "|####|>   |####|\n"
             "|####|    |####|\n"
             "|####| 2* |####|\n"
             "|####|####|####|\n");
