@@ -25,7 +25,7 @@ private:
 public:
 };
 
-TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */ /* NOLINT */
+TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */
     withTerritory("/territories/example01.ter");
     assertTerritory(
             "|####|####|####|####|####|\n"
