@@ -10,6 +10,7 @@ import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelCell;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelCellLayer;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.impl.GameViewPresenterBase;
 import javafx.beans.property.ReadOnlyListProperty;
+import javafx.beans.property.ReadOnlyObjectProperty;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,8 +29,8 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 	}
 
 	@Override
-	protected Size getStageSizeFromConcreteStage() {
-		return territory.getTerritorySize();
+	protected ReadOnlyObjectProperty<Size> getStageSizeFromConcreteStage() {
+		return territory.getInternalTerritory().stageSizeProperty();
 	}
 
 	@Override
@@ -113,7 +114,9 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 
 	private void refreshHamsterLayer(final ViewModelCellLayer layer, final ReadOnlyHamster hamster) {
 		layer.setVisible(hamster.getCurrentTile() != null);
-		layer.setRotation(getRotationForDirection(hamster.getDirection()));
+		if (hamster.getDirection() != null) {
+			layer.setRotation(getRotationForDirection(hamster.getDirection()));
+		}
 	}
 
 	private void updateColorMap() {

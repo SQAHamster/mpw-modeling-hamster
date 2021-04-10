@@ -17,7 +17,7 @@ public class HamsterViewModelTest extends HamsterViewTestBase {
 
     @Test
     public void testInit() throws IOException {
-        withTerritory("/territories/example01.ter");
+        withTerritory("example01.ter");
         assertTerritory(
                 "|####|####|####|####|####|\n" +
                 "|####|>   |    | 2* |####|\n" +
@@ -32,7 +32,7 @@ public class HamsterViewModelTest extends HamsterViewTestBase {
 
     @Test
     public void testMove() throws IOException {
-        withTerritory("/territories/example01.ter");
+        withTerritory("example01.ter");
         paule.move();
         assertTerritory(
                 "|####|####|####|####|####|\n" +
@@ -48,7 +48,7 @@ public class HamsterViewModelTest extends HamsterViewTestBase {
 
     @Test
     public void testPickGrain() throws IOException {
-        withTerritory("/territories/example01.ter");
+        withTerritory("example01.ter");
         paule.move();
         paule.move();
         paule.pickGrain();
@@ -66,7 +66,7 @@ public class HamsterViewModelTest extends HamsterViewTestBase {
 
     @Test
     public void testPickGrainAndPutGrain() throws IOException {
-        withTerritory("/territories/example01.ter");
+        withTerritory("example01.ter");
         paule.move();
         paule.move();
         paule.pickGrain();
@@ -85,7 +85,7 @@ public class HamsterViewModelTest extends HamsterViewTestBase {
 
     @Test
     public void testMoveAndRotateAndMove() throws IOException {
-        withTerritory("/territories/example01.ter");
+        withTerritory("example01.ter");
         paule.move();
         paule.turnLeft();
         paule.turnLeft();
@@ -103,8 +103,25 @@ public class HamsterViewModelTest extends HamsterViewTestBase {
     }
 
     @Test
+    public void testInitializeFurtherTerritory() throws IOException {
+        withTerritory("example01.ter");
+        initializeOtherTerritory("example03.ter");
+        assertTerritory(
+                "|####|####|####|\n" +
+                "|####|>   |####|\n" +
+                "|####|    |####|\n" +
+                "|####| 2* |####|\n" +
+                "|####|####|####|\n");
+        initializeOtherTerritory("example01.ter");
+        assertTerritory(
+                "|####|####|####|####|####|\n" +
+                "|####|>   |    | 2* |####|\n" +
+                "|####|####|####|####|####|\n");
+    }
+
+    @Test
     public void testMoveAgainstWall() throws IOException {
-        withTerritory("/territories/example01.ter");
+        withTerritory("example01.ter");
         paule.move();
         paule.turnLeft();
 
@@ -115,7 +132,7 @@ public class HamsterViewModelTest extends HamsterViewTestBase {
 
     @Test
     public void testLog() throws IOException {
-        withTerritory("/territories/example01.ter");
+        withTerritory("example01.ter");
         paule.move();
         paule.move();
         paule.pickGrain();
@@ -138,7 +155,7 @@ public class HamsterViewModelTest extends HamsterViewTestBase {
      */
     @Test
     public void testButtonsForModes() throws IOException {
-        withTerritory("/territories/example01.ter");
+        withTerritory("example01.ter");
         assertButtons("/play/ [pause] /undo/ /redo/");
         paule.move();
         paule.turnLeft();

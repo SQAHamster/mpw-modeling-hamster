@@ -31,7 +31,8 @@ public class HamsterViewTestBase {
         initCharMapping();
     }
 
-    protected void withTerritory(String path) throws IOException {
+    protected void withTerritory(final String fileName) throws IOException {
+        final String path = getResourcePath(fileName);
         game = new HamsterGame();
         TerritoryLoader.initializeFor(game).loadFromResourceFile(path);
 
@@ -47,6 +48,15 @@ public class HamsterViewTestBase {
         viewModel = presenter.getViewModel();
 
         game.setUserInputInterface(new UserInputInterfaceFake());
+    }
+
+    protected void initializeOtherTerritory(final String fileName) throws IOException {
+        game.hardReset();
+        TerritoryLoader.initializeFor(game).loadFromResourceFile(getResourcePath(fileName));
+    }
+
+    private String getResourcePath(String fileName) {
+        return "de.unistuttgart.hamster.territories/" + fileName;
     }
 
     protected void clickPlay() {
