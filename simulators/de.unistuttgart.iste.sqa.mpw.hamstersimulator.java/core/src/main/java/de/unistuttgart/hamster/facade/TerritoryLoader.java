@@ -104,7 +104,7 @@ public class TerritoryLoader {
     }
 
     private List<String> readLinesFromTerritoryResourceFile(final String territoryFileName) throws IOException {
-        final InputStream in = getClass().getResourceAsStream(territoryFileName);
+        final InputStream in = getClass().getClassLoader().getResourceAsStream(territoryFileName);
         if (in == null) {
             throw new IOException("Unable to load the territory from the filename: " + territoryFileName);
         }
