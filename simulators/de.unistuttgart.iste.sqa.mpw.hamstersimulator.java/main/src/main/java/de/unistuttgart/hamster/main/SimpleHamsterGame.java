@@ -145,7 +145,7 @@ public abstract class SimpleHamsterGame {
      * in mode INITIALIZING. To start the game, game.startGame() should be called
      *
      * @param fileName A resource path to the resource file.
-     * @throws IllegalArgumentException if fileName is no absolute resource path (does not start with "/")
+     * @throws IllegalArgumentException if fileName is no valid resource path
      *                                  or if the file was not found
      */
     protected final void loadTerritoryFromResourceFile(final String fileName) {

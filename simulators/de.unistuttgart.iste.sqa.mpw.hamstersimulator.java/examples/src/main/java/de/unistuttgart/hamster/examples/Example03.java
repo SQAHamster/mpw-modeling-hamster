@@ -1,6 +1,5 @@
 package de.unistuttgart.hamster.examples;
 
-import de.unistuttgart.hamster.facade.Hamster;
 import de.unistuttgart.hamster.main.SimpleHamsterGame;
 
 public class Example03 extends SimpleHamsterGame {
@@ -8,11 +7,8 @@ public class Example03 extends SimpleHamsterGame {
         createInstance(Example03.class);
     }
 
-    Hamster paula;
-
     /**
-     * Another hamster program. The idea is to create Paula close to Paula with
-     * grain in her mouth. She drops it and Paule picks it up.
+     * Another hamster program, which tests the loading of another territory.
      */
     @Override
     protected void run() {

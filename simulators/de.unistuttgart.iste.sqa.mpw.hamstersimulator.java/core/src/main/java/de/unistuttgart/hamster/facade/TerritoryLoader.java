@@ -52,7 +52,7 @@ public class TerritoryLoader {
 
     private void setSizeFromStrings(final String[] lines) {
         this.loadedTerritoryDimensions = new Size(Integer.parseInt(lines[0]), Integer.parseInt(lines[1]));
-        this.territoryBuilder.initTerritory(this.loadedTerritoryDimensions.getColumnCount(), this.loadedTerritoryDimensions.getRowCount()); // todo allow size as parameter
+        this.territoryBuilder.initTerritory(this.loadedTerritoryDimensions.getColumnCount(), this.loadedTerritoryDimensions.getRowCount());
     }
 
     private void buildTiles(final String[] lines) {
