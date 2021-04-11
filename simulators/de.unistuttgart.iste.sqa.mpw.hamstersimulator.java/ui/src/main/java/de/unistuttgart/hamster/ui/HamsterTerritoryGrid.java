@@ -76,6 +76,8 @@ public class HamsterTerritoryGrid extends StackPane {
             hamsterToColorPos.clear();
             Platform.runLater(() -> this.territoryGrid.getChildren().clear());
         });
+        this.minWidthProperty().bind(territoryGrid.minWidthProperty());
+        this.minHeightProperty().bind(territoryGrid.minHeightProperty());
     }
 
     public void bindToViewModel(final GameViewModel viewModel) {
@@ -102,7 +104,7 @@ public class HamsterTerritoryGrid extends StackPane {
         final int rows = size.getRowCount();
         final NumberBinding pixPerCellWidth = this.widthProperty().divide(columns == 0 ? 1 : columns);
         final NumberBinding pixPerCellHeight = this.heightProperty().divide(rows == 0 ? 1 : rows);
-        this.squaredSize = Bindings.min(pixPerCellHeight, pixPerCellWidth);
+        this.squaredSize = Bindings.max(Bindings.min(pixPerCellHeight, pixPerCellWidth), MINIMUM_TILE_SIZE);
 
         this.territoryGrid.getColumnConstraints().clear();
         for (int i = 0; i < columns; i++) {
@@ -120,6 +122,8 @@ public class HamsterTerritoryGrid extends StackPane {
 
         this.territoryGrid.maxWidthProperty().bind(squaredSize.multiply(columns));
         this.territoryGrid.maxHeightProperty().bind(squaredSize.multiply(rows));
+        this.territoryGrid.setMinWidth(MINIMUM_TILE_SIZE*columns);
+        this.territoryGrid.setMinHeight(MINIMUM_TILE_SIZE*rows);
 
         this.territoryGrid.setAlignment(Pos.CENTER);
     }
