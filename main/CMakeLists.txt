@@ -1,0 +1,18 @@
+project(hamstersimulator_main)
+
+set(CMAKE_CXX_STANDARD 17)
+
+# Own Sources
+set(SRCS
+    SimpleHamsterGame.cpp SimpleHamsterGame.h)
+
+# Library
+
+get_target_property(hamstersimulator_core_lib_FACADE_INCLUDES hamstersimulator_core_lib FACADE_INCLUDES)
+get_target_property(mpw_framework_core_lib_FACADE_INCLUDES mpw_framework_core_lib FACADE_INCLUDES)
+
+add_library(hamstersimulator_main_lib STATIC ${SRCS})
+target_include_directories(hamstersimulator_main_lib PUBLIC .)
+target_include_directories(hamstersimulator_main_lib PUBLIC ${hamstersimulator_core_lib_FACADE_INCLUDES})
+target_include_directories(hamstersimulator_main_lib PUBLIC ${mpw_framework_core_lib_FACADE_INCLUDES})
+target_link_libraries(hamstersimulator_main_lib PRIVATE hamstersimulator_core_lib PRIVATE hamstersimulator_ui_lib)
