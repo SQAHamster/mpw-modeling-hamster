@@ -4,7 +4,6 @@
 
 * replace pom.xml versions
 * replace MANIFEST.MF versions
-* replace plugin.xml versions
 * commit with pattern: "Version X.Y.Z"
 * create tag on master
 
@@ -20,5 +19,4 @@
 
 * replace pom.xml versions to next snapshot
 * replace MANIFEST.MF versions to next snapshot
-* replace plugin.xml versions to next snapshot
 * commit with pattern: "Version X.Y.Z-SNAPSHOT"
