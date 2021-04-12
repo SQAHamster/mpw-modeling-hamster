@@ -25,7 +25,7 @@ jobs:
 
       # Build and test Java Hamstersimulator
       - name: Build Java Hamstersimulator
-        run: mvn --settings simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.java/.m2/settings.xml -Dmaven.javadoc.skip=true -B deploy --file simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.java/pom.xml
+        run: mvn --settings simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.java/.m2/settings.xml -B deploy --file simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.java/pom.xml
         env:
           MAVEN_REPO_USER: ${{ secrets.MAVEN_REPO_USER }}
           MAVEN_REPO_PASS: ${{ secrets.MAVEN_REPO_PASS }}
@@ -65,12 +65,12 @@ jobs:
 
       # Prepare Git Repository
       - name: set identity
-        run: git config user.email "44242539+fumapps@users.noreply.github.com" && git config user.name "Mario Fuksa"
+        run: git config user.email "mpw-deployment@users.noreply.github.com" && git config user.name "Deployment"
 
       # Deploy cpp-simulator to branch
       - name: switch to cpp simulator branch
-        run: git fetch && git checkout cpp-simulator && git reset --hard 74be83085c54c29e2d554db2bf8942b49dde1a5d
-      - name: cpp simulator branch core folder
+        run: git fetch && git checkout cpp-simulator-snapshot && git reset --hard 74be83085c54c29e2d554db2bf8942b49dde1a5d
+      - name: cpp simulator branch folders
         run: |
           git clean -ffd
           rm -rf ./core && rm -rf ./ui && rm -rf ./main && rm -rf ./examples && rm -f CMakeLists.txt
@@ -80,4 +80,4 @@ jobs:
           cp -R ~/deploy-cpp-simulator-to-branch/examples ./examples
           cp ~/deploy-cpp-simulator-to-branch/CMakeLists.txt ./CMakeLists.txt
       - name: commit
-        run: git add -A && git commit -am 'C++ hamstersimulator code snapshot' && git push origin cpp-simulator --force
+        run: git add -A && git commit -am 'C++ hamstersimulator code snapshot' && git push origin cpp-simulator-snapshot --force
