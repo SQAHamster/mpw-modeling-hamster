@@ -9,8 +9,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON) # -fPIC on gcc
 include(FetchContent)
 
 FetchContent_Declare(mpw_lib
-        GIT_REPOSITORY https://github.com/Fumapps/mpw-modeling-framework.git
-        GIT_TAG cpp-framework
+        GIT_REPOSITORY https://github.com/SQAHamster/mpw-modeling-framework.git
+        GIT_TAG 1.0.0-cpp-framework
         SOURCE_DIR mpw_lib
         CMAKE_ARGS "-Wno-dev"
 )
