@@ -1,6 +1,6 @@
 # Polyglot Hamster - MPW Simulator
 
-This is the modeled hamster MPW simulator example based on the MPW framework (https://github.com/Fumapps/mpw-modeling-framework).
+This is the modeled hamster MPW simulator example based on the MPW framework (https://github.com/SQAHamster/mpw-modeling-framework).
 
 ![modeling approach](documentation/graphics/mdsd-approach-concrete-simulator.svg)
 
@@ -18,7 +18,7 @@ After code-generation with Maven `package`, in `/simulators` the both simulators
 * `model`: contains an Ecore model which describes the hamster MPW meta-model
 * `src-commands`: contains Henshin commands like move() which define graph transformations to describe the dynamic semantics of hamster commands
 * `src-queries`: contains pre-conditions, post-conditions, class invariants and queries for the hamster MPW 
-    * makes use of the Query-DSL https://github.com/Fumapps/mpw-modeling-querydsl
+    * makes use of the Query-DSL https://github.com/SQAHamster/mpw-modeling-querydsl
 * `src-workflow`: defines a MWE2 workflow which executes the modeling workflow to generate code for the Java and C++ simulators
 
 **releng** (contains release engineering artifacts)
