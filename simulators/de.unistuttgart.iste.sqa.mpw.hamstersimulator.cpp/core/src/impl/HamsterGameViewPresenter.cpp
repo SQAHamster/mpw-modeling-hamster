@@ -38,7 +38,7 @@ const framework::ObservableListProperty<mpw::Tile>& HamsterGameViewPresenter::ge
 void HamsterGameViewPresenter::onSetTileNodeAtForCell(ViewModelCell& cell, const mpw::Tile& tile) {
     configureWallImageView(cell, tile);
     configureGrainImageView(cell, tile);
-    for (std::shared_ptr<ReadOnlyHamster> hamster : getHamstersOfTile(tile)) {
+    for (std::shared_ptr<const ReadOnlyHamster> hamster : getHamstersOfTile(tile)) {
         configureHamsterImageView(cell, *hamster);
     }
 }
@@ -97,16 +97,16 @@ void HamsterGameViewPresenter::refreshHamsterLayer(ViewModelCellLayer& layer, co
     layer.setRotation(getRotationForDirection(hamster.getDirection()));
 }
 
-std::list<std::shared_ptr<hamster::ReadOnlyHamster>> HamsterGameViewPresenter::getHamstersOfTile(const Tile& tile) {
-    return type_select<hamster::ReadOnlyHamster>(const_cast<Tile&>(tile).getContents());
+std::list<std::shared_ptr<const hamster::ReadOnlyHamster>> HamsterGameViewPresenter::getHamstersOfTile(const Tile& tile) {
+    return type_select<hamster::ReadOnlyHamster>(tile.getContents());
 }
 
-std::list<std::shared_ptr<hamster::Wall>> HamsterGameViewPresenter::getWallsOfTile(const Tile& tile) {
-    return type_select<hamster::Wall>(const_cast<Tile&>(tile).getContents());
+std::list<std::shared_ptr<const hamster::Wall>> HamsterGameViewPresenter::getWallsOfTile(const Tile& tile) {
+    return type_select<hamster::Wall>(tile.getContents());
 }
 
-std::list<std::shared_ptr<hamster::Grain>> HamsterGameViewPresenter::getGrainOfTile(const Tile& tile) {
-    return type_select<hamster::Grain>(const_cast<Tile&>(tile).getContents());
+std::list<std::shared_ptr<const hamster::Grain>> HamsterGameViewPresenter::getGrainOfTile(const Tile& tile) {
+    return type_select<hamster::Grain>(tile.getContents());
 }
 
 void HamsterGameViewPresenter::updateColorMap() {
