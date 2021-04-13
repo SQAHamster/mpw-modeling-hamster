@@ -20,9 +20,9 @@
         <repository location='http://download.eclipse.org/releases/2020-12'/>
       </repositories>
     </iu>
-    <iu id='de.unistuttgart.iste.sqa.mpw.feature.feature.group' name='MPW Framework Feature' version='1.0.0'>
+    <iu id='de.unistuttgart.iste.sqa.mpw.feature.feature.group' name='MPW Framework Feature' version='0.0.0'>
       <repositories size='1'>
-        <repository location='https://raw.githubusercontent.com/SQAHamster/mpw-modeling-framework/1.0.0-updatesite/repository'/>
+        <repository location='https://raw.githubusercontent.com/SQAHamster/mpw-modeling-framework/mpw-updatesite-snapshot/repository'/>
       </repositories>
     </iu>
     <iu id='de.unistuttgart.iste.sqa.mpw.modeling.querydsl.feature.feature.group' name='QueryDSL Feature' version='1.0.0'>
