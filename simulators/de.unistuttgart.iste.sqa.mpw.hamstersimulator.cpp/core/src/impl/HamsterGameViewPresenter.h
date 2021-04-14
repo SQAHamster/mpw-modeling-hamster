@@ -42,6 +42,7 @@ private:
 
     void configureHamsterImageView(ViewModelCell& cell, const hamster::ReadOnlyHamster& hamster);
     void refreshHamsterLayer(ViewModelCellLayer& layer, const hamster::ReadOnlyHamster& hamster);
+    void addHamsterDirectionListener(std::shared_ptr<ViewModelCellLayer> hamsterLayer, const hamster::ReadOnlyHamster& hamster);
 
     void updateColorMap();
 

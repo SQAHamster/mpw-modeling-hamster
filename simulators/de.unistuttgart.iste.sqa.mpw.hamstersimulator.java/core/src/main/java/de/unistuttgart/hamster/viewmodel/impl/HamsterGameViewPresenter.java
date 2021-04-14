@@ -2,6 +2,7 @@ package de.unistuttgart.hamster.viewmodel.impl;
 
 import de.unistuttgart.hamster.facade.*;
 import de.unistuttgart.hamster.hamster.*;
+import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Direction;
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.LogEntry;
 import de.unistuttgart.iste.sqa.mpw.framework.datatypes.Size;
 import de.unistuttgart.iste.sqa.mpw.framework.mpw.Tile;
@@ -11,6 +12,7 @@ import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelCellLayer;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.impl.GameViewPresenterBase;
 import javafx.beans.property.ReadOnlyListProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.value.ChangeListener;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +24,7 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 	private final Territory territory;
 
 	private final Map<ReadOnlyHamster, Color> hamsterToColorMap = new HashMap<>();
+	private final Map<ReadOnlyHamster, ChangeListener<Direction>> hamsterDirectionChangeListeners = new HashMap<>();
 
 	public HamsterGameViewPresenter(final HamsterGame game) {
 		super(game);
@@ -102,14 +105,29 @@ public class HamsterGameViewPresenter extends GameViewPresenterBase {
 		final var layer = new ViewModelCellLayer();
 		layer.setImageName("Hamster" + hamsterToColorMap.get(hamster).name());
 
-		hamster.directionProperty().addListener((v, c, l) -> {
-			runLocked(() -> {
-				refreshHamsterLayer(layer, hamster);
-			});
-		});
+		addHamsterDirectionListener(layer, hamster);
 
 		refreshHamsterLayer(layer, hamster);
 		cell.getLayers().add(layer);
+	}
+
+	/*
+	 * Adds a listener for the change of the direction, to also update the layers if the hamster turns left.
+	 * Note: Since onSetTileNodeAtForCell() is called every time the contents of a tile changes, a Hamster might
+	 * be configured multiple times. Avoid, that multiple direction listeners are attached.
+	 */
+	private void addHamsterDirectionListener(final ViewModelCellLayer layer, final ReadOnlyHamster hamster) {
+		if (hamsterDirectionChangeListeners.containsKey(hamster)) {
+			final ChangeListener<Direction> oldChangeListener = hamsterDirectionChangeListeners.remove(hamster);
+			hamster.directionProperty().removeListener(oldChangeListener);
+		}
+		final ChangeListener<Direction> hamsterChangeListener = (property, oldValue, newValue) -> {
+			runLocked(() -> {
+				refreshHamsterLayer(layer, hamster);
+			});
+		};
+		hamster.directionProperty().addListener(hamsterChangeListener);
+		hamsterDirectionChangeListeners.put(hamster, hamsterChangeListener);
 	}
 
 	private void refreshHamsterLayer(final ViewModelCellLayer layer, final ReadOnlyHamster hamster) {

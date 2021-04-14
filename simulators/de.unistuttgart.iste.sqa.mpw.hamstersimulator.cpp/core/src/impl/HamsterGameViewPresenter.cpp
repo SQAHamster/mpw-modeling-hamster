@@ -75,18 +75,31 @@ void HamsterGameViewPresenter::refreshWallLayer(ViewModelCellLayer& layer, const
 void HamsterGameViewPresenter::configureHamsterImageView(ViewModelCell& cell, const ReadOnlyHamster& hamster) {
     updateColorMap();
 
-    auto hamsterLayer = std::make_shared<ViewModelCellLayer>();
+    std::shared_ptr<ViewModelCellLayer> hamsterLayer = std::make_shared<ViewModelCellLayer>();
     std::string colorName = HamsterColors::toColorName(hamsterToColorMap[&hamster]);
     hamsterLayer->setImageName("Hamster32" + colorName);
 
+    addHamsterDirectionListener(hamsterLayer, hamster);
+    refreshHamsterLayer(*hamsterLayer, hamster);
+
+    cell.addToLayers(hamsterLayer);
+}
+
+/*
+ * Adds a listener for the change of the direction, to also update the layers if the hamster turns left.
+ * Note: Since onSetTileNodeAtForCell() is called every time the contents of a tile changes, a Hamster might
+ * be configured multiple times. Avoid, that multiple direction listeners are attached.
+ */
+void HamsterGameViewPresenter::addHamsterDirectionListener(std::shared_ptr<ViewModelCellLayer> hamsterLayer, const ReadOnlyHamster& hamster) {
+    auto directionChangeListenerIterator = changedHamsterDirectionListenerIds.find(&hamster);
+    if (directionChangeListenerIterator != changedHamsterDirectionListenerIds.end()) {
+        changedHamsterDirectionListenerIds.erase(directionChangeListenerIterator);
+    }
     changedHamsterDirectionListenerIds[&hamster] = hamster.directionProperty().addListener(
             [this, &hamster, hamsterLayer](Direction oldValue, Direction newValue) {
                 auto lock = getSemaphore().lock();
                 refreshHamsterLayer(*hamsterLayer, hamster);
             });
-    refreshHamsterLayer(*hamsterLayer, hamster);
-
-    cell.addToLayers(hamsterLayer);
 }
 
 void HamsterGameViewPresenter::refreshHamsterLayer(ViewModelCellLayer& layer, const hamster::ReadOnlyHamster& hamster) {
