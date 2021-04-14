@@ -13,6 +13,7 @@ const SDL_Color LOG_ENTRY_ALTERNATE_COLOR = {216, 216, 216, 150};
 
 const int LOG_ENTRY_RIGHT_MARGIN = 6;
 const int LOG_ENTRY_HEIGHT = 20;
+const int LOG_ENTRY_MIN_X = 450;
 
 using namespace sdlgui;
 
@@ -75,7 +76,8 @@ void hamstersimulator::GameLogControl::draw(SDL_Renderer* surface) {
 }
 
 void hamstersimulator::GameLogControl::performLayout(SDL_Renderer* ctx) {
-    setPosition(screen.width()-fixedWidth()-TOOLBAR_MARGIN, position().y);
+    int gameLogPositionX = std::max(LOG_ENTRY_MIN_X, screen.width() - fixedWidth() - TOOLBAR_MARGIN);
+    setPosition(gameLogPositionX, position().y);
     int heightToSet = screen.height() - TOOLBAR_MARGIN * 2;
     setHeight(heightToSet);
     scrollPanel->setFixedWidth(fixedWidth());
