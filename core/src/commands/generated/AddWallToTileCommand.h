@@ -9,11 +9,11 @@
 #include "AddWallToTileCommandParameters.h"
 
 #include "Location.h"
-#include "Wall.h"
 #include "ConcreteTerritory.h"
+#include "Wall.h"
 #include "Tile.h"
-#include "Size.h"
 #include "TileContent.h"
+#include "Size.h"
 
 namespace commands {
 
@@ -21,8 +21,8 @@ namespace commands {
  * Place a wall at the given location. The location has to be empty before a wall can be placed.<br/>
  * <br/>
  * <b>requires / ensures:</b> the territory tiles must not be empty<br/>
- * <b>ensures:</b> a wall is placed on the tile on the tile location<br/>
  * <b>requires:</b> the tile at the given location has to be empty<br/>
+ * <b>ensures:</b> a wall is placed on the tile on the tile location<br/>
  * <b>requires:</b> location has to be on territory
  * 
  */

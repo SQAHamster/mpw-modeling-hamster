@@ -54,17 +54,17 @@ void PutGrainCommand::execute() {
 }
 bool PutGrainCommand::internalMainUnit() {
 
-	// new variable from reference: self:GameHamster -> currentTile -> position:Tile
-
-	std::shared_ptr < mpw::Tile > position = self->getCurrentTile();
-	if (position.get() == nullptr) {
-		return false;
-	}
-
 	// find new variable from many-reference: self:GameHamster -> grains -> grain:Grain
 
 	std::shared_ptr < hamster::Grain > grain = execute_findGrain(*self);
 	if (grain == nullptr) {
+		return false;
+	}
+
+	// new variable from reference: self:GameHamster -> currentTile -> position:Tile
+
+	std::shared_ptr < mpw::Tile > position = self->getCurrentTile();
+	if (position.get() == nullptr) {
 		return false;
 	}
 

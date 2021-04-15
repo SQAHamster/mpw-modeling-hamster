@@ -28,14 +28,15 @@ ConcreteTerritory::ConcreteTerritory() {
 	this->defaultHamster = std::make_shared<hamster::ConcreteHamster>();
 }
 
-std::shared_ptr<const mpw::Tile> ConcreteTerritory::getTileAt(
+bool ConcreteTerritory::isLocationInTerritory(
 		mpw::Location location) const noexcept {
 	try {
-		return collectionhelpers::get_at(this->getTiles(),
-				location.getRow() * this->getStageSize().getColumnCount()
-						+ location.getColumn()).value();
+		return location.getColumn() >= 0
+				&& location.getColumn() < this->getStageSize().getColumnCount()
+				&& location.getRow() >= 0
+				&& location.getRow() < this->getStageSize().getRowCount();
 	} catch (...) {
-		return nullptr;
+		return false;
 	}
 }
 
@@ -47,15 +48,14 @@ mpw::Size ConcreteTerritory::getTerritorySize() const noexcept {
 	}
 }
 
-bool ConcreteTerritory::isLocationInTerritory(
+std::shared_ptr<const mpw::Tile> ConcreteTerritory::getTileAt(
 		mpw::Location location) const noexcept {
 	try {
-		return location.getColumn() >= 0
-				&& location.getColumn() < this->getStageSize().getColumnCount()
-				&& location.getRow() >= 0
-				&& location.getRow() < this->getStageSize().getRowCount();
+		return collectionhelpers::get_at(this->getTiles(),
+				location.getRow() * this->getStageSize().getColumnCount()
+						+ location.getColumn()).value();
 	} catch (...) {
-		return false;
+		return nullptr;
 	}
 }
 
@@ -109,12 +109,21 @@ std::shared_ptr<const hamster::ConcreteHamster> ConcreteTerritory::getDefaultHam
 std::shared_ptr<hamster::ReadOnlyHamster> ConcreteTerritory::getReadOnlyDefaultHamster() noexcept {
 	return this->defaultHamster;
 }
+std::shared_ptr<const hamster::ReadOnlyHamster> ConcreteTerritory::getReadOnlyDefaultHamster() const noexcept {
+	return this->defaultHamster;
+}
 
 std::shared_ptr<hamster::GameHamster> ConcreteTerritory::getGameDefaultHamster() noexcept {
 	return this->defaultHamster;
 }
+std::shared_ptr<const hamster::GameHamster> ConcreteTerritory::getGameDefaultHamster() const noexcept {
+	return this->defaultHamster;
+}
 
 std::shared_ptr<hamster::EditorHamster> ConcreteTerritory::getEditorDefaultHamster() noexcept {
+	return this->defaultHamster;
+}
+std::shared_ptr<const hamster::EditorHamster> ConcreteTerritory::getEditorDefaultHamster() const noexcept {
 	return this->defaultHamster;
 }
 

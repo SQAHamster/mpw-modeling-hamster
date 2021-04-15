@@ -8,7 +8,6 @@ protected:
 };
 
 void Example01::run() {
-    // displayInNewGameWindow();
     paule.move();
     paule.move();
     paule.pickGrain();

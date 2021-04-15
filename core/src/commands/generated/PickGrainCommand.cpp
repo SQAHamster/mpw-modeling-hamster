@@ -36,7 +36,7 @@ void PickGrainCommand::execute() {
 				"Violation of ClassInvariant: the hamster is placed on a tile.");
 	}
 
-	int oldValue = self->getGrains().size();
+	int oldValue0 = self->getGrains().size();
 
 	if (!internalMainUnit()) {
 		throw std::runtime_error(
@@ -48,7 +48,7 @@ void PickGrainCommand::execute() {
 	 * the number of grains has to be increased by one
 	 */
 
-	if ((self->getGrains().size() == oldValue + 1) == false) {
+	if ((self->getGrains().size() == oldValue0 + 1) == false) {
 		throw CommandConstraintException(
 				"Violation of Postcondition: the number of grains has to be increased by one");
 	}

@@ -81,8 +81,6 @@ public:
 				inherited::shared_from_this());
 	}
 
-	bool mouthEmpty() const noexcept override;
-
 	mpw::Location getLocation() const noexcept override;
 
 private:
@@ -95,15 +93,17 @@ public:
 
 private:
 
-	bool helper_FrontIsClear_currentTile_result0_east_result1_contents_type_selectWall_is_empty() const noexcept;
-
 	bool helper_FrontIsClear_currentTile_result0_south_result1_contents_type_selectWall_is_empty() const noexcept;
 
-	bool helper_FrontIsClear_currentTile_result0_north_result1_contents_type_selectWall_is_empty() const noexcept;
+	bool helper_FrontIsClear_currentTile_result0_east_result1_contents_type_selectWall_is_empty() const noexcept;
 
 	bool helper_FrontIsClear_currentTile_result0_west_result1_contents_type_selectWall_is_empty() const noexcept;
 
+	bool helper_FrontIsClear_currentTile_result0_north_result1_contents_type_selectWall_is_empty() const noexcept;
+
 public:
+
+	bool mouthEmpty() const noexcept override;
 
 	bool grainAvailable() const noexcept override;
 

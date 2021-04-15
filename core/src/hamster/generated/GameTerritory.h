@@ -33,6 +33,7 @@ public:
 	}
 
 	virtual std::shared_ptr<hamster::GameHamster> getGameDefaultHamster() noexcept = 0;
+	virtual std::shared_ptr<const hamster::GameHamster> getGameDefaultHamster() const noexcept = 0;
 
 };
 

@@ -83,12 +83,12 @@ public:
 				inherited::shared_from_this());
 	}
 
-	std::shared_ptr<const mpw::Tile> getTileAt(
-			mpw::Location location) const noexcept override;
+	bool isLocationInTerritory(mpw::Location location) const noexcept override;
 
 	mpw::Size getTerritorySize() const noexcept override;
 
-	bool isLocationInTerritory(mpw::Location location) const noexcept override;
+	std::shared_ptr<const mpw::Tile> getTileAt(
+			mpw::Location location) const noexcept override;
 
 	void addGrainsToTile(commands::AddGrainsToTileCommandParameters &parameters)
 			override;
@@ -164,11 +164,15 @@ public:
 
 	std::shared_ptr<hamster::ReadOnlyHamster> getReadOnlyDefaultHamster() noexcept
 			override;
-
+	std::shared_ptr<const hamster::ReadOnlyHamster> getReadOnlyDefaultHamster() const noexcept
+			override;
 	std::shared_ptr<hamster::GameHamster> getGameDefaultHamster() noexcept
 			override;
-
+	std::shared_ptr<const hamster::GameHamster> getGameDefaultHamster() const noexcept
+			override;
 	std::shared_ptr<hamster::EditorHamster> getEditorDefaultHamster() noexcept
+			override;
+	std::shared_ptr<const hamster::EditorHamster> getEditorDefaultHamster() const noexcept
 			override;
 
 	static constexpr unsigned cFeatureKeyDefaultHamster = 4;

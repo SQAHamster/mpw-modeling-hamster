@@ -28,14 +28,6 @@ ConcreteHamster::ConcreteHamster() {
 
 }
 
-bool ConcreteHamster::mouthEmpty() const noexcept {
-	try {
-		return this->getGrains().empty();
-	} catch (...) {
-		return false;
-	}
-}
-
 mpw::Location ConcreteHamster::getLocation() const noexcept {
 	try {
 		return helper_GetLocation_currentTile_result0_location();
@@ -65,6 +57,20 @@ bool ConcreteHamster::frontIsClear() const noexcept {
 	}
 }
 
+bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_south_result1_contents_type_selectWall_is_empty() const noexcept {
+	std::shared_ptr<const mpw::Tile> result0 = this->getCurrentTile();
+	if (result0 == nullptr) {
+		return false;
+	}
+	std::shared_ptr<const mpw::Tile> result1 = result0->getSouth();
+	if (result1 == nullptr) {
+		return false;
+	}
+	bool result2 = collectionhelpers::type_select < hamster::Wall
+			> (result1->getContents()).empty();
+	return result2;
+}
+
 bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_east_result1_contents_type_selectWall_is_empty() const noexcept {
 	std::shared_ptr<const mpw::Tile> result0 = this->getCurrentTile();
 	if (result0 == nullptr) {
@@ -79,12 +85,12 @@ bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_east_result1_conte
 	return result2;
 }
 
-bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_south_result1_contents_type_selectWall_is_empty() const noexcept {
+bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_west_result1_contents_type_selectWall_is_empty() const noexcept {
 	std::shared_ptr<const mpw::Tile> result0 = this->getCurrentTile();
 	if (result0 == nullptr) {
 		return false;
 	}
-	std::shared_ptr<const mpw::Tile> result1 = result0->getSouth();
+	std::shared_ptr<const mpw::Tile> result1 = result0->getWest();
 	if (result1 == nullptr) {
 		return false;
 	}
@@ -107,18 +113,12 @@ bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_north_result1_cont
 	return result2;
 }
 
-bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_west_result1_contents_type_selectWall_is_empty() const noexcept {
-	std::shared_ptr<const mpw::Tile> result0 = this->getCurrentTile();
-	if (result0 == nullptr) {
+bool ConcreteHamster::mouthEmpty() const noexcept {
+	try {
+		return this->getGrains().empty();
+	} catch (...) {
 		return false;
 	}
-	std::shared_ptr<const mpw::Tile> result1 = result0->getWest();
-	if (result1 == nullptr) {
-		return false;
-	}
-	bool result2 = collectionhelpers::type_select < hamster::Wall
-			> (result1->getContents()).empty();
-	return result2;
 }
 
 bool ConcreteHamster::grainAvailable() const noexcept {

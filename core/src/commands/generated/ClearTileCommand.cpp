@@ -82,17 +82,17 @@ bool ClearTileCommand::internalMainUnit() {
 		return false;
 	}
 
-	// clear references: o0:Tile -> contents -> o2:TileContent
-	while (o0->getContents().size() > 0) {
-		executeRemoveReference(o0, mpw::Tile::cFeatureKeyContents,
-				o0->getContents().front());
-	}
-
 	// clear references: self:EditorTerritory -> tileContents -> o2:TileContent
 	while (self->getTileContents().size() > 0) {
 		executeRemoveReference(self,
 				hamster::ConcreteTerritory::cFeatureKeyTileContents,
 				self->getTileContents().front());
+	}
+
+	// clear references: o0:Tile -> contents -> o2:TileContent
+	while (o0->getContents().size() > 0) {
+		executeRemoveReference(o0, mpw::Tile::cFeatureKeyContents,
+				o0->getContents().front());
 	}
 
 	return true;

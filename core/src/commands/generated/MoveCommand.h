@@ -8,12 +8,12 @@
 #include "CompositeCommandBase.h"
 #include "MoveCommandParameters.h"
 
+#include "ConcreteHamster.h"
 #include "Tile.h"
 #include "GameLog.h"
-#include "ConcreteHamster.h"
 #include "LogEntry.h"
-#include "Wall.h"
 #include "TileContent.h"
+#include "Wall.h"
 #include "Direction.h"
 #include "Stage.h"
 

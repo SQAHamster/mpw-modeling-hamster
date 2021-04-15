@@ -9,8 +9,8 @@
 #include "ClearTileCommandParameters.h"
 
 #include "Location.h"
-#include "TileContent.h"
 #include "Tile.h"
+#include "TileContent.h"
 #include "ConcreteTerritory.h"
 #include "Size.h"
 

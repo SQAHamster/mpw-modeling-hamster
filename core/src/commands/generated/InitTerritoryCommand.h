@@ -8,11 +8,11 @@
 #include "CompositeCommandBase.h"
 #include "InitTerritoryCommandParameters.h"
 
-#include "Size.h"
-#include "Location.h"
 #include "Tile.h"
+#include "Location.h"
 #include "ConcreteTerritory.h"
 #include "ConcreteHamster.h"
+#include "Size.h"
 #include "TileContent.h"
 
 namespace commands {
@@ -21,8 +21,8 @@ namespace commands {
  * Defines a new territory by creating a new, empty territory of the given size.<br/>
  * <br/>
  * <b>requires / ensures:</b> the territory tiles must not be empty<br/>
- * <b>ensures:</b> size of territory is set<br/>
- * <b>requires:</b> size must be > 0
+ * <b>requires:</b> size must be > 0<br/>
+ * <b>ensures:</b> size of territory is set
  * 
  */
 

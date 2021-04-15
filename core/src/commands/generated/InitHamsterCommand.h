@@ -12,12 +12,12 @@
 #include "Location.h"
 #include "Direction.h"
 #include "ConcreteHamster.h"
-#include "GameLog.h"
-#include "Grain.h"
-#include "Tile.h"
 #include "LogEntry.h"
-#include "Size.h"
+#include "Tile.h"
+#include "Grain.h"
+#include "GameLog.h"
 #include "Stage.h"
+#include "Size.h"
 
 namespace commands {
 
@@ -25,9 +25,9 @@ namespace commands {
  * Initialize a hamster object with the given parameters. Once a hamster is initialized, the method must not be called again.<br/>
  * <br/>
  * <b>requires / ensures:</b> the hamster is placed on a tile.<br/>
- * <b>requires:</b> the hamster must not be already initialized<br/>
- * <b>requires:</b> grainCount has to be greater than or equal to zero<br/>
  * <b>ensures:</b> the number of grains must equal the parameter grainCount<br/>
+ * <b>requires:</b> grainCount has to be greater than or equal to zero<br/>
+ * <b>requires:</b> the hamster must not be already initialized<br/>
  * <b>requires:</b> location has to be on territory
  * 
  */

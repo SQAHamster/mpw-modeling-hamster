@@ -19,6 +19,9 @@
 #include "InitTerritoryCommandParameters.h"
 
 namespace mpw {
+class TileContent;
+}
+namespace mpw {
 class Tile;
 }
 namespace hamster {
@@ -31,13 +34,10 @@ namespace hamster {
 class Wall;
 }
 namespace mpw {
-class TileContent;
+class Stage;
 }
 namespace hamster {
 class ConcreteHamster;
-}
-namespace mpw {
-class Stage;
 }
 namespace hamster {
 class EditorHamster;
@@ -78,6 +78,7 @@ public:
 			commands::InitTerritoryCommandParameters &parameters) = 0;
 
 	virtual std::shared_ptr<hamster::EditorHamster> getEditorDefaultHamster() noexcept = 0;
+	virtual std::shared_ptr<const hamster::EditorHamster> getEditorDefaultHamster() const noexcept = 0;
 
 };
 

@@ -86,13 +86,13 @@ bool AddWallToTileCommand::internalMainUnit() {
 
 	mpw::Location o0 = o1->getLocation();
 
-	// assert condition: o0.row == location.row
-	if (o0.getRow() != location.getRow()) {
+	// assert condition: o0.column == location.column
+	if (o0.getColumn() != location.getColumn()) {
 		return false;
 	}
 
-	// assert condition: o0.column == location.column
-	if (o0.getColumn() != location.getColumn()) {
+	// assert condition: o0.row == location.row
+	if (o0.getRow() != location.getRow()) {
 		return false;
 	}
 
@@ -116,13 +116,13 @@ std::shared_ptr<mpw::Tile> AddWallToTileCommand::execute_findO1(
 		// reference check: o1: location
 		mpw::Location o0 = o1->getLocation();
 
-		// attribute check: o0: row
-		if (o0.getRow() != location.getRow()) {
+		// attribute check: o0: column
+		if (o0.getColumn() != location.getColumn()) {
 			continue;
 		}
 
-		// attribute check: o0: column
-		if (o0.getColumn() != location.getColumn()) {
+		// attribute check: o0: row
+		if (o0.getRow() != location.getRow()) {
 			continue;
 		}
 

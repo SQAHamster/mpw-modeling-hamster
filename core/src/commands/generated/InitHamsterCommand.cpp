@@ -17,21 +17,21 @@ namespace commands {
 void InitHamsterCommand::execute() {
 
 	/*
-	 * the hamster must not be already initialized
-	 */
-
-	if ((self->getStage() == nullptr) == false) {
-		throw CommandConstraintException(
-				"Violation of Precondition: the hamster must not be already initialized");
-	}
-
-	/*
 	 * grainCount has to be greater than or equal to zero
 	 */
 
 	if ((grainCount >= 0) == false) {
 		throw CommandConstraintException(
 				"Violation of Precondition: grainCount has to be greater than or equal to zero");
+	}
+
+	/*
+	 * the hamster must not be already initialized
+	 */
+
+	if ((self->getStage() == nullptr) == false) {
+		throw CommandConstraintException(
+				"Violation of Precondition: the hamster must not be already initialized");
 	}
 
 	/*

@@ -8,11 +8,11 @@
 #include "CompositeCommandBase.h"
 #include "PutGrainCommandParameters.h"
 
-#include "Grain.h"
-#include "ConcreteHamster.h"
 #include "GameLog.h"
+#include "ConcreteHamster.h"
 #include "Tile.h"
 #include "LogEntry.h"
+#include "Grain.h"
 #include "Stage.h"
 
 namespace commands {

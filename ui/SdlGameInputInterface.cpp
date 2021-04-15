@@ -7,7 +7,7 @@ using namespace sdlgui;
 namespace hamstersimulator {
 
 SdlGameInputInterface::SdlGameInputInterface(Screen& screen)
-        : screen(screen) {
+        : screen(screen), semaphore(0) {
 }
 
 void SdlGameInputInterface::onRender(SDL_Renderer& renderer) {

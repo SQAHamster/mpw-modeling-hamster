@@ -9,8 +9,8 @@
 #include "HamsterGame.h"
 #include "ConcreteTerritory.h"
 #include "Hamster.h"
-#include "ConcreteHamster.h"
 #include "MiniProgrammingWorld.h"
+#include "ConcreteHamster.h"
 
 namespace hamster {
 
@@ -21,12 +21,12 @@ Territory::Territory(std::shared_ptr<hamster::HamsterGame> game) {
 			> (game, internalTerritory->getDefaultHamster());
 }
 
-mpw::Size Territory::getTerritorySize() const noexcept {
-	return internalTerritory->getTerritorySize();
-}
-
 bool Territory::isLocationInTerritory(mpw::Location location) const noexcept {
 	return internalTerritory->isLocationInTerritory(location);
+}
+
+mpw::Size Territory::getTerritorySize() const noexcept {
+	return internalTerritory->getTerritorySize();
 }
 
 std::shared_ptr<hamster::GameTerritory> Territory::getInternalTerritory() noexcept {

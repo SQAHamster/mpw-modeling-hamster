@@ -8,9 +8,9 @@
 #include "CompositeCommandBase.h"
 #include "TurnLeftCommandParameters.h"
 
+#include "LogEntry.h"
 #include "ConcreteHamster.h"
 #include "GameLog.h"
-#include "LogEntry.h"
 #include "Direction.h"
 #include "Tile.h"
 #include "Stage.h"

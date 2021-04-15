@@ -8,8 +8,8 @@
 #include <memory>
 #include <string>
 #include "ObservableProperties.h"
-#include "Size.h"
 #include "Location.h"
+#include "Size.h"
 
 namespace hamster {
 class HamsterGame;
@@ -20,11 +20,11 @@ class ConcreteTerritory;
 namespace hamster {
 class Hamster;
 }
-namespace hamster {
-class ConcreteHamster;
-}
 namespace mpw {
 class MiniProgrammingWorld;
+}
+namespace hamster {
+class ConcreteHamster;
 }
 namespace hamster {
 class GameTerritory;
@@ -54,13 +54,13 @@ public:
 	 */
 	Territory(std::shared_ptr<hamster::HamsterGame> game);
 	/**
-	 * Return the size of the current territory. From the size you can retrieve the number of rows and colums.
-	 */
-	mpw::Size getTerritorySize() const noexcept;
-	/**
 	 * For a given location, tests whether the location is inside the bound of the territory.
 	 */
 	bool isLocationInTerritory(mpw::Location location) const noexcept;
+	/**
+	 * Return the size of the current territory. From the size you can retrieve the number of rows and colums.
+	 */
+	mpw::Size getTerritorySize() const noexcept;
 
 	/**
 	 * Virtual desctructor to support inheritance.

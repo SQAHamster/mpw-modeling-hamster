@@ -8,8 +8,8 @@
 #include <memory>
 #include <string>
 #include "ReadOnlyHamster.h"
-#include "Direction.h"
 #include "Location.h"
+#include "Direction.h"
 #include "Size.h"
 
 #include "InitHamsterCommandParameters.h"
@@ -19,29 +19,29 @@
 #include "TurnLeftCommandParameters.h"
 #include "WriteCommandParameters.h"
 
-namespace hamster {
-class GameTerritory;
-}
 namespace mpw {
 class Tile;
-}
-namespace mpw {
-class Stage;
-}
-namespace hamster {
-class ConcreteTerritory;
-}
-namespace hamster {
-class Grain;
 }
 namespace hamster {
 class ConcreteHamster;
 }
 namespace hamster {
-class Wall;
+class GameTerritory;
+}
+namespace mpw {
+class Stage;
+}
+namespace hamster {
+class Grain;
+}
+namespace hamster {
+class ConcreteTerritory;
 }
 namespace mpw {
 class TileContent;
+}
+namespace hamster {
+class Wall;
 }
 
 namespace hamster {
