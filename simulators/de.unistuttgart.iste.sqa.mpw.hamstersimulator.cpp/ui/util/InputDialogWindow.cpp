@@ -48,9 +48,7 @@ InputDialogWindow::InputDialogWindow(Widget* parent, Type type, const std::strin
 
     Button* button = new Button(panel2, "OK");
     button->setCallback([&] {
-        result.assign(textBox->value());
         if (mCallback) mCallback();
-        dispose();
     });
     center();
     requestFocus();
@@ -61,7 +59,7 @@ void InputDialogWindow::setInputFieldVisible(bool visible) {
 }
 
 const std::string& InputDialogWindow::getInputText() const {
-    return result;
+    return textBox->value();
 }
 
 void InputDialogWindow::setNumeric(bool numeric) {

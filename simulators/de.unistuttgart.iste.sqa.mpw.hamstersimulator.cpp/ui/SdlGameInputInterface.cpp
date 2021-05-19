@@ -28,7 +28,9 @@ int SdlGameInputInterface::readInteger(std::string message) {
     wait();
 
     try {
-        return std::stoi(inputDialog->getInputText());
+        int result = std::stoi(inputDialog->getInputText());
+        inputDialog->dispose();
+        return result;
     } catch (std::exception& e) {
         return 0;
     }
@@ -43,12 +45,15 @@ void SdlGameInputInterface::wait() {
 std::string SdlGameInputInterface::readString(std::string message) {
     showMessageForTextInput(message, sdlgui::MessageDialog::Type::Information);
     wait();
-    return inputDialog->getInputText();
+    std::string result = inputDialog->getInputText();
+    inputDialog->dispose();
+    return result;
 }
 
 void SdlGameInputInterface::confirmAlert(const std::exception& t) {
     showMessage(t.what(), sdlgui::MessageDialog::Type::Warning);
     wait();
+    inputDialog->dispose();
 }
 
 void SdlGameInputInterface::showMessageForTextInput(const std::string& message, InputDialogWindow::Type type) {
