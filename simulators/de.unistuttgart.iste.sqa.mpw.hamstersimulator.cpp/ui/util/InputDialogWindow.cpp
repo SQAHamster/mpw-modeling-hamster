@@ -48,8 +48,8 @@ InputDialogWindow::InputDialogWindow(Widget* parent, Type type, const std::strin
 
     Button* button = new Button(panel2, "OK");
     button->setCallback([&] {
+        result.assign(textBox->value());
         if (mCallback) mCallback();
-        result = textBox->value();
         dispose();
     });
     center();
