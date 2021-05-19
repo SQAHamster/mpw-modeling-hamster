@@ -36,7 +36,7 @@ int SdlGameInputInterface::readInteger(std::string message) {
 
 void SdlGameInputInterface::wait() {
     active = true;
-    semaphore.lock();
+    semaphore.acquire();
     active = false;
 }
 
