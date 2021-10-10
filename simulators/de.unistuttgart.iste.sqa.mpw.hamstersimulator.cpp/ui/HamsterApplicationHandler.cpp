@@ -4,16 +4,13 @@
 #include "util/GameLogControl.h"
 #include "util/SpeedSliderControl.h"
 #include "util/ColorConverter.h"
+#include "util/UiDimensions.h"
 
 #include <utility>
 #include <thread>
 
 using namespace viewmodel;
 
-const int TOOLBAR_MARGIN = 8;
-const int BUTTON_SIZE = 48;
-const int TERRITORY_OFFSET = 80;
-const int MINIMUM_TILE_SIZE = 20;
 const std::string imagePath = "resources/images/";
 
 namespace hamstersimulator {
@@ -61,13 +58,13 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
 
     presenter->bind();
 
-    auto gameLogControl = new GameLogControl(application.getNanoguiScreen());
+    gameLogControl = new GameLogControl(application.getNanoguiScreen());
     gameLogControl->bindToGameLog(*viewModel);
 
     auto speedControl = new SpeedSliderControl(application.getNanoguiScreen());
     speedControl->bindToSpeed(*viewModel, *presenter);
 
-    application.getNanoguiScreen().performLayout();
+    onResized(); // initially ensure that resizing logic is triggered
 
     hamsterThread = std::thread(hamsterProgram);
 }
@@ -98,6 +95,10 @@ void HamsterApplicationHandler::loadTextureWithCustomKey(const std::string& imag
 
 void HamsterApplicationHandler::onEvent(SDL_Event& event) {
     sdlGameInputInterface->onEvent(event);
+
+    if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_SIZE_CHANGED) {
+        onResized();
+    }
 
     if (sdlGameInputInterface->isActive()) {
         return;
@@ -155,8 +156,7 @@ void HamsterApplicationHandler::renderToolbar(SDL_Renderer& renderer) {
 }
 
 void HamsterApplicationHandler::renderTerritory(SDL_Renderer& renderer) {
-    const int tileSize = calculateTileSize();
-    SDL_Rect rect{0, 0, tileSize, tileSize};
+    SDL_Rect rect{0, 0, currentTileSize, currentTileSize};
 
     auto lock = presenter->getSemaphore().lock();
     auto viewModel = presenter->getViewModel();
@@ -164,9 +164,9 @@ void HamsterApplicationHandler::renderTerritory(SDL_Renderer& renderer) {
     unsigned rowIndex = 0;
     for (auto& row : viewModel->getRows()) {
         unsigned columnIndex = 0;
-        rect.y = rowIndex * tileSize + TERRITORY_OFFSET;
+        rect.y = rowIndex * currentTileSize + TERRITORY_OFFSET;
         for (auto& cell : row.getCells()) {
-            rect.x = columnIndex * tileSize;
+            rect.x = columnIndex * currentTileSize;
             renderCell(rect, cell, renderer);
             columnIndex++;
         }
@@ -194,17 +194,31 @@ void HamsterApplicationHandler::onClose() {
 
 }
 
+void HamsterApplicationHandler::onResized() {
+    currentTileSize = calculateTileSize();
+    gameLogControl->setFixedWidth(calculateGameLogSize());
+    application->getNanoguiScreen().performLayout();
+}
+
 int HamsterApplicationHandler::calculateTileSize() {
     const mpw::Size size = game->getTerritory()->getTerritorySize();
     const int columns = size.getColumnCount();
     const int rows = size.getRowCount();
-    
+
     sdlgui::Screen& screen = application->getNanoguiScreen();
-    const int pixPerCellWidth = (screen.width() - 220) / (columns == 0 ? 1 : columns);
-    const int pixPerCellHeight = (screen.height() - TOOLBAR_MARGIN) / (rows == 0 ? 1 : rows);
+    const int pixPerCellWidth = (screen.width() - (TERRITORY_GAMELOG_MARGIN + GAMELOG_MIN_WIDTH)) / (columns == 0 ? 1 : columns);
+    const int pixPerCellHeight = (screen.height() - TERRITORY_OFFSET) / (rows == 0 ? 1 : rows);
 
     const int tileSize = std::min(pixPerCellHeight, pixPerCellWidth);
     return std::max(MINIMUM_TILE_SIZE, tileSize);
+}
+
+int HamsterApplicationHandler::calculateGameLogSize() {
+    const mpw::Size size = game->getTerritory()->getTerritorySize();
+    const int columns = size.getColumnCount();
+
+    sdlgui::Screen& screen = application->getNanoguiScreen();
+    return screen.width() - (columns*currentTileSize) - TERRITORY_GAMELOG_MARGIN;
 }
 
 }

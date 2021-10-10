@@ -1,3 +1,5 @@
+CMakeListsLocalProperties.cmake
+
 /.idea
 /cmake-build-debug
 *.iml

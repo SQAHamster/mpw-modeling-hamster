@@ -22,7 +22,7 @@ public:
 
 //<editor-fold desc="Feature: undo">
 
-TEST_F(UndoCommandTest, testUndo123) {
+TEST_F(UndoCommandTest, testUndo) {
     std::shared_ptr<HamsterGame> game = GameStringifier::createFromString(" >*;"
                                                                           "   ;");
     game->hardReset();
@@ -43,7 +43,7 @@ TEST_F(UndoCommandTest, testUndo123) {
               "   ;", actual);
 }
 
-TEST_F(UndoCommandTest, testUndo) { /* NOLINT */
+TEST_F(UndoCommandTest, testUndoAll) { /* NOLINT */
     std::shared_ptr<HamsterGame> game = GameStringifier::createFromString(" >*;"
                                                                           "   ;");
     game->hardReset();

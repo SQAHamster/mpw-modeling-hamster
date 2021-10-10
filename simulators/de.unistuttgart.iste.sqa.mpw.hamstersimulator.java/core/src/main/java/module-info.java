@@ -8,4 +8,5 @@ module de.unistuttgart.hamster.core {
     exports de.unistuttgart.hamster.viewmodel.impl to de.unistuttgart.hamster.ui;
 
     opens de.unistuttgart.hamster.hamster;
+    opens de.unistuttgart.hamster.territories;
 }

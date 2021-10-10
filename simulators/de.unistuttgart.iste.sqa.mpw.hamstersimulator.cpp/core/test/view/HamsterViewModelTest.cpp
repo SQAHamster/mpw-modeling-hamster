@@ -25,7 +25,7 @@ private:
 public:
 };
 
-TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */ /* NOLINT */
+TEST_F(HamsterViewModelTest, testInit) { /* NOLINT */
     withTerritory("/territories/example01.ter");
     assertTerritory(
             "|####|####|####|####|####|\n"
@@ -113,7 +113,7 @@ TEST_F(HamsterViewModelTest, testInitializeFurtherTerritory) { /* NOLINT */
     initializeOtherTerritory("/territories/example03.ter");
     assertTerritory(
             "|####|####|####|\n"
-            "|####|v   |####|\n"
+            "|####|>   |####|\n"
             "|####|    |####|\n"
             "|####| 2* |####|\n"
             "|####|####|####|\n");

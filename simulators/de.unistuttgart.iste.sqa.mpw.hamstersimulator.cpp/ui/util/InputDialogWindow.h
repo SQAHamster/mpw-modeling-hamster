@@ -26,6 +26,7 @@ public:
 private:
     std::function<void()> mCallback;
     sdlgui::TextBox* textBox;
+    std::string result;
 };
 
 }

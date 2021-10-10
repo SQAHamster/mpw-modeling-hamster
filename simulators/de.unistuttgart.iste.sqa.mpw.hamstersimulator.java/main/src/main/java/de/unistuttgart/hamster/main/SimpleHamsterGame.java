@@ -14,7 +14,7 @@ import java.util.Optional;
 import static de.unistuttgart.iste.sqa.mpw.framework.utils.Preconditions.*;
 
 public abstract class SimpleHamsterGame {
-    private static final String DEFAULT_HAMSTER_TERRITORY = "/territories/example01.ter";
+    private static final String DEFAULT_HAMSTER_TERRITORY = "de.unistuttgart.hamster.territories/example01.ter";
 
     protected static void createInstance(Class<? extends SimpleHamsterGame> hamsterProgramClass) {
         try {
@@ -67,13 +67,26 @@ public abstract class SimpleHamsterGame {
         this.paule = this.game.getTerritory().getDefaultHamster();
     }
 
+    /**
+     * Initialized a simple hamster game by loading a default territory.
+     * This resets the game if it was already started. After the territory was loaded, the game is
+     * in mode INITIALIZING. To start the game, game.startGame() should be called.
+     */
     protected void initializeGame() {
         try {
-            TerritoryLoader.initializeFor(game).loadFromResourceFile(DEFAULT_HAMSTER_TERRITORY);
             game.hardReset();
+            TerritoryLoader.initializeFor(game).loadFromResourceFile(DEFAULT_HAMSTER_TERRITORY);
         } catch (IOException e) {
             throw new RuntimeException("failed to load the default territory", e);
         }
+    }
+
+    /**
+     * Convenient method to start the current game.
+     * The game has to be in mode INITIALIZING.
+     */
+    protected void startGame() {
+        game.startGame();
     }
 
     /**
@@ -102,7 +115,7 @@ public abstract class SimpleHamsterGame {
     /**
      * Displays the hamster game in a new game window
      * The UI type can be specified in the config file or in the environment variable
-     * OUTPUT_INTERFACE. Possible values are JAVA_FX, HTTP and NONE
+     * OUTPUT_INTERFACE. Possible values are JAVA_FX and NONE
      * The default is JAVA_FX.
      */
     protected void displayInNewGameWindow() {
@@ -126,21 +139,21 @@ public abstract class SimpleHamsterGame {
      @*/
     /**
      * Loads the Territory from a resources file.
-     * Only absolute resource paths are allowed. E.g. the fileName "/territory.ter" represents the file
+     * Only resource paths are allowed. E.g. the fileName "territory.ter" represents the file
      * territory.ter in the resources directory
      * This resets the game if it was already started. After the territory was loaded, the game is
      * in mode INITIALIZING. To start the game, game.startGame() should be called
      *
-     * @param fileName An absolute path to the resource file. Must start with a "/"
-     * @throws IllegalArgumentException if fileName is no absolute resource path (does not start with "/")
+     * @param fileName A resource path to the resource file.
+     * @throws IllegalArgumentException if fileName is no valid resource path
      *                                  or if the file was not found
      */
     protected final void loadTerritoryFromResourceFile(final String fileName) {
         checkNotNull(fileName);
-        checkArgument(fileName.startsWith("/"), "fileName does not start with \"/\"");
-        final InputStream territoryFileStream = getClass().getResourceAsStream(fileName);
-        checkArgument(territoryFileStream != null, "territory file not found");
+        final InputStream territoryFileStream = getClass().getClassLoader().getResourceAsStream(fileName);
+        checkArgument(territoryFileStream != null, "territory file '" + fileName + "' not found");
         try {
+            game.hardReset();
             TerritoryLoader.initializeFor(game).loadFromResourceFile(fileName);
         } catch (IOException e) {
             game.confirmAlert(e);

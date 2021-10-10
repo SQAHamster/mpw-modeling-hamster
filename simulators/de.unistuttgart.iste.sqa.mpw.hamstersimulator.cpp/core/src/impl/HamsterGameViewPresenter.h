@@ -46,12 +46,13 @@ private:
 
     void configureHamsterImageView(ViewModelCell& cell, const hamster::ReadOnlyHamster& hamster);
     void refreshHamsterLayer(ViewModelCellLayer& layer, const hamster::ReadOnlyHamster& hamster);
+    void addHamsterDirectionListener(std::shared_ptr<ViewModelCellLayer> hamsterLayer, const hamster::ReadOnlyHamster& hamster);
 
     void updateColorMap();
 
-    static std::list<std::shared_ptr<hamster::ReadOnlyHamster>> getHamstersOfTile(const mpw::Tile& tile);
-    static std::list<std::shared_ptr<hamster::Wall>> getWallsOfTile(const mpw::Tile& tile);
-    static std::list<std::shared_ptr<hamster::Grain>> getGrainOfTile(const mpw::Tile& tile);
+    static std::list<std::shared_ptr<const hamster::ReadOnlyHamster>> getHamstersOfTile(const mpw::Tile& tile);
+    static std::list<std::shared_ptr<const hamster::Wall>> getWallsOfTile(const mpw::Tile& tile);
+    static std::list<std::shared_ptr<const hamster::Grain>> getGrainOfTile(const mpw::Tile& tile);
     static std::list<std::shared_ptr<hamster::Breadcrumb>> getBreadcrumbsOfTile(const mpw::Tile& tile);
 
     const std::shared_ptr<hamster::HamsterGame> game;

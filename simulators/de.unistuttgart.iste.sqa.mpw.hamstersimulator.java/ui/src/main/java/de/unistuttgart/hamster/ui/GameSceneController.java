@@ -4,6 +4,7 @@ import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.GameViewInput;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.GameViewModel;
 import de.unistuttgart.iste.sqa.mpw.framework.viewmodel.ViewModelLogEntry;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,6 +71,8 @@ public class GameSceneController {
         this.gameViewInput = gameViewInput;
         this.hamsterGrid.bindToViewModel(gameViewModel);
 
+        this.root.minWidthProperty().bind(Bindings.max(hamsterGrid.minWidthProperty().add(toolbar.minWidthProperty()), 100));
+        this.root.minHeightProperty().bind(Bindings.max(hamsterGrid.minHeightProperty().add(toolbar.minHeightProperty()), 100));
         this.play.disableProperty().bind(gameViewModel.playButtonEnabledProperty().not());
         this.pause.disableProperty().bind(gameViewModel.pauseButtonEnabledProperty().not());
         this.undo.disableProperty().bind(gameViewModel.undoButtonEnabledProperty().not());

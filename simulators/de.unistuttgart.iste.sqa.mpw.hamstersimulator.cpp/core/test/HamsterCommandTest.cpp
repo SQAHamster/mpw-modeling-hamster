@@ -307,7 +307,6 @@ void HamsterCommandTest::withTerritory(const std::string& map) {
     sut = game->getTerritory()->getDefaultHamster();
 }
 
-
 std::shared_ptr<TerritoryBuilder> HamsterCommandTest::withTerritoryBuilder(const std::string& map) {
     game = GameStringifier::createFromString(map);
     sut = game->getTerritory()->getDefaultHamster();

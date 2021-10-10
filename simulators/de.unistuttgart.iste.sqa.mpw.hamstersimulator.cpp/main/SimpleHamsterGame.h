@@ -99,6 +99,11 @@ protected:
      * Displays the hamster game in a new game window
      */
     void displayInNewGameWindow();
+
+    /**
+     * @return the window title of the simulator.
+     */
+    virtual std::string getWindowTitle();
 };
 
 }

@@ -5,6 +5,7 @@
 #include <sstream>
 
 #include "util/LightTheme.h"
+#include "util/UiDimensions.h"
 
 using namespace sdlgui;
 
@@ -28,7 +29,7 @@ void SdlApplication::initialize(int width, int height) {
     } else {
         window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
                                   width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
-        SDL_SetWindowMinimumSize(window, 660, 300);
+        SDL_SetWindowMinimumSize(window, MIN_WINDOW_WIDTH, MIN_WINDOW_HEIGHT);
         if (window == nullptr) {
             throwExceptionWithSdlError("Window could not be created!");
         } else {
@@ -75,7 +76,9 @@ void SdlApplication::runApplication() {
             }
             if (event.type == SDL_WINDOWEVENT) {
                 if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
-                    nanoGuiScreen->setSize(Vector2i{event.window.data1, event.window.data2});
+                    int width = std::max(event.window.data1, MIN_WINDOW_WIDTH);
+                    int height = std::max(event.window.data2, MIN_WINDOW_HEIGHT);
+                    nanoGuiScreen->setSize(Vector2i{width, height});
                     nanoGuiScreen->performLayout(renderer);
                 }
             }
@@ -161,16 +164,6 @@ TTF_Font* SdlApplication::loadFont(int size) {
         loadedFontsPerSize[size] = font;
     }
     return font;
-}
-
-std::string SdlApplication::fontColorWithSizeToKey(int size, const SDL_Color& color) {
-    std::stringstream stream;
-    stream << size << "#";
-    stream << std::hex << color.a;
-    stream << std::hex << color.r;
-    stream << std::hex << color.g;
-    stream << std::hex << color.b;
-    return std::string(stream.str());
 }
 
 SDL_Window& SdlApplication::getWindow() const {

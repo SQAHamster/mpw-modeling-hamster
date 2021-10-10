@@ -7,7 +7,7 @@ SET(NANOGUI_BUILD_EXAMPLE OFF CACHE BOOL "disable nanogui example")
 include(FetchContent)
 FetchContent_Declare(
         nanogui
-        GIT_REPOSITORY https://github.com/Fumapps/nanogui-sdl
+        GIT_REPOSITORY https://github.com/SQAHamster/mpw-nanogui-sdl
         CMAKE_ARGS "-Wno-dev"
 )
 FetchContent_GetProperties(nanogui)

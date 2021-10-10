@@ -13,7 +13,7 @@ Some notes on the extension:
 * Download "Eclipse Modeling Tools" from https://www.eclipse.org/downloads/packages/
 * Use Java JDK 15
 * Install required Eclipse features
-    * use the `p2f` file from `https://raw.githubusercontent.com/Fumapps/mpw-modeling-hamster/master/releng/installed-items.p2f`
+    * use the `p2f` file from `https://raw.githubusercontent.com/SQAHamster/mpw-modeling-hamster/master/releng/installed-items.p2f`
         * Note: the file has to be on the local file-system, Eclipse will not accept the URL directly
     * File / Import / Install / Install Software Items from File
     * Note: Includes Maven, Henshin, Query-DSL, MPW Modeling Framework, CDT, Tycho Configurators, Xpand
@@ -22,8 +22,8 @@ Some notes on the extension:
 ## Import Hamster Modeling Enviroment
     
 * Clone mpw-modeling-hamster
-    * from https://github.com/Fumapps/mpw-modeling-hamster.git
-        * `git clone https://github.com/Fumapps/mpw-modeling-hamster.git`
+    * from https://github.com/SQAHamster/mpw-modeling-hamster.git
+        * `git clone https://github.com/SQAHamster/mpw-modeling-hamster.git`
 * Import with Maven: "Existing Maven Projects"
     * Note: Dependent on the checkout and concrete import steps, the root project either is imported as "mpw-modeling-hamster" or "hamster-modeling-root"
 
@@ -189,7 +189,7 @@ After finishing the modeling of the Breadcrumb entity, a query and the two comma
 
 * Note: `onSetTileNodeAtForCell` is called every time, if the tile contents have changed
 
-* now, add the `Breadcrumb32.png` ![Breadcrumb32.png](Breadcrumb32.png) (https://github.com/Fumapps/mpw-modeling-hamster/raw/master/tutorial/Breadcrumb32.png) image to `/ui/src/main/resources/images`
+* now, add the `Breadcrumb32.png` ![Breadcrumb32.png](Breadcrumb32.png) (https://github.com/SQAHamster/mpw-modeling-hamster/raw/master/tutorial/Breadcrumb32.png) image to `/ui/src/main/resources/images`
 
 * last, extend the `loadPropImages()` method in `ui/src/main/java/de/unistuttgart/hamster/ui/TileNode`, for mapping the symbolic image name
 
@@ -276,7 +276,7 @@ void HamsterGameViewPresenter::onSetTileNodeAtForCell(ViewModelCell& cell, const
 }
 ```
 
-* now, add the `Breadcrumb32.png` ![Breadcrumb32.png](Breadcrumb32.png) (https://github.com/Fumapps/mpw-modeling-hamster/raw/master/tutorial/Breadcrumb32.png) image to `/ui/resources/images`
+* now, add the `Breadcrumb32.png` ![Breadcrumb32.png](Breadcrumb32.png) (https://github.com/SQAHamster/mpw-modeling-hamster/raw/master/tutorial/Breadcrumb32.png) image to `/ui/resources/images`
 
 * last, extend the `onInitialized()` method in `ui/HamsterApplicationHandler.cpp`, for loading the image
 
@@ -293,9 +293,9 @@ void HamsterApplicationHandler::onInitialized(SdlApplication& application) {
 * finally, adapt an example or create a new one, and test the C++ breadcrumb commands :-)
     * under `/examples`
 
-# Sample solution
+# Sample Solution
 
-If necessary, the sample solution for this tutorial can be found here: `https://github.com/Fumapps/mpw-modeling-hamster/tree/tutorial-solution`
+If necessary, the sample solution for this tutorial can be found here: `https://github.com/SQAHamster/mpw-modeling-hamster/tree/tutorial-solution`
 
 # Troubleshoooting
 

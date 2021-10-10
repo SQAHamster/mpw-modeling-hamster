@@ -50,10 +50,14 @@ void SimpleHamsterGame::displayInNewGameWindow() {
         this->game->stopGame();
     });
 
-    SdlApplication application(typeid(this).name(), applicationHandler);
+    SdlApplication application(getWindowTitle(), applicationHandler);
     application.initialize(SCREEN_WIDTH, SCREEN_HEIGHT);
 
     application.runApplication();
+}
+
+std::string SimpleHamsterGame::getWindowTitle() {
+    return "Simple Hamster Game";
 }
 
 }
