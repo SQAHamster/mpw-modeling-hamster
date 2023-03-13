@@ -10,7 +10,7 @@ include(FetchContent)
 
 FetchContent_Declare(mpw_lib
         GIT_REPOSITORY https://github.com/SQAHamster/mpw-modeling-framework.git
-        GIT_TAG 1.0.1-cpp-framework
+        GIT_TAG 1.0.2-cpp-framework
         SOURCE_DIR mpw_lib
         CMAKE_ARGS "-Wno-dev"
 )
