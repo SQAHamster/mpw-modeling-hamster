@@ -13,11 +13,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-base</artifactId>
-			<version>15</version>
-		</dependency>
-		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
 			<version>5.7.1</version>
@@ -26,13 +21,13 @@
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx</artifactId>
-			<version>15</version>
+			<version>19</version>
 			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-fxml</artifactId>
-			<version>15</version>
+			<version>19</version>
 		</dependency>
 		<dependency>
 			<groupId>de.unistuttgart.iste.sqa.mpw.hamstersimulator</groupId>
@@ -43,7 +38,7 @@
 		<dependency>
 			<groupId>de.unistuttgart.iste.sqa.mpw.framework</groupId>
 			<artifactId>utils</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.3-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
