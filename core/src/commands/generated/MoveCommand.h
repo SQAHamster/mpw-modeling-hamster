@@ -12,9 +12,9 @@
 #include "Tile.h"
 #include "GameLog.h"
 #include "LogEntry.h"
+#include "Direction.h"
 #include "TileContent.h"
 #include "Wall.h"
-#include "Direction.h"
 #include "Stage.h"
 
 namespace commands {

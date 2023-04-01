@@ -40,14 +40,6 @@ bool ConcreteTerritory::isLocationInTerritory(
 	}
 }
 
-mpw::Size ConcreteTerritory::getTerritorySize() const noexcept {
-	try {
-		return this->getStageSize();
-	} catch (...) {
-		return {};
-	}
-}
-
 std::shared_ptr<const mpw::Tile> ConcreteTerritory::getTileAt(
 		mpw::Location location) const noexcept {
 	try {
@@ -56,6 +48,14 @@ std::shared_ptr<const mpw::Tile> ConcreteTerritory::getTileAt(
 						+ location.getColumn()).value();
 	} catch (...) {
 		return nullptr;
+	}
+}
+
+mpw::Size ConcreteTerritory::getTerritorySize() const noexcept {
+	try {
+		return this->getStageSize();
+	} catch (...) {
+		return {};
 	}
 }
 

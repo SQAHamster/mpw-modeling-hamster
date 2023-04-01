@@ -8,9 +8,9 @@
 #include "CompositeCommandBase.h"
 #include "WriteCommandParameters.h"
 
-#include "ConcreteHamster.h"
 #include "LogEntry.h"
 #include "GameLog.h"
+#include "ConcreteHamster.h"
 
 namespace commands {
 

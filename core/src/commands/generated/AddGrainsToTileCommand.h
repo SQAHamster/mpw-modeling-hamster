@@ -12,9 +12,9 @@
 #include "Grain.h"
 #include "Tile.h"
 #include "ConcreteTerritory.h"
+#include "Wall.h"
 #include "TileContent.h"
 #include "Size.h"
-#include "Wall.h"
 
 namespace commands {
 
@@ -24,8 +24,8 @@ namespace commands {
  * <b>requires / ensures:</b> the territory tiles must not be empty<br/>
  * <b>requires:</b> the amount of grains to add has to be equal or greater than zero<br/>
  * <b>ensures:</b> the given amount of grains has to be equal to the grains on the tile location<br/>
- * <b>requires:</b> location has to be on territory<br/>
- * <b>requires:</b> the tile on the location has to be empty
+ * <b>requires:</b> the tile on the location has to be empty<br/>
+ * <b>requires:</b> location has to be on territory
  * 
  */
 

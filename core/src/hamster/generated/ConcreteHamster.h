@@ -33,11 +33,11 @@ class Tile;
 namespace mpw {
 class Stage;
 }
-namespace hamster {
-class Wall;
-}
 namespace mpw {
 class TileContent;
+}
+namespace hamster {
+class Wall;
 }
 namespace hamster {
 class GameTerritory;
@@ -81,6 +81,22 @@ public:
 				inherited::shared_from_this());
 	}
 
+	bool frontIsClear() const noexcept override;
+
+private:
+
+	bool helper_FrontIsClear_currentTile_result0_north_result1_contents_type_selectWall_is_empty() const noexcept;
+
+	bool helper_FrontIsClear_currentTile_result0_east_result1_contents_type_selectWall_is_empty() const noexcept;
+
+	bool helper_FrontIsClear_currentTile_result0_west_result1_contents_type_selectWall_is_empty() const noexcept;
+
+	bool helper_FrontIsClear_currentTile_result0_south_result1_contents_type_selectWall_is_empty() const noexcept;
+
+public:
+
+	bool mouthEmpty() const noexcept override;
+
 	mpw::Location getLocation() const noexcept override;
 
 private:
@@ -88,22 +104,6 @@ private:
 	mpw::Location helper_GetLocation_currentTile_result0_location() const noexcept;
 
 public:
-
-	bool frontIsClear() const noexcept override;
-
-private:
-
-	bool helper_FrontIsClear_currentTile_result0_south_result1_contents_type_selectWall_is_empty() const noexcept;
-
-	bool helper_FrontIsClear_currentTile_result0_east_result1_contents_type_selectWall_is_empty() const noexcept;
-
-	bool helper_FrontIsClear_currentTile_result0_west_result1_contents_type_selectWall_is_empty() const noexcept;
-
-	bool helper_FrontIsClear_currentTile_result0_north_result1_contents_type_selectWall_is_empty() const noexcept;
-
-public:
-
-	bool mouthEmpty() const noexcept override;
 
 	bool grainAvailable() const noexcept override;
 

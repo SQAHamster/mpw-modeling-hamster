@@ -157,13 +157,13 @@ bool InitTerritoryCommand::createFirstTileForNextRow(
 	// new instance: newLocation:Location
 	mpw::Location newLocation;
 
-	// new variable from reference: firstInRow:Tile -> location -> o0:Location
-
-	mpw::Location o0 = firstInRow->getLocation();
-
 	if (!self->getTiles().contains(firstInRow)) {
 		return false;
 	}
+
+	// new variable from reference: firstInRow:Tile -> location -> o0:Location
+
+	mpw::Location o0 = firstInRow->getLocation();
 
 	y = o0.getRow();
 
@@ -236,11 +236,11 @@ bool InitTerritoryCommand::createFurtherRowTile(
 
 	y = o0.getRow();
 
-	// set attribute condition newLocation.row := y
-	newLocation.setRow(y);
-
 	// set attribute condition newLocation.column := x+1
 	newLocation.setColumn(x + 1);
+
+	// set attribute condition newLocation.row := y
+	newLocation.setRow(y);
 
 	// create reference: CREATE northEast:Tile -> south -> next_forOutParameter:Tile
 	executeSetProperty(northEast, mpw::Tile::cFeatureKeySouth,
@@ -319,11 +319,11 @@ bool InitTerritoryCommand::setSize(int columns, int rows) {
 	// new instance: o0:Size
 	mpw::Size o0;
 
-	// set attribute condition o0.columnCount := columns
-	o0.setColumnCount(columns);
-
 	// set attribute condition o0.rowCount := rows
 	o0.setRowCount(rows);
+
+	// set attribute condition o0.columnCount := columns
+	o0.setColumnCount(columns);
 
 	// create reference: CREATE self:EditorTerritory -> stageSize -> o0:Size
 	executeSetValueProperty(self,
@@ -336,18 +336,18 @@ bool InitTerritoryCommand::setSize(int columns, int rows) {
 
 bool InitTerritoryCommand::clearTiles() {
 
-	// clear references: self:EditorTerritory -> tileContents -> o0:TileContent
-	while (self->getTileContents().size() > 0) {
-		executeRemoveReference(self,
-				hamster::ConcreteTerritory::cFeatureKeyTileContents,
-				self->getTileContents().front());
-	}
-
 	// clear references: self:EditorTerritory -> tiles -> o1:Tile
 	while (self->getTiles().size() > 0) {
 		executeRemoveReference(self,
 				hamster::ConcreteTerritory::cFeatureKeyTiles,
 				self->getTiles().front());
+	}
+
+	// clear references: self:EditorTerritory -> tileContents -> o0:TileContent
+	while (self->getTileContents().size() > 0) {
+		executeRemoveReference(self,
+				hamster::ConcreteTerritory::cFeatureKeyTileContents,
+				self->getTileContents().front());
 	}
 
 	return true;

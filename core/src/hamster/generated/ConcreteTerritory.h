@@ -85,10 +85,10 @@ public:
 
 	bool isLocationInTerritory(mpw::Location location) const noexcept override;
 
-	mpw::Size getTerritorySize() const noexcept override;
-
 	std::shared_ptr<const mpw::Tile> getTileAt(
 			mpw::Location location) const noexcept override;
+
+	mpw::Size getTerritorySize() const noexcept override;
 
 	void addGrainsToTile(commands::AddGrainsToTileCommandParameters &parameters)
 			override;

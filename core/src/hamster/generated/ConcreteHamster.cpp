@@ -10,8 +10,8 @@
 #include "CommandStack.h"
 #include "Tile.h"
 #include "Stage.h"
-#include "Wall.h"
 #include "TileContent.h"
+#include "Wall.h"
 #include "GameTerritory.h"
 #include "ConcreteTerritory.h"
 
@@ -28,23 +28,6 @@ ConcreteHamster::ConcreteHamster() {
 
 }
 
-mpw::Location ConcreteHamster::getLocation() const noexcept {
-	try {
-		return helper_GetLocation_currentTile_result0_location();
-	} catch (...) {
-		return {};
-	}
-}
-
-mpw::Location ConcreteHamster::helper_GetLocation_currentTile_result0_location() const noexcept {
-	std::shared_ptr<const mpw::Tile> result0 = this->getCurrentTile();
-	if (result0 == nullptr) {
-		return {};
-	}
-	mpw::Location result1 = result0->getLocation();
-	return result1;
-}
-
 bool ConcreteHamster::frontIsClear() const noexcept {
 	try {
 		return (this->getDirection() == mpw::Direction::WEST) ? (helper_FrontIsClear_currentTile_result0_west_result1_contents_type_selectWall_is_empty()) :
@@ -57,12 +40,12 @@ bool ConcreteHamster::frontIsClear() const noexcept {
 	}
 }
 
-bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_south_result1_contents_type_selectWall_is_empty() const noexcept {
+bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_north_result1_contents_type_selectWall_is_empty() const noexcept {
 	std::shared_ptr<const mpw::Tile> result0 = this->getCurrentTile();
 	if (result0 == nullptr) {
 		return false;
 	}
-	std::shared_ptr<const mpw::Tile> result1 = result0->getSouth();
+	std::shared_ptr<const mpw::Tile> result1 = result0->getNorth();
 	if (result1 == nullptr) {
 		return false;
 	}
@@ -99,12 +82,12 @@ bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_west_result1_conte
 	return result2;
 }
 
-bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_north_result1_contents_type_selectWall_is_empty() const noexcept {
+bool ConcreteHamster::helper_FrontIsClear_currentTile_result0_south_result1_contents_type_selectWall_is_empty() const noexcept {
 	std::shared_ptr<const mpw::Tile> result0 = this->getCurrentTile();
 	if (result0 == nullptr) {
 		return false;
 	}
-	std::shared_ptr<const mpw::Tile> result1 = result0->getNorth();
+	std::shared_ptr<const mpw::Tile> result1 = result0->getSouth();
 	if (result1 == nullptr) {
 		return false;
 	}
@@ -119,6 +102,23 @@ bool ConcreteHamster::mouthEmpty() const noexcept {
 	} catch (...) {
 		return false;
 	}
+}
+
+mpw::Location ConcreteHamster::getLocation() const noexcept {
+	try {
+		return helper_GetLocation_currentTile_result0_location();
+	} catch (...) {
+		return {};
+	}
+}
+
+mpw::Location ConcreteHamster::helper_GetLocation_currentTile_result0_location() const noexcept {
+	std::shared_ptr<const mpw::Tile> result0 = this->getCurrentTile();
+	if (result0 == nullptr) {
+		return {};
+	}
+	mpw::Location result1 = result0->getLocation();
+	return result1;
 }
 
 bool ConcreteHamster::grainAvailable() const noexcept {

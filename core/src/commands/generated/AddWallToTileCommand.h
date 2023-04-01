@@ -10,10 +10,10 @@
 
 #include "Location.h"
 #include "ConcreteTerritory.h"
-#include "Wall.h"
 #include "Tile.h"
-#include "TileContent.h"
+#include "Wall.h"
 #include "Size.h"
+#include "TileContent.h"
 
 namespace commands {
 

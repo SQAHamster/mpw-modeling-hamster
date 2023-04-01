@@ -8,13 +8,13 @@
 #include "CompositeCommandBase.h"
 #include "PickGrainCommandParameters.h"
 
-#include "Grain.h"
 #include "ConcreteHamster.h"
-#include "GameLog.h"
 #include "Tile.h"
+#include "GameLog.h"
 #include "LogEntry.h"
-#include "TileContent.h"
+#include "Grain.h"
 #include "Stage.h"
+#include "TileContent.h"
 
 namespace commands {
 

@@ -69,15 +69,15 @@ public:
 	virtual bool isLocationInTerritory(mpw::Location location) const noexcept = 0;
 
 	/**
-	 * Return the size of the current territory. From the size you can retrieve the number of rows and colums.
-	 */
-	virtual mpw::Size getTerritorySize() const noexcept = 0;
-
-	/**
 	 * For a given location, return the internal tile object.
 	 */
 	virtual std::shared_ptr<const mpw::Tile> getTileAt(
 			mpw::Location location) const noexcept = 0;
+
+	/**
+	 * Return the size of the current territory. From the size you can retrieve the number of rows and colums.
+	 */
+	virtual mpw::Size getTerritorySize() const noexcept = 0;
 
 	virtual std::shared_ptr<hamster::ReadOnlyHamster> getReadOnlyDefaultHamster() noexcept = 0;
 	virtual std::shared_ptr<const hamster::ReadOnlyHamster> getReadOnlyDefaultHamster() const noexcept = 0;

@@ -27,15 +27,6 @@ void AddGrainsToTileCommand::execute() {
 	}
 
 	/*
-	 * location has to be on territory
-	 */
-
-	if ((self->isLocationInTerritory(location)) == false) {
-		throw CommandConstraintException(
-				"Violation of Precondition: location has to be on territory");
-	}
-
-	/*
 	 * the tile on the location has to be empty
 	 */
 
@@ -43,6 +34,15 @@ void AddGrainsToTileCommand::execute() {
 			> (self->getTileAt(location)->getContents()).empty()) == false) {
 		throw CommandConstraintException(
 				"Violation of Precondition: the tile on the location has to be empty");
+	}
+
+	/*
+	 * location has to be on territory
+	 */
+
+	if ((self->isLocationInTerritory(location)) == false) {
+		throw CommandConstraintException(
+				"Violation of Precondition: location has to be on territory");
 	}
 
 	/*
@@ -107,13 +107,13 @@ bool AddGrainsToTileCommand::addGrainToTile(mpw::Location location) {
 
 	mpw::Location o0 = o1->getLocation();
 
-	// assert condition: o0.column == location.column
-	if (o0.getColumn() != location.getColumn()) {
+	// assert condition: o0.row == location.row
+	if (o0.getRow() != location.getRow()) {
 		return false;
 	}
 
-	// assert condition: o0.row == location.row
-	if (o0.getRow() != location.getRow()) {
+	// assert condition: o0.column == location.column
+	if (o0.getColumn() != location.getColumn()) {
 		return false;
 	}
 
@@ -137,13 +137,13 @@ std::shared_ptr<mpw::Tile> AddGrainsToTileCommand::addGrainToTile_findO1(
 		// reference check: o1: location
 		mpw::Location o0 = o1->getLocation();
 
-		// attribute check: o0: column
-		if (o0.getColumn() != location.getColumn()) {
+		// attribute check: o0: row
+		if (o0.getRow() != location.getRow()) {
 			continue;
 		}
 
-		// attribute check: o0: row
-		if (o0.getRow() != location.getRow()) {
+		// attribute check: o0: column
+		if (o0.getColumn() != location.getColumn()) {
 			continue;
 		}
 

@@ -17,21 +17,21 @@ namespace commands {
 void InitDefaultHamsterCommand::execute() {
 
 	/*
-	 * hamster must not be already initialized
-	 */
-
-	if ((self->getDefaultHamster()->getStage() == nullptr) == false) {
-		throw CommandConstraintException(
-				"Violation of Precondition: hamster must not be already initialized");
-	}
-
-	/*
 	 * grainCount has to be greater than or equal to zero
 	 */
 
 	if ((grainCount >= 0) == false) {
 		throw CommandConstraintException(
 				"Violation of Precondition: grainCount has to be greater than or equal to zero");
+	}
+
+	/*
+	 * hamster must not be already initialized
+	 */
+
+	if ((self->getDefaultHamster()->getStage() == nullptr) == false) {
+		throw CommandConstraintException(
+				"Violation of Precondition: hamster must not be already initialized");
 	}
 
 	/*
@@ -152,15 +152,6 @@ bool InitDefaultHamsterCommand::addGrain() {
 
 bool InitDefaultHamsterCommand::addToTerritory(mpw::Location location) {
 
-	// new variable from reference: self:EditorTerritory -> defaultHamster -> defaultHamster:EditorHamster
-
-	std::shared_ptr < hamster::EditorHamster > defaultHamster =
-			std::dynamic_pointer_cast < hamster::EditorHamster
-					> (self->getDefaultHamster());
-	if (defaultHamster.get() == nullptr) {
-		return false;
-	}
-
 	// find new variable from many-reference: self:EditorTerritory -> tiles -> o0:Tile
 
 	std::shared_ptr < mpw::Tile > o0 = addToTerritory_findO0(*self);
@@ -171,6 +162,15 @@ bool InitDefaultHamsterCommand::addToTerritory(mpw::Location location) {
 	// new variable from reference: o0:Tile -> location -> o1:Location
 
 	mpw::Location o1 = o0->getLocation();
+
+	// new variable from reference: self:EditorTerritory -> defaultHamster -> defaultHamster:EditorHamster
+
+	std::shared_ptr < hamster::EditorHamster > defaultHamster =
+			std::dynamic_pointer_cast < hamster::EditorHamster
+					> (self->getDefaultHamster());
+	if (defaultHamster.get() == nullptr) {
+		return false;
+	}
 
 	// assert condition: o1.row == location.row
 	if (o1.getRow() != location.getRow()) {

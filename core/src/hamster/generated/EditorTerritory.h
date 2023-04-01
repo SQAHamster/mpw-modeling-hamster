@@ -18,26 +18,26 @@
 #include "InitDefaultHamsterCommandParameters.h"
 #include "InitTerritoryCommandParameters.h"
 
-namespace mpw {
-class TileContent;
-}
-namespace mpw {
-class Tile;
-}
-namespace hamster {
-class ConcreteTerritory;
-}
 namespace hamster {
 class Grain;
 }
 namespace hamster {
-class Wall;
+class ConcreteTerritory;
 }
 namespace mpw {
-class Stage;
+class Tile;
+}
+namespace mpw {
+class TileContent;
+}
+namespace hamster {
+class Wall;
 }
 namespace hamster {
 class ConcreteHamster;
+}
+namespace mpw {
+class Stage;
 }
 namespace hamster {
 class EditorHamster;

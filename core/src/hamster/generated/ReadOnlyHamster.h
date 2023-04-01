@@ -28,11 +28,11 @@ class ConcreteHamster;
 namespace hamster {
 class Grain;
 }
-namespace hamster {
-class Wall;
-}
 namespace mpw {
 class TileContent;
+}
+namespace hamster {
+class Wall;
 }
 
 namespace hamster {
@@ -81,11 +81,6 @@ public:
 	virtual const framework::ObservableListProperty<hamster::Grain>& grainsProperty() const noexcept = 0;
 
 	/**
-	 * Get the current hamster location.
-	 */
-	virtual mpw::Location getLocation() const noexcept = 0;
-
-	/**
 	 * Checks the front of the hamster.
 	 */
 	virtual bool frontIsClear() const noexcept = 0;
@@ -94,6 +89,11 @@ public:
 	 * Checks whether the hamster's mouth is empty or whether it has grains in its mouth.
 	 */
 	virtual bool mouthEmpty() const noexcept = 0;
+
+	/**
+	 * Get the current hamster location.
+	 */
+	virtual mpw::Location getLocation() const noexcept = 0;
 
 	/**
 	 * Checks the hamster's current tile for grain.

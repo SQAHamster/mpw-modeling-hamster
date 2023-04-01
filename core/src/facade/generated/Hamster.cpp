@@ -130,16 +130,16 @@ mpw::Direction Hamster::getDirection() const noexcept {
 	return internalHamster->getDirection();
 }
 
-mpw::Location Hamster::getLocation() const noexcept {
-	return internalHamster->getLocation();
-}
-
 bool Hamster::frontIsClear() const noexcept {
 	return internalHamster->frontIsClear();
 }
 
 bool Hamster::mouthEmpty() const noexcept {
 	return internalHamster->mouthEmpty();
+}
+
+mpw::Location Hamster::getLocation() const noexcept {
+	return internalHamster->getLocation();
 }
 
 bool Hamster::grainAvailable() const noexcept {

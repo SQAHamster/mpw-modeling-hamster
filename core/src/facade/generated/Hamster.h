@@ -68,8 +68,8 @@ public:
 	 * <br/>
 	 * <b>requires / ensures:</b> the hamster is placed on a tile.<br/>
 	 * <b>ensures:</b> the number of grains must equal the parameter grainCount<br/>
-	 * <b>requires:</b> grainCount has to be greater than or equal to zero<br/>
 	 * <b>requires:</b> the hamster must not be already initialized<br/>
+	 * <b>requires:</b> grainCount has to be greater than or equal to zero<br/>
 	 * <b>requires:</b> location has to be on territory
 	 * 
 	 */
@@ -117,10 +117,6 @@ public:
 	 */
 	mpw::Direction getDirection() const noexcept;
 	/**
-	 * Get the current hamster location.
-	 */
-	mpw::Location getLocation() const noexcept;
-	/**
 	 * Checks the front of the hamster.
 	 */
 	bool frontIsClear() const noexcept;
@@ -128,6 +124,10 @@ public:
 	 * Checks whether the hamster's mouth is empty or whether it has grains in its mouth.
 	 */
 	bool mouthEmpty() const noexcept;
+	/**
+	 * Get the current hamster location.
+	 */
+	mpw::Location getLocation() const noexcept;
 	/**
 	 * Checks the hamster's current tile for grain.
 	 */

@@ -41,8 +41,8 @@ public:
 	 * <b>requires / ensures:</b> the territory tiles must not be empty<br/>
 	 * <b>requires:</b> the amount of grains to add has to be equal or greater than zero<br/>
 	 * <b>ensures:</b> the given amount of grains has to be equal to the grains on the tile location<br/>
-	 * <b>requires:</b> location has to be on territory<br/>
-	 * <b>requires:</b> the tile on the location has to be empty
+	 * <b>requires:</b> the tile on the location has to be empty<br/>
+	 * <b>requires:</b> location has to be on territory
 	 * 
 	 */
 	TerritoryBuilder& addGrainsToTile(mpw::Location location, int amount);
@@ -69,9 +69,9 @@ public:
 	 * Initialize a hamster object with the given parameters. Once a hamster is initialized, the method must not be called again.<br/>
 	 * <br/>
 	 * <b>requires / ensures:</b> the territory tiles must not be empty<br/>
-	 * <b>requires:</b> hamster must not be already initialized<br/>
-	 * <b>requires:</b> grainCount has to be greater than or equal to zero<br/>
 	 * <b>ensures:</b> the number of grains must equal the parameter grainCount<br/>
+	 * <b>requires:</b> grainCount has to be greater than or equal to zero<br/>
+	 * <b>requires:</b> hamster must not be already initialized<br/>
 	 * <b>requires:</b> location has to be on territory
 	 * 
 	 */
@@ -81,8 +81,8 @@ public:
 	 * Defines a new territory by creating a new, empty territory of the given size.<br/>
 	 * <br/>
 	 * <b>requires / ensures:</b> the territory tiles must not be empty<br/>
-	 * <b>requires:</b> size must be > 0<br/>
-	 * <b>ensures:</b> size of territory is set
+	 * <b>ensures:</b> size of territory is set<br/>
+	 * <b>requires:</b> size must be > 0
 	 * 
 	 */
 	TerritoryBuilder& initTerritory(int columns, int rows);
@@ -92,8 +92,8 @@ public:
 	 * <b>requires / ensures:</b> the territory tiles must not be empty<br/>
 	 * <b>requires:</b> the amount of grains to add has to be equal or greater than zero<br/>
 	 * <b>ensures:</b> the given amount of grains has to be equal to the grains on the tile location<br/>
-	 * <b>requires:</b> location has to be on territory<br/>
-	 * <b>requires:</b> the tile on the location has to be empty
+	 * <b>requires:</b> the tile on the location has to be empty<br/>
+	 * <b>requires:</b> location has to be on territory
 	 * 
 	 */
 	TerritoryBuilder& addGrainsToTile(int locationX, int locationY, int amount);
@@ -120,9 +120,9 @@ public:
 	 * Initialize a hamster object with the given parameters. Once a hamster is initialized, the method must not be called again.<br/>
 	 * <br/>
 	 * <b>requires / ensures:</b> the territory tiles must not be empty<br/>
-	 * <b>requires:</b> hamster must not be already initialized<br/>
-	 * <b>requires:</b> grainCount has to be greater than or equal to zero<br/>
 	 * <b>ensures:</b> the number of grains must equal the parameter grainCount<br/>
+	 * <b>requires:</b> grainCount has to be greater than or equal to zero<br/>
+	 * <b>requires:</b> hamster must not be already initialized<br/>
 	 * <b>requires:</b> location has to be on territory
 	 * 
 	 */
