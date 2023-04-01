@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>de.unistuttgart.iste.sqa.mpw.hamstersimulator</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.0.2-SNAPSHOT</version>
+		<version>1.0.3-SNAPSHOT</version>
 		<relativePath>./parent/pom.xml</relativePath>
 	</parent>
 
