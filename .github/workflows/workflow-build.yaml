@@ -1,0 +1,83 @@
+name: Java/C++ Build
+
+on:
+  workflow_call:
+
+env:
+  CPP_MODULE_BASE_NAME: "cpp-simulator"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    environment: rss-artifactory-mpw-deploy
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+
+      # Run MDE Workflow
+      - name: Process MDE workflow with Maven
+        run: mvn clean install --file pom.xml
+
+      # Build and test Java Hamstersimulator
+      - name: Build Java Hamstersimulator
+        run: mvn --settings simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.java/.m2/settings.xml -B deploy --file simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.java/pom.xml
+        env:
+          MAVEN_REPO_USER: ${{ secrets.MAVEN_REPO_USER }}
+          MAVEN_REPO_PASS: ${{ secrets.MAVEN_REPO_PASS }}
+
+      # Build and test C++ Hamstersimulator
+      - name: Setup CMake
+        uses: jwlawson/actions-setup-cmake@v1.5
+        with:
+          cmake-version: '3.17.x'
+      - name: Setup SDL2
+        run: |
+          sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu `lsb_release -sc` main universe restricted multiverse"
+          sudo apt-get update -y -qq
+          sudo apt-get install libsdl2-dev
+          sudo apt-get install libsdl2-image-dev
+          sudo apt-get install libsdl2-ttf-dev
+      - name: Build C++ Hamstersimulator
+        run: cmake -S $PROJECT_CPP_DIR -B $BUILD_DIR && cmake --build $BUILD_DIR
+        env:
+          PROJECT_CPP_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp
+          BUILD_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/build
+      - name: Test C++ Hamstersimulator
+        run: cd $BUILD_DIR && ctest --extra-verbose
+        env:
+          PROJECT_CPP_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp
+          BUILD_DIR: simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/build
+
+      # Copy deployment artifacts
+      - name: copy cpp simulator
+        run: |
+          mkdir ~/deploy-cpp-simulator-to-branch
+          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/core ~/deploy-cpp-simulator-to-branch
+          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/ui ~/deploy-cpp-simulator-to-branch
+          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/main ~/deploy-cpp-simulator-to-branch
+          cp -R simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/examples ~/deploy-cpp-simulator-to-branch
+          cp simulators/de.unistuttgart.iste.sqa.mpw.hamstersimulator.cpp/CMakeLists.txt ~/deploy-cpp-simulator-to-branch
+
+      # Prepare Git Repository
+      - name: set identity
+        run: git config user.email "mpw-deployment@users.noreply.github.com" && git config user.name "Deployment"
+
+      # Deploy cpp-simulator to branch
+      - name: switch to cpp simulator branch
+        run: git fetch && git checkout ${{ env.CPP_MODULE_BASE_NAME }}-snapshot && git reset --hard 74be83085c54c29e2d554db2bf8942b49dde1a5d
+      - name: cpp simulator branch folders
+        run: |
+          git clean -ffd
+          rm -rf ./core && rm -rf ./ui && rm -rf ./main && rm -rf ./examples && rm -f CMakeLists.txt
+          cp -R ~/deploy-cpp-simulator-to-branch/core ./core
+          cp -R ~/deploy-cpp-simulator-to-branch/ui ./ui
+          cp -R ~/deploy-cpp-simulator-to-branch/main ./main
+          cp -R ~/deploy-cpp-simulator-to-branch/examples ./examples
+          cp ~/deploy-cpp-simulator-to-branch/CMakeLists.txt ./CMakeLists.txt
+      - name: commit
+        run: git add -A && git commit -am 'C++ hamstersimulator code snapshot' && git push origin ${{ env.CPP_MODULE_BASE_NAME }}-snapshot --force

@@ -2,18 +2,13 @@
 
 ## New Release of Source Code
 
-* replace pom.xml versions
-* replace MANIFEST.MF versions
+* replace versions (adapt/run update-versions.kts)
 * commit with pattern: "Version X.Y.Z"
 * create tag on master
 
 ## C++ Simulator Library
 
-* wait until C++ simulator is built on GitHub
-* switch to branch "cpp-simulator"
-* replace files from remote branch "cpp-simulator-snapshot"
-* commit with pattern "C++ Simulator: Version X.Y.Z"
-* tag with pattern "X.Y.Z-cpp-simulator"
+* cpp-simulator-tag will be handled by GitHub Actions automatically
 
 ## Set new SNAPSHOT Version
 
@@ -28,9 +23,9 @@
 
 ```
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-        	<repository location="https://raw.githubusercontent.com/SQAHamster/mpw-modeling-framework/X.Y.Z-updatesite/repository"/>
-        	<unit id="de.unistuttgart.iste.sqa.mpw.feature.feature.group" version="X.Y.Z"/>
-    	</location>
+    	<repository location="https://raw.githubusercontent.com/SQAHamster/mpw-modeling-framework/X.Y.Z-updatesite/repository"/>
+    	<unit id="de.unistuttgart.iste.sqa.mpw.feature.feature.group" version="X.Y.Z"/>
+    </location>
 ```
 * update installed-items.p2f version:
 
