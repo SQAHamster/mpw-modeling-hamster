@@ -12,8 +12,7 @@
 
 ## Set new SNAPSHOT Version
 
-* replace pom.xml versions to next snapshot
-* replace MANIFEST.MF versions to next snapshot
+* replace versions (adapt/run update-versions.kts)
 * commit with pattern: "Version X.Y.Z-SNAPSHOT"
 
 
