@@ -8,8 +8,8 @@ import java.nio.charset.Charset
  * - for parent POMs, the parent version is the first version-tag in the file
  */
 
-val sourceVersion = "1.0.2-SNAPSHOT"
-val targetVersion = "1.0.3-SNAPSHOT"
+val sourceVersion = "1.0.3-SNAPSHOT"
+val targetVersion = "1.0.3"
 
 val rootDir = ".."
 val projectName = "hamster"

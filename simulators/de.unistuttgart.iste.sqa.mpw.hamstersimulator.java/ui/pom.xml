@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>de.unistuttgart.iste.sqa.mpw.hamstersimulator</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.0.3-SNAPSHOT</version>
+		<version>1.0.3</version>
 		<relativePath>../parent</relativePath>
 	</parent>
 
@@ -32,7 +32,7 @@
 		<dependency>
 			<groupId>de.unistuttgart.iste.sqa.mpw.hamstersimulator</groupId>
 			<artifactId>core</artifactId>
-			<version>1.0.3-SNAPSHOT</version>
+			<version>1.0.3</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
