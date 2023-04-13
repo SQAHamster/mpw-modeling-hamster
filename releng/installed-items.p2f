@@ -2,6 +2,11 @@
 <?p2f version='1.0.0'?>
 <p2f version='1.0.0'>
   <ius size='6'>
+    <iu id='org.junit.jupiter.api' name='JUnit Jupiter API' version='5.9.1.v20221103-2317'>
+      <repositories size='1'>
+        <repository location='https://download.eclipse.org/tools/orbit/downloads/drops/R20221123021534/repository'/>
+      </repositories>
+    </iu>
     <iu id='org.eclipse.cdt.feature.group' name='C/C++ Development Tools' version='11.0.0.202211300214'>
       <repositories size='3'>
         <repository location='https://download.eclipse.org/releases/latest'/>
